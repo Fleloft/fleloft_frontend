@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "589447292192",
+    "project_id": "fleloft",
+    "storage_bucket": "fleloft.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589447292192:android:e455ea1e51b3517b9c6345",
+        "android_client_info": {
+          "package_name": "com.example.fleloft_frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdrK0RSoeou9ZK09-zsESp09hxhSGg5UI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
