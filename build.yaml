@@ -1,0 +1,26 @@
+# build.yaml
+targets:
+  $default:
+    builders:
+      # Configuração para o builder que gera as classes GraphQL (requisições, dados)
+      ferry_generator|graphql_builder:
+        enabled: true # Certifique-se de que está habilitado
+        options:
+          schema: fleloft_frontend|lib/graphql/schema.graphql # Caminho do seu schema
+          type_overrides:
+            Long: # <--- Mapeamento do escalar Long para int
+              name: int
+
+      # Configuração para o builder que gera os serializadores
+      ferry_generator|serializer_builder:
+        enabled: true # Certifique-se de que está habilitado
+        options:
+          schema: fleloft_frontend|lib/graphql/schema.graphql # Caminho do seu schema
+          # Se o serializer_builder também precisar de custom_scalars, você pode repetir aqui,
+          # mas geralmente o graphql_builder é o que mais precisa.
+          type_overrides:
+            Long:
+              name: int
+
+      # Outros builders que você já tem (freezed, riverpod_generator, json_serializable)
+      # Exemplo:
