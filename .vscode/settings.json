@@ -18,5 +18,11 @@
     "titleBar.inactiveBackground": "#6c757d99",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#6c757d"
+  "peacock.color": "#6c757d",
+    "files.exclude": {
+        "**/*.g.dart": true,
+        "**/*.freezed.dart": true,
+        "**/*.gql.dart": true,
+        "**/*.gql.g.dart": true
+    },
 }
