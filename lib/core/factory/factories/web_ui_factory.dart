@@ -8,6 +8,8 @@ import 'package:fleloft_frontend/core/factory/components/buttons/android/button_
 import 'package:fleloft_frontend/core/factory/components/buttons/i_button_factory.dart';
 import 'package:fleloft_frontend/core/factory/components/scaffold/i_scaffold.dart';
 import 'package:fleloft_frontend/core/factory/components/scaffold/web/scaffold_web.dart';
+import 'package:fleloft_frontend/core/factory/components/text/android/text_field_android.dart';
+import 'package:fleloft_frontend/core/factory/components/text/i_text.dart';
 import 'package:fleloft_frontend/core/factory/factories/ui_factory.dart';
 
 class WebUIFactory implements UIFactory {
@@ -26,11 +28,11 @@ class WebUIFactory implements UIFactory {
   @override
   IButtonFactory get button => ButtonFactoryAndroid();
 
-  // @override
-  // IAppBar get appBar => HeaderWeb();
+  @override
+  IText get text => TextFieldAndroid();
 
   // @override
-  // IText get text => TextFieldAndroid();
+  // IAppBar get appBar => HeaderWeb();
 
   // @override
   // IProgressIndicator get progressIndicator => CircularProgressIndicatorAndroid();
