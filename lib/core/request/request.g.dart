@@ -40,7 +40,7 @@ final class RequestProvider extends $NotifierProvider<Request, RequestState> {
   }
 }
 
-String _$requestHash() => r'3a0818860e66c418e64aa90bc18ae91c51d0e55f';
+String _$requestHash() => r'3be92d0b0322878e671551c294e475deb89da913';
 
 abstract class _$Request extends $Notifier<RequestState> {
   RequestState build();

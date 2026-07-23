@@ -1,3 +1,4 @@
+import 'package:fleloft_frontend/routing/auth/auth_routes.dart';
 import 'package:fleloft_frontend/routing/navigator_key.dart';
 import 'package:fleloft_frontend/routing/shellBranchRoutes/shell_branch_routes.dart';
 import 'package:fleloft_frontend/ui/views/home/provider/providers.dart';
@@ -27,6 +28,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               ShellBranchRoutes.home,
               ShellBranchRoutes.mock1,
               ShellBranchRoutes.mock2,
+              ShellBranchRoutes.moreMenuView
             };
 
             // Se **não** for rota de shell, não mexe no índice
@@ -39,6 +41,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               // ShellBranchRoutes.schedule => 2,
               // ShellBranchRoutes.account => 3,
               ShellBranchRoutes.mock2 => 2,
+              ShellBranchRoutes.moreMenuView => 3,
               _ => 0,
             };
 
@@ -57,24 +60,21 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           StatefulShellBranch(
             routes: [mock2()],
           ),
+          StatefulShellBranch(
+            routes: [moreMenuRouting()],
+          ),
         ],
       ),
 
       // //*------------------------
       // //* Rotas de autenticação
       // //*------------------------
-      // signInRouting(),
-      // createAccountRouting(),
-      // whichWayToCreateAccountViewRouting(),
-      // personInformationFormViewRouting(),
-      // createAccountWithEmailViewRouting(),
-      // clinicInformationFormViewRouting(),
-      // // professionalInformationFormViewRouting(),
+      signInRouting(),
+      createAccountRouting(),
 
       // //*------------------------
       // //* Rotas do menu "Mais"
       // //*------------------------
-      // myInformationsRouting(),
     ],
   );
 });

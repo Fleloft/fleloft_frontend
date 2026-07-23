@@ -1,14 +1,16 @@
-import 'package:fleloft_frontend/data/entities/role/role.dart';
 
-// extension GGetRolesDataToRole on GInitialAppDataData_roles_nodes {
-//   Role toRole() {
-//     return Role(
-//       id: id,
-//       dbId: int.tryParse(dbId),
-//       name: name,
-//     );
-//   }
-// }
+import 'package:fleloft_frontend/data/entities/role/model/role.dart';
+import 'package:fleloft_frontend/graphql/initialData/__generated__/query_initial_data.data.gql.dart';
+
+extension GGetRolesDataToRole on GInitialDataData_roles_nodes {
+  RoleModel toRole() {
+    return RoleModel(
+      id: id,
+      dbId: int.tryParse(dbId),
+      name: name,
+    );
+  }
+}
 
 extension RoleToGGetRolesData on List<RoleModel> {
   RoleModel getRoleByString(String role) {
