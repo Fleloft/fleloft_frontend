@@ -1,4 +1,7 @@
+import 'package:fleloft_frontend/core/enum/platform_type.dart';
+import 'package:fleloft_frontend/provider/auth_provider.dart';
 import 'package:fleloft_frontend/provider/ui_factory_provider.dart';
+import 'package:fleloft_frontend/ui/views/home/widgets/sign_in_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -16,17 +19,17 @@ class BottomNavigatorWidget extends HookConsumerWidget {
     final size = MediaQuery.of(context).size;
 
     //providers
-    // final auth = ref.watch(authProvider);
+    final auth = ref.watch(authProvider);
     final ui = ref.read(uiFactoryProvider(size));
-    // final uiNot = ref.read(uiFactoryProvider(size).notifier);
+    final uiNot = ref.read(uiFactoryProvider(size).notifier);
 
-    // final maxWidth = uiNot.getMaxWidth(size);
+    final maxWidth = uiNot.getMaxWidth(size);
 
     //vars
-    // final isAuthenticated = auth.isAuthenticated;
-    // final isWeb = uiNot.getPlatformType(size) == PlatformType.webDesktop;
+    final isAuthenticated = auth.isAuthenticated;
+    final isWeb = uiNot.getPlatformType(size) == PlatformType.webDesktop;
 
-    // final actionButton = !isAuthenticated ? SignInWidget(maxWidth: maxWidth, isWeb: isWeb) : null;
+    final actionButton = !isAuthenticated ? SignInWidget(maxWidth: maxWidth, isWeb: isWeb) : null;
 
     //ui component
     final scaffold = ui.scaffold;
@@ -35,7 +38,7 @@ class BottomNavigatorWidget extends HookConsumerWidget {
 
     return scaffold.render(
       sliverAppBar: appBar.render(
-        // actions: actionButton != null ? [actionButton] : null,
+        actions: actionButton != null ? [actionButton] : null,
         context: context,
       ),
       bottomNavigationBar: bottomNavBar.render(context, ref),

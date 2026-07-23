@@ -1,0 +1,730 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+"The node interface is implemented by entities that have a global unique identifier."
+interface Node {
+  id: ID!
+}
+
+type CheckinModel implements Node {
+  room: RoomModel @cost(weight: "10")
+  user: UserModel @cost(weight: "10")
+  files: [FileModel] @cost(weight: "10")
+  dataEntrada: LocalDate
+  dataSaida: LocalDate
+  chekin: DateTime
+  checkout: DateTime
+  observations: String
+  status: CheckinStatusEnum!
+  roomId: Long!
+  userId: Long!
+  id: ID!
+  dbId: String!
+}
+
+"A connection to a list of items."
+type CheckinsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  "A list of edges."
+  edges: [CheckinsEdge!]
+  "A flattened list of the nodes."
+  nodes: [CheckinModel!]
+}
+
+"An edge in a connection."
+type CheckinsEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: CheckinModel!
+}
+
+type CreateCheckinPayload {
+  checkinModel: CheckinModel
+}
+
+type CreateFilePayload {
+  fileModel: FileModel
+}
+
+type CreateRoomPayload {
+  roomModel: RoomModel
+}
+
+type CreateUserPayload {
+  userModel: UserModel
+}
+
+type DeleteCheckinPayload {
+  boolean: Boolean
+}
+
+type DeleteFilePayload {
+  boolean: Boolean
+}
+
+type DeleteRoomPayload {
+  boolean: Boolean
+}
+
+type DeleteUserPayload {
+  boolean: Boolean
+}
+
+type FileModel implements Node {
+  place: PlaceModel @cost(weight: "10")
+  room: RoomModel @cost(weight: "10")
+  user: UserModel @cost(weight: "10")
+  checkin: CheckinModel @cost(weight: "10")
+  type: FileTypeEnum
+  url: String
+  roomId: Long
+  userId: Long
+  checkinId: Long
+  placeId: Long
+  id: ID!
+  dbId: String!
+}
+
+"A connection to a list of items."
+type FilesConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  "A list of edges."
+  edges: [FilesEdge!]
+  "A flattened list of the nodes."
+  nodes: [FileModel!]
+}
+
+"An edge in a connection."
+type FilesEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: FileModel!
+}
+
+type Mutation {
+  createCheckin(input: CreateCheckinInput!): CreateCheckinPayload! @authorize @cost(weight: "10")
+  updateCheckin(input: UpdateCheckinInput!): UpdateCheckinPayload! @authorize @cost(weight: "10")
+  deleteCheckin(input: DeleteCheckinInput!): DeleteCheckinPayload! @authorize @cost(weight: "10")
+  createFile(input: CreateFileInput!): CreateFilePayload! @authorize @cost(weight: "10")
+  updateFile(input: UpdateFileInput!): UpdateFilePayload! @authorize @cost(weight: "10")
+  deleteFile(input: DeleteFileInput!): DeleteFilePayload! @authorize @cost(weight: "10")
+  updatePlace(input: UpdatePlaceInput!): UpdatePlacePayload! @authorize @cost(weight: "10")
+  createRoom(input: CreateRoomInput!): CreateRoomPayload! @authorize @cost(weight: "10")
+  updateRoom(input: UpdateRoomInput!): UpdateRoomPayload! @authorize @cost(weight: "10")
+  deleteRoom(input: DeleteRoomInput!): DeleteRoomPayload! @authorize @cost(weight: "10")
+  createUser(input: CreateUserInput!): CreateUserPayload! @authorize @cost(weight: "10")
+  updateUser(input: UpdateUserInput!): UpdateUserPayload! @authorize @cost(weight: "10")
+  deleteUser(input: DeleteUserInput!): DeleteUserPayload! @authorize @cost(weight: "10")
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "Indicates whether more edges exist following the set defined by the clients arguments."
+  hasNextPage: Boolean!
+  "Indicates whether more edges exist prior the set defined by the clients arguments."
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+type PlaceModel implements Node {
+  rooms: [RoomModel] @cost(weight: "10")
+  files: [FileModel] @cost(weight: "10")
+  name: String!
+  address: String!
+  neighborhood: String
+  city: String
+  state: String
+  zipCode: String
+  observations: String
+  active: Boolean!
+  id: ID!
+  dbId: String!
+}
+
+"A connection to a list of items."
+type PlacesConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  "A list of edges."
+  edges: [PlacesEdge!]
+  "A flattened list of the nodes."
+  nodes: [PlaceModel!]
+}
+
+"An edge in a connection."
+type PlacesEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: PlaceModel!
+}
+
+type Query {
+  "Fetches an object given its ID."
+  node("ID of the object." id: ID!): Node @cost(weight: "10")
+  "Lookup nodes by a list of IDs."
+  nodes("The list of node IDs." ids: [ID!]!): [Node]! @cost(weight: "10")
+  checkins("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String where: CheckinModelFilterInput @cost(weight: "10") order: [CheckinModelSortInput!] @cost(weight: "10")): CheckinsConnection @authorize @listSize(assumedSize: 50, slicingArguments: [ "first", "last" ], slicingArgumentDefaultValue: 10, sizedFields: [ "edges", "nodes" ], requireOneSlicingArgument: false) @cost(weight: "10")
+  checkinById(id: ID!): CheckinModel @authorize @cost(weight: "10")
+  checkinsById(ids: [ID!]!): [CheckinModel!]! @authorize @cost(weight: "10")
+  files("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String where: FileModelFilterInput @cost(weight: "10") order: [FileModelSortInput!] @cost(weight: "10")): FilesConnection @authorize @listSize(assumedSize: 50, slicingArguments: [ "first", "last" ], slicingArgumentDefaultValue: 10, sizedFields: [ "edges", "nodes" ], requireOneSlicingArgument: false) @cost(weight: "10")
+  fileById(id: ID!): FileModel @authorize @cost(weight: "10")
+  filesById(ids: [ID!]!): [FileModel!]! @authorize @cost(weight: "10")
+  places("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String where: PlaceModelFilterInput @cost(weight: "10") order: [PlaceModelSortInput!] @cost(weight: "10")): PlacesConnection @authorize @listSize(assumedSize: 50, slicingArguments: [ "first", "last" ], slicingArgumentDefaultValue: 10, sizedFields: [ "edges", "nodes" ], requireOneSlicingArgument: false) @cost(weight: "10")
+  placeById(id: ID!): PlaceModel @authorize @cost(weight: "10")
+  placesById(ids: [ID!]!): [PlaceModel!]! @authorize @cost(weight: "10")
+  roles("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String where: RoleModelFilterInput @cost(weight: "10") order: [RoleModelSortInput!] @cost(weight: "10")): RolesConnection @authorize @listSize(assumedSize: 50, slicingArguments: [ "first", "last" ], slicingArgumentDefaultValue: 10, sizedFields: [ "edges", "nodes" ], requireOneSlicingArgument: false) @cost(weight: "10")
+  roleById(id: ID!): RoleModel @authorize @cost(weight: "10")
+  rolesById(ids: [ID!]!): [RoleModel!]! @authorize @cost(weight: "10")
+  rooms("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String where: RoomModelFilterInput @cost(weight: "10") order: [RoomModelSortInput!] @cost(weight: "10")): RoomsConnection @authorize @listSize(assumedSize: 50, slicingArguments: [ "first", "last" ], slicingArgumentDefaultValue: 10, sizedFields: [ "edges", "nodes" ], requireOneSlicingArgument: false) @cost(weight: "10")
+  roomById(id: ID!): RoomModel @authorize @cost(weight: "10")
+  roomsById(ids: [ID!]!): [RoomModel!]! @authorize @cost(weight: "10")
+  users("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String where: UserModelFilterInput @cost(weight: "10") order: [UserModelSortInput!] @cost(weight: "10")): UsersConnection @authorize @listSize(assumedSize: 50, slicingArguments: [ "first", "last" ], slicingArgumentDefaultValue: 10, sizedFields: [ "edges", "nodes" ], requireOneSlicingArgument: false) @cost(weight: "10")
+  userById(id: ID!): UserModel @authorize @cost(weight: "10")
+  usersById(ids: [ID!]!): [UserModel!]! @authorize @cost(weight: "10")
+}
+
+type RoleModel implements Node {
+  users: [UserModel] @cost(weight: "10")
+  name: String
+  id: ID!
+  dbId: String!
+}
+
+"A connection to a list of items."
+type RolesConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  "A list of edges."
+  edges: [RolesEdge!]
+  "A flattened list of the nodes."
+  nodes: [RoleModel!]
+}
+
+"An edge in a connection."
+type RolesEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: RoleModel!
+}
+
+type RoomModel implements Node {
+  place: PlaceModel @cost(weight: "10")
+  checkins: [CheckinModel] @cost(weight: "10")
+  files: [FileModel] @cost(weight: "10")
+  numero: Byte
+  descricao: String
+  capacity: Byte
+  active: Boolean
+  placeId: Long!
+  id: ID!
+  dbId: String!
+}
+
+"A connection to a list of items."
+type RoomsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  "A list of edges."
+  edges: [RoomsEdge!]
+  "A flattened list of the nodes."
+  nodes: [RoomModel!]
+}
+
+"An edge in a connection."
+type RoomsEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: RoomModel!
+}
+
+type UpdateCheckinPayload {
+  checkinModel: CheckinModel
+}
+
+type UpdateFilePayload {
+  fileModel: FileModel
+}
+
+type UpdatePlacePayload {
+  placeModel: PlaceModel
+}
+
+type UpdateRoomPayload {
+  roomModel: RoomModel
+}
+
+type UpdateUserPayload {
+  userModel: UserModel
+}
+
+type UserModel implements Node {
+  checkins: [CheckinModel] @cost(weight: "10")
+  files: [FileModel] @cost(weight: "10")
+  role: RoleModel @cost(weight: "10")
+  name: String
+  cpf: String
+  email: String
+  phone: String
+  roleId: Long!
+  id: ID!
+  dbId: String!
+}
+
+"A connection to a list of items."
+type UsersConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  "A list of edges."
+  edges: [UsersEdge!]
+  "A flattened list of the nodes."
+  nodes: [UserModel!]
+}
+
+"An edge in a connection."
+type UsersEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: UserModel!
+}
+
+input BooleanOperationFilterInput {
+  eq: Boolean @cost(weight: "10")
+  neq: Boolean @cost(weight: "10")
+}
+
+input ByteOperationFilterInput {
+  eq: Byte @cost(weight: "10")
+  neq: Byte @cost(weight: "10")
+  in: [Byte] @cost(weight: "10")
+  nin: [Byte] @cost(weight: "10")
+  gt: Byte @cost(weight: "10")
+  ngt: Byte @cost(weight: "10")
+  gte: Byte @cost(weight: "10")
+  ngte: Byte @cost(weight: "10")
+  lt: Byte @cost(weight: "10")
+  nlt: Byte @cost(weight: "10")
+  lte: Byte @cost(weight: "10")
+  nlte: Byte @cost(weight: "10")
+}
+
+input CheckinModelFilterInput {
+  and: [CheckinModelFilterInput!]
+  or: [CheckinModelFilterInput!]
+  dataEntrada: LocalDateOperationFilterInput
+  dataSaida: LocalDateOperationFilterInput
+  chekin: DateTimeOperationFilterInput
+  checkout: DateTimeOperationFilterInput
+  observations: StringOperationFilterInput
+  status: CheckinStatusEnumOperationFilterInput
+  roomId: LongOperationFilterInput
+  room: RoomModelFilterInput
+  userId: LongOperationFilterInput
+  user: UserModelFilterInput
+  files: ListFilterInputTypeOfFileModelFilterInput
+  id: IdOperationFilterInput
+  dbId: StringOperationFilterInput
+}
+
+input CheckinModelSortInput {
+  dataEntrada: SortEnumType @cost(weight: "10")
+  dataSaida: SortEnumType @cost(weight: "10")
+  chekin: SortEnumType @cost(weight: "10")
+  checkout: SortEnumType @cost(weight: "10")
+  observations: SortEnumType @cost(weight: "10")
+  status: SortEnumType @cost(weight: "10")
+  roomId: SortEnumType @cost(weight: "10")
+  room: RoomModelSortInput @cost(weight: "10")
+  userId: SortEnumType @cost(weight: "10")
+  user: UserModelSortInput @cost(weight: "10")
+  id: SortEnumType @cost(weight: "10")
+  dbId: SortEnumType @cost(weight: "10")
+}
+
+input CheckinStatusEnumOperationFilterInput {
+  eq: CheckinStatusEnum @cost(weight: "10")
+  neq: CheckinStatusEnum @cost(weight: "10")
+  in: [CheckinStatusEnum!] @cost(weight: "10")
+  nin: [CheckinStatusEnum!] @cost(weight: "10")
+}
+
+input CreateCheckinInput {
+  roomId: ID!
+  userId: ID!
+  dataEntrada: LocalDate!
+  dataSaida: LocalDate!
+  observations: String
+}
+
+input CreateFileInput {
+  roomId: ID
+  userId: ID
+  placeId: ID
+  checkinId: ID
+  type: FileTypeEnum!
+  url: String!
+}
+
+input CreateRoomInput {
+  placeId: ID!
+  numero: Byte!
+  descricao: String!
+  capacity: Byte!
+  active: Boolean!
+}
+
+input CreateUserInput {
+  roleId: ID!
+  email: String!
+  phone: String!
+  name: String!
+  cpf: String!
+  uid: String!
+}
+
+input DateTimeOperationFilterInput {
+  eq: DateTime @cost(weight: "10")
+  neq: DateTime @cost(weight: "10")
+  in: [DateTime] @cost(weight: "10")
+  nin: [DateTime] @cost(weight: "10")
+  gt: DateTime @cost(weight: "10")
+  ngt: DateTime @cost(weight: "10")
+  gte: DateTime @cost(weight: "10")
+  ngte: DateTime @cost(weight: "10")
+  lt: DateTime @cost(weight: "10")
+  nlt: DateTime @cost(weight: "10")
+  lte: DateTime @cost(weight: "10")
+  nlte: DateTime @cost(weight: "10")
+}
+
+input DeleteCheckinInput {
+  checkinId: ID!
+}
+
+input DeleteFileInput {
+  fileId: ID!
+}
+
+input DeleteRoomInput {
+  roomId: ID!
+}
+
+input DeleteUserInput {
+  userId: ID!
+}
+
+input FileModelFilterInput {
+  and: [FileModelFilterInput!]
+  or: [FileModelFilterInput!]
+  type: NullableOfFileTypeEnumOperationFilterInput
+  url: StringOperationFilterInput
+  roomId: LongOperationFilterInput
+  room: RoomModelFilterInput
+  userId: LongOperationFilterInput
+  user: UserModelFilterInput
+  checkinId: LongOperationFilterInput
+  checkin: CheckinModelFilterInput
+  placeId: LongOperationFilterInput
+  place: PlaceModelFilterInput
+  id: IdOperationFilterInput
+  dbId: StringOperationFilterInput
+}
+
+input FileModelSortInput {
+  type: SortEnumType @cost(weight: "10")
+  url: SortEnumType @cost(weight: "10")
+  roomId: SortEnumType @cost(weight: "10")
+  room: RoomModelSortInput @cost(weight: "10")
+  userId: SortEnumType @cost(weight: "10")
+  user: UserModelSortInput @cost(weight: "10")
+  checkinId: SortEnumType @cost(weight: "10")
+  checkin: CheckinModelSortInput @cost(weight: "10")
+  placeId: SortEnumType @cost(weight: "10")
+  place: PlaceModelSortInput @cost(weight: "10")
+  id: SortEnumType @cost(weight: "10")
+  dbId: SortEnumType @cost(weight: "10")
+}
+
+input IdOperationFilterInput {
+  eq: ID @cost(weight: "10")
+  neq: ID @cost(weight: "10")
+  in: [ID] @cost(weight: "10")
+  nin: [ID] @cost(weight: "10")
+}
+
+input ListFilterInputTypeOfCheckinModelFilterInput {
+  all: CheckinModelFilterInput @cost(weight: "10")
+  none: CheckinModelFilterInput @cost(weight: "10")
+  some: CheckinModelFilterInput @cost(weight: "10")
+  any: Boolean @cost(weight: "10")
+}
+
+input ListFilterInputTypeOfFileModelFilterInput {
+  all: FileModelFilterInput @cost(weight: "10")
+  none: FileModelFilterInput @cost(weight: "10")
+  some: FileModelFilterInput @cost(weight: "10")
+  any: Boolean @cost(weight: "10")
+}
+
+input ListFilterInputTypeOfRoomModelFilterInput {
+  all: RoomModelFilterInput @cost(weight: "10")
+  none: RoomModelFilterInput @cost(weight: "10")
+  some: RoomModelFilterInput @cost(weight: "10")
+  any: Boolean @cost(weight: "10")
+}
+
+input ListFilterInputTypeOfUserModelFilterInput {
+  all: UserModelFilterInput @cost(weight: "10")
+  none: UserModelFilterInput @cost(weight: "10")
+  some: UserModelFilterInput @cost(weight: "10")
+  any: Boolean @cost(weight: "10")
+}
+
+input LocalDateOperationFilterInput {
+  eq: LocalDate @cost(weight: "10")
+  neq: LocalDate @cost(weight: "10")
+  in: [LocalDate] @cost(weight: "10")
+  nin: [LocalDate] @cost(weight: "10")
+  gt: LocalDate @cost(weight: "10")
+  ngt: LocalDate @cost(weight: "10")
+  gte: LocalDate @cost(weight: "10")
+  ngte: LocalDate @cost(weight: "10")
+  lt: LocalDate @cost(weight: "10")
+  nlt: LocalDate @cost(weight: "10")
+  lte: LocalDate @cost(weight: "10")
+  nlte: LocalDate @cost(weight: "10")
+}
+
+input LongOperationFilterInput {
+  eq: Long @cost(weight: "10")
+  neq: Long @cost(weight: "10")
+  in: [Long] @cost(weight: "10")
+  nin: [Long] @cost(weight: "10")
+  gt: Long @cost(weight: "10")
+  ngt: Long @cost(weight: "10")
+  gte: Long @cost(weight: "10")
+  ngte: Long @cost(weight: "10")
+  lt: Long @cost(weight: "10")
+  nlt: Long @cost(weight: "10")
+  lte: Long @cost(weight: "10")
+  nlte: Long @cost(weight: "10")
+}
+
+input NullableOfFileTypeEnumOperationFilterInput {
+  eq: FileTypeEnum @cost(weight: "10")
+  neq: FileTypeEnum @cost(weight: "10")
+  in: [FileTypeEnum] @cost(weight: "10")
+  nin: [FileTypeEnum] @cost(weight: "10")
+}
+
+input PlaceModelFilterInput {
+  and: [PlaceModelFilterInput!]
+  or: [PlaceModelFilterInput!]
+  name: StringOperationFilterInput
+  address: StringOperationFilterInput
+  neighborhood: StringOperationFilterInput
+  city: StringOperationFilterInput
+  state: StringOperationFilterInput
+  zipCode: StringOperationFilterInput
+  observations: StringOperationFilterInput
+  active: BooleanOperationFilterInput
+  rooms: ListFilterInputTypeOfRoomModelFilterInput
+  files: ListFilterInputTypeOfFileModelFilterInput
+  id: IdOperationFilterInput
+  dbId: StringOperationFilterInput
+}
+
+input PlaceModelSortInput {
+  name: SortEnumType @cost(weight: "10")
+  address: SortEnumType @cost(weight: "10")
+  neighborhood: SortEnumType @cost(weight: "10")
+  city: SortEnumType @cost(weight: "10")
+  state: SortEnumType @cost(weight: "10")
+  zipCode: SortEnumType @cost(weight: "10")
+  observations: SortEnumType @cost(weight: "10")
+  active: SortEnumType @cost(weight: "10")
+  id: SortEnumType @cost(weight: "10")
+  dbId: SortEnumType @cost(weight: "10")
+}
+
+input RoleModelFilterInput {
+  and: [RoleModelFilterInput!]
+  or: [RoleModelFilterInput!]
+  name: StringOperationFilterInput
+  users: ListFilterInputTypeOfUserModelFilterInput
+  id: IdOperationFilterInput
+  dbId: StringOperationFilterInput
+}
+
+input RoleModelSortInput {
+  name: SortEnumType @cost(weight: "10")
+  id: SortEnumType @cost(weight: "10")
+  dbId: SortEnumType @cost(weight: "10")
+}
+
+input RoomModelFilterInput {
+  and: [RoomModelFilterInput!]
+  or: [RoomModelFilterInput!]
+  numero: ByteOperationFilterInput
+  descricao: StringOperationFilterInput
+  capacity: ByteOperationFilterInput
+  active: BooleanOperationFilterInput
+  placeId: LongOperationFilterInput
+  place: PlaceModelFilterInput
+  checkins: ListFilterInputTypeOfCheckinModelFilterInput
+  files: ListFilterInputTypeOfFileModelFilterInput
+  id: IdOperationFilterInput
+  dbId: StringOperationFilterInput
+}
+
+input RoomModelSortInput {
+  numero: SortEnumType @cost(weight: "10")
+  descricao: SortEnumType @cost(weight: "10")
+  capacity: SortEnumType @cost(weight: "10")
+  active: SortEnumType @cost(weight: "10")
+  placeId: SortEnumType @cost(weight: "10")
+  place: PlaceModelSortInput @cost(weight: "10")
+  id: SortEnumType @cost(weight: "10")
+  dbId: SortEnumType @cost(weight: "10")
+}
+
+input StringOperationFilterInput {
+  and: [StringOperationFilterInput!]
+  or: [StringOperationFilterInput!]
+  eq: String @cost(weight: "10")
+  neq: String @cost(weight: "10")
+  contains: String @cost(weight: "20")
+  ncontains: String @cost(weight: "20")
+  in: [String] @cost(weight: "10")
+  nin: [String] @cost(weight: "10")
+  startsWith: String @cost(weight: "20")
+  nstartsWith: String @cost(weight: "20")
+  endsWith: String @cost(weight: "20")
+  nendsWith: String @cost(weight: "20")
+}
+
+input UpdateCheckinInput {
+  id: ID!
+  roomId: ID
+  dataEntrada: LocalDate
+  dataSaida: LocalDate
+  chekin: DateTime
+  checkout: DateTime
+  observations: String
+  status: CheckinStatusEnum
+}
+
+input UpdateFileInput {
+  id: ID!
+  url: String!
+}
+
+input UpdatePlaceInput {
+  id: ID!
+  name: String!
+  observations: String
+}
+
+input UpdateRoomInput {
+  id: ID!
+  descricao: String
+  capacity: Byte
+  active: Boolean
+}
+
+input UpdateUserInput {
+  id: ID!
+  phone: String!
+  email: String!
+}
+
+input UserModelFilterInput {
+  and: [UserModelFilterInput!]
+  or: [UserModelFilterInput!]
+  name: StringOperationFilterInput
+  cpf: StringOperationFilterInput
+  email: StringOperationFilterInput
+  phone: StringOperationFilterInput
+  roleId: LongOperationFilterInput
+  role: RoleModelFilterInput
+  checkins: ListFilterInputTypeOfCheckinModelFilterInput
+  files: ListFilterInputTypeOfFileModelFilterInput
+  id: IdOperationFilterInput
+  dbId: StringOperationFilterInput
+}
+
+input UserModelSortInput {
+  name: SortEnumType @cost(weight: "10")
+  cpf: SortEnumType @cost(weight: "10")
+  email: SortEnumType @cost(weight: "10")
+  phone: SortEnumType @cost(weight: "10")
+  roleId: SortEnumType @cost(weight: "10")
+  role: RoleModelSortInput @cost(weight: "10")
+  id: SortEnumType @cost(weight: "10")
+  dbId: SortEnumType @cost(weight: "10")
+}
+
+"Defines when a policy shall be executed."
+enum ApplyPolicy {
+  "Before the resolver was executed."
+  BEFORE_RESOLVER
+  "After the resolver was executed."
+  AFTER_RESOLVER
+  "The policy is applied in the validation step before the execution."
+  VALIDATION
+}
+
+enum CheckinStatusEnum {
+  PENDING
+  CONFIRMED
+  CLOSED
+  CANCELLED
+}
+
+enum FileTypeEnum {
+  DOCUMENT
+  SELFIE
+  PHOTO
+  OTHER
+}
+
+enum SortEnumType {
+  ASC
+  DESC
+}
+
+"The authorize directive."
+directive @authorize("The name of the authorization policy that determines access to the annotated resource." policy: String "Roles that are allowed to access the annotated resource." roles: [String!] "Defines when when the authorize directive shall be applied.By default the authorize directives are applied during the validation phase." apply: ApplyPolicy! = BEFORE_RESOLVER) repeatable on OBJECT | FIELD_DEFINITION
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost("The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc." weight: String!) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION
+
+"The purpose of the `@listSize` directive is to either inform the static analysis about the size of returned lists (if that information is statically available), or to point the analysis to where to find that information."
+directive @listSize("The `assumedSize` argument can be used to statically define the maximum length of a list returned by a field." assumedSize: Int "The `slicingArguments` argument can be used to define which of the field's arguments with numeric type are slicing arguments, so that their value determines the size of the list returned by that field. It may specify a list of multiple slicing arguments." slicingArguments: [String!] "The `slicingArgumentDefaultValue` argument can be used to define a default value for a slicing argument, which is used if the argument is not present in a query." slicingArgumentDefaultValue: Int "The `sizedFields` argument can be used to define that the value of the `assumedSize` argument or of a slicing argument does not affect the size of a list returned by a field itself, but that of a list returned by one of its sub-fields." sizedFields: [String!] "The `requireOneSlicingArgument` argument can be used to inform the static analysis that it should expect that exactly one of the defined slicing arguments is present in a query. If that is not the case (i.e., if none or multiple slicing arguments are present), the static analysis may throw an error." requireOneSlicingArgument: Boolean! = true) on FIELD_DEFINITION
+
+"The `@specifiedBy` directive is used within the type system definition language to provide a URL for specifying the behavior of custom scalar definitions."
+directive @specifiedBy("The specifiedBy URL points to a human-readable specification. This field will only read a result for scalar types." url: String!) on SCALAR
+
+"The `Byte` scalar type represents non-fractional whole numeric values. Byte can represent values between 0 and 255."
+scalar Byte
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime @specifiedBy(url: "https:\/\/www.graphql-scalars.com\/date-time")
+
+"The `LocalDate` scalar type represents a ISO date string, represented as UTF-8 character sequences YYYY-MM-DD. The scalar follows the specification defined in RFC3339"
+scalar LocalDate
+
+"The `Long` scalar type represents non-fractional signed whole 64-bit numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long

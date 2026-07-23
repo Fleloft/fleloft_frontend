@@ -1,4 +1,5 @@
 import 'package:fleloft_frontend/core/factory/components/bottomNavigationBar/i_bottom_nav_bar.dart';
+import 'package:fleloft_frontend/provider/auth_provider.dart';
 import 'package:fleloft_frontend/routing/shellBranchRoutes/shell_branch_routes.dart';
 import 'package:fleloft_frontend/ui/themes/light_theme.dart';
 import 'package:fleloft_frontend/ui/views/home/provider/providers.dart';
@@ -11,11 +12,11 @@ class BottomNavBarAndroid implements IBottomNavBar {
   @override
   Widget render(BuildContext context, WidgetRef ref) {
     final homeVM = ref.watch(homeViewModelProvider.notifier);
-    // final authState = ref.watch(authProvider);
+    final auth = ref.watch(authProvider);
     final currentIndex = ref.watch(navControllerProvider);
     final navNotifier = ref.read(navControllerProvider.notifier);
 
-    // bool isAuthenticated = authState.isAuthenticated;
+    bool isAuthenticated = auth.isAuthenticated;
 
     return BottomNavigationBar(
       currentIndex: currentIndex,
@@ -34,6 +35,9 @@ class BottomNavBarAndroid implements IBottomNavBar {
           case 2:
             context.go(ShellBranchRoutes.mock2);
             break;
+          case 3:
+            context.go(ShellBranchRoutes.moreMenuView);
+            break;
         }
       },
       items: [
@@ -44,21 +48,17 @@ class BottomNavBarAndroid implements IBottomNavBar {
           label: 'Cotações',
         ),
         // if (isAuthenticated) ...[
-          BottomNavigationBarItem(
-            icon: homeVM.buildAnimatedIcon(
-              Icons.calendar_month,
-              1,
-              currentIndex,
-            ),
-            label: 'Agenda',
-          ),
-        ],
-        // if (isAuthenticated)
-        //   BottomNavigationBarItem(
-        //     icon: homeVM.buildAnimatedIcon(Icons.more_horiz_rounded, 2, currentIndex),
-        //     label: 'Mais',
-        //   ),
-      // ],
+        BottomNavigationBarItem(
+          icon: homeVM.buildAnimatedIcon(Icons.calendar_month, 1, currentIndex),
+          label: 'Agenda',
+        ),
+      
+      if (isAuthenticated)
+        BottomNavigationBarItem(
+          icon: homeVM.buildAnimatedIcon(Icons.more_horiz_rounded, 2, currentIndex),
+          label: 'Mais',
+        ),
+      ],
     );
   }
 }

@@ -7,5 +7,6 @@ abstract class IButton {
     VoidCallback? onPressed,
     bool isLoading = false,
     required double width,
+    TextStyle? textStyle,
   });
 }

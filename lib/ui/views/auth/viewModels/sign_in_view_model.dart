@@ -1,6 +1,7 @@
 import 'package:fleloft_frontend/core/helpers/result_class.dart';
 import 'package:fleloft_frontend/data/apis/firebase/auth/email/firebase_email_repository.dart';
 import 'package:fleloft_frontend/data/apis/firebase/enum/firebase_auth_error_enum.dart';
+import 'package:fleloft_frontend/provider/auth_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'sign_in_view_model.g.dart';
@@ -16,7 +17,7 @@ class SignInViewModel extends _$SignInViewModel {
   }) async {
     state = const AsyncLoading();
     final fireEmail = ref.read(fireEmailRepositoryProvider);
-    // final authNot = ref.read(authProvider.notifier);
+    final authNot = ref.read(authProvider.notifier);
 
     final result = await fireEmail.login(
       {'email': email, 'password': password},
@@ -28,7 +29,7 @@ class SignInViewModel extends _$SignInViewModel {
       return firebaseResponse.errorMessage;
     }
 
-    // await authNot.checkAndUpdateState();
+    await authNot.checkAndUpdateState();
     return null;
   }
 }

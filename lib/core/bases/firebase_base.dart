@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fleloft_frontend/core/helpers/result_class.dart';
-import 'package:fleloft_frontend/data/entities/role/role.dart';
-import 'package:fleloft_frontend/data/entities/role/role_extension.dart';
+import 'package:fleloft_frontend/data/entities/role/extension/role_extension.dart';
+import 'package:fleloft_frontend/data/entities/role/model/role.dart';
 import 'package:fleloft_frontend/data/valueObjects/email.dart';
 import 'package:fleloft_frontend/data/valueObjects/password.dart';
 import 'package:fleloft_frontend/provider/initial_data_provider.dart';

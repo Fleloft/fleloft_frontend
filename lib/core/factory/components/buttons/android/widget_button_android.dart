@@ -14,13 +14,14 @@ class WidgetButtonAndroid implements IButton {
     VoidCallback? onPressed,
     bool isLoading = false,
     required double width,
+    TextStyle? textStyle,
   }) {
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: width),
       child: TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
-          textStyle: GoogleFonts.lato(
+          textStyle: textStyle ?? GoogleFonts.lato(
             color: color ?? ThemeColors.white,
           ),
           foregroundColor: color ?? ThemeColors.white,

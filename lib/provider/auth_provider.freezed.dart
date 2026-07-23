@@ -14,61 +14,30 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AuthState {
 
- String get name;
-/// Create a copy of AuthState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$AuthStateCopyWith<AuthState> get copyWith => _$AuthStateCopyWithImpl<AuthState>(this as AuthState, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthState&&(identical(other.name, name) || other.name == name));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthState);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState(name: $name)';
+  return 'AuthState()';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $AuthStateCopyWith<$Res>  {
-  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) _then) = _$AuthStateCopyWithImpl;
-@useResult
-$Res call({
- String name
-});
-
-
-
-
-}
-/// @nodoc
-class _$AuthStateCopyWithImpl<$Res>
-    implements $AuthStateCopyWith<$Res> {
-  _$AuthStateCopyWithImpl(this._self, this._then);
-
-  final AuthState _self;
-  final $Res Function(AuthState) _then;
-
-/// Create a copy of AuthState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,}) {
-  return _then(_self.copyWith(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
+class $AuthStateCopyWith<$Res>  {
+$AuthStateCopyWith(AuthState _, $Res Function(AuthState) __);
 }
 
 
@@ -86,11 +55,15 @@ extension AuthStatePatterns on AuthState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AuthState value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Authenticating value)?  authenticating,TResult Function( _Authenticated value)?  authenticated,TResult Function( _Unauthenticated value)?  unauthenticated,TResult Function( _Error value)?  error,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _AuthState() when $default != null:
-return $default(_that);case _:
+case _Initial() when initial != null:
+return initial(_that);case _Authenticating() when authenticating != null:
+return authenticating(_that);case _Authenticated() when authenticated != null:
+return authenticated(_that);case _Unauthenticated() when unauthenticated != null:
+return unauthenticated(_that);case _Error() when error != null:
+return error(_that);case _:
   return orElse();
 
 }
@@ -108,11 +81,15 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AuthState value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Authenticating value)  authenticating,required TResult Function( _Authenticated value)  authenticated,required TResult Function( _Unauthenticated value)  unauthenticated,required TResult Function( _Error value)  error,}){
 final _that = this;
 switch (_that) {
-case _AuthState():
-return $default(_that);case _:
+case _Initial():
+return initial(_that);case _Authenticating():
+return authenticating(_that);case _Authenticated():
+return authenticated(_that);case _Unauthenticated():
+return unauthenticated(_that);case _Error():
+return error(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -129,11 +106,15 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AuthState value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Authenticating value)?  authenticating,TResult? Function( _Authenticated value)?  authenticated,TResult? Function( _Unauthenticated value)?  unauthenticated,TResult? Function( _Error value)?  error,}){
 final _that = this;
 switch (_that) {
-case _AuthState() when $default != null:
-return $default(_that);case _:
+case _Initial() when initial != null:
+return initial(_that);case _Authenticating() when authenticating != null:
+return authenticating(_that);case _Authenticated() when authenticated != null:
+return authenticated(_that);case _Unauthenticated() when unauthenticated != null:
+return unauthenticated(_that);case _Error() when error != null:
+return error(_that);case _:
   return null;
 
 }
@@ -150,10 +131,14 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  authenticating,TResult Function( UserModel user)?  authenticated,TResult Function()?  unauthenticated,TResult Function( Exception error)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _AuthState() when $default != null:
-return $default(_that.name);case _:
+case _Initial() when initial != null:
+return initial();case _Authenticating() when authenticating != null:
+return authenticating();case _Authenticated() when authenticated != null:
+return authenticated(_that.user);case _Unauthenticated() when unauthenticated != null:
+return unauthenticated();case _Error() when error != null:
+return error(_that.error);case _:
   return orElse();
 
 }
@@ -171,10 +156,14 @@ return $default(_that.name);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  authenticating,required TResult Function( UserModel user)  authenticated,required TResult Function()  unauthenticated,required TResult Function( Exception error)  error,}) {final _that = this;
 switch (_that) {
-case _AuthState():
-return $default(_that.name);case _:
+case _Initial():
+return initial();case _Authenticating():
+return authenticating();case _Authenticated():
+return authenticated(_that.user);case _Unauthenticated():
+return unauthenticated();case _Error():
+return error(_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +180,14 @@ return $default(_that.name);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  authenticating,TResult? Function( UserModel user)?  authenticated,TResult? Function()?  unauthenticated,TResult? Function( Exception error)?  error,}) {final _that = this;
 switch (_that) {
-case _AuthState() when $default != null:
-return $default(_that.name);case _:
+case _Initial() when initial != null:
+return initial();case _Authenticating() when authenticating != null:
+return authenticating();case _Authenticated() when authenticated != null:
+return authenticated(_that.user);case _Unauthenticated() when unauthenticated != null:
+return unauthenticated();case _Error() when error != null:
+return error(_that.error);case _:
   return null;
 
 }
@@ -205,43 +198,214 @@ return $default(_that.name);case _:
 /// @nodoc
 
 
-class _AuthState implements AuthState {
-   _AuthState({this.name = ''});
+class _Initial extends AuthState {
+  const _Initial(): super._();
   
 
-@override@JsonKey() final  String name;
 
-/// Create a copy of AuthState
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$AuthStateCopyWith<_AuthState> get copyWith => __$AuthStateCopyWithImpl<_AuthState>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthState&&(identical(other.name, name) || other.name == name));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState(name: $name)';
+  return 'AuthState.initial()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _Authenticating extends AuthState {
+  const _Authenticating(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Authenticating);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthState.authenticating()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _Authenticated extends AuthState {
+  const _Authenticated(this.user): super._();
+  
+
+ final  UserModel user;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AuthenticatedCopyWith<_Authenticated> get copyWith => __$AuthenticatedCopyWithImpl<_Authenticated>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Authenticated&&(identical(other.user, user) || other.user == user));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,user);
+
+@override
+String toString() {
+  return 'AuthState.authenticated(user: $user)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory _$AuthStateCopyWith(_AuthState value, $Res Function(_AuthState) _then) = __$AuthStateCopyWithImpl;
-@override @useResult
+abstract mixin class _$AuthenticatedCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory _$AuthenticatedCopyWith(_Authenticated value, $Res Function(_Authenticated) _then) = __$AuthenticatedCopyWithImpl;
+@useResult
 $Res call({
- String name
+ UserModel user
+});
+
+
+$UserModelCopyWith<$Res> get user;
+
+}
+/// @nodoc
+class __$AuthenticatedCopyWithImpl<$Res>
+    implements _$AuthenticatedCopyWith<$Res> {
+  __$AuthenticatedCopyWithImpl(this._self, this._then);
+
+  final _Authenticated _self;
+  final $Res Function(_Authenticated) _then;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? user = null,}) {
+  return _then(_Authenticated(
+null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as UserModel,
+  ));
+}
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserModelCopyWith<$Res> get user {
+  
+  return $UserModelCopyWith<$Res>(_self.user, (value) {
+    return _then(_self.copyWith(user: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class _Unauthenticated extends AuthState {
+  const _Unauthenticated(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Unauthenticated);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthState.unauthenticated()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _Error extends AuthState {
+  const _Error(this.error): super._();
+  
+
+ final  Exception error;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Error&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,error);
+
+@override
+String toString() {
+  return 'AuthState.error(error: $error)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ErrorCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) _then) = __$ErrorCopyWithImpl;
+@useResult
+$Res call({
+ Exception error
 });
 
 
@@ -249,19 +413,19 @@ $Res call({
 
 }
 /// @nodoc
-class __$AuthStateCopyWithImpl<$Res>
-    implements _$AuthStateCopyWith<$Res> {
-  __$AuthStateCopyWithImpl(this._self, this._then);
+class __$ErrorCopyWithImpl<$Res>
+    implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(this._self, this._then);
 
-  final _AuthState _self;
-  final $Res Function(_AuthState) _then;
+  final _Error _self;
+  final $Res Function(_Error) _then;
 
 /// Create a copy of AuthState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,}) {
-  return _then(_AuthState(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
+@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
+  return _then(_Error(
+null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as Exception,
   ));
 }
 
