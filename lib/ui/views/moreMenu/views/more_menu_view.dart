@@ -36,10 +36,9 @@ class MoreMenuView extends HookConsumerWidget {
           width: maxWidth,
           child: const Text('Sair', style: TextStyle(color: Colors.red),),
           onPressed: () async {
+            context.go(ShellBranchRoutes.home);
             final auth = ref.read(authProvider.notifier);
             await auth.signOut();
-            if(!context.mounted) return;
-            context.go(ShellBranchRoutes.home);
           },
         )
         ],

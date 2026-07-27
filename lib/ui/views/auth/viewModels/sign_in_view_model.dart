@@ -2,6 +2,8 @@ import 'package:fleloft_frontend/core/helpers/result_class.dart';
 import 'package:fleloft_frontend/data/apis/firebase/auth/email/firebase_email_repository.dart';
 import 'package:fleloft_frontend/data/apis/firebase/enum/firebase_auth_error_enum.dart';
 import 'package:fleloft_frontend/provider/auth_provider.dart';
+import 'package:fleloft_frontend/routing/routes.dart';
+import 'package:fleloft_frontend/routing/shellBranchRoutes/shell_branch_routes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'sign_in_view_model.g.dart';
@@ -11,7 +13,7 @@ class SignInViewModel extends _$SignInViewModel {
   @override
   Future<void> build() async {}
 
-    Future<String?> signInWithPassword({
+  Future<String?> signInWithPassword({
     required String email,
     required String password,
   }) async {
@@ -29,7 +31,11 @@ class SignInViewModel extends _$SignInViewModel {
       return firebaseResponse.errorMessage;
     }
 
+    final router = ref.read(appRouterProvider);
     await authNot.checkAndUpdateState();
+
+    if (authNot.state.isAuthenticated) router.go(ShellBranchRoutes.home);
+
     return null;
   }
 }
