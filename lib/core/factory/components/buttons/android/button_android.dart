@@ -1,6 +1,5 @@
 // android_elevated_button.dart
 import 'package:fleloft_frontend/core/factory/components/buttons/i_button.dart';
-import 'package:fleloft_frontend/ui/themes/light_theme.dart';
 import 'package:flutter/material.dart';
 
 class ElevatedButtonAndroid implements IButton {
@@ -14,13 +13,17 @@ class ElevatedButtonAndroid implements IButton {
     Set<dynamic>? selected,
     bool isLoading = false,
     required double width,
+    TextStyle? textStyle,
   }) {
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: width),
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: isLoading ? ThemeColors.grey300 : (color ?? ThemeColors.grey300),
-        ),
+        // style: TextButton.styleFrom(
+        //   textStyle: textStyle ?? GoogleFonts.lato(
+        //     color: ThemeColors.white,
+        //   ),
+        //   foregroundColor: color ?? ThemeColors.grey500,
+        // ),
         onPressed: onPressed,
         child: isLoading ? const CircularProgressIndicator() : (child ?? const SizedBox.shrink()),
       ),

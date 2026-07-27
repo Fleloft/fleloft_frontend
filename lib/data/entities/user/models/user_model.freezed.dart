@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserModel {
 
- int? get id; int? get dbid; String? get name; String? get cpf; String? get email; String? get phone; int? get roleId; RoleModel? get role;
+ String? get id; int? get dbId; PersonName? get name; Cpf? get cpf; Email? get email; Phone? get phone; int? get roleId; RoleModel? get role;
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $UserModelCopyWith<UserModel> get copyWith => _$UserModelCopyWithImpl<UserModel>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbid, dbid) || other.dbid == dbid)&&(identical(other.name, name) || other.name == name)&&(identical(other.cpf, cpf) || other.cpf == cpf)&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.roleId, roleId) || other.roleId == roleId)&&(identical(other.role, role) || other.role == role));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbId, dbId) || other.dbId == dbId)&&(identical(other.name, name) || other.name == name)&&(identical(other.cpf, cpf) || other.cpf == cpf)&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.roleId, roleId) || other.roleId == roleId)&&(identical(other.role, role) || other.role == role));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,dbid,name,cpf,email,phone,roleId,role);
+int get hashCode => Object.hash(runtimeType,id,dbId,name,cpf,email,phone,roleId,role);
 
 @override
 String toString() {
-  return 'UserModel(id: $id, dbid: $dbid, name: $name, cpf: $cpf, email: $email, phone: $phone, roleId: $roleId, role: $role)';
+  return 'UserModel(id: $id, dbId: $dbId, name: $name, cpf: $cpf, email: $email, phone: $phone, roleId: $roleId, role: $role)';
 }
 
 
@@ -45,11 +45,11 @@ abstract mixin class $UserModelCopyWith<$Res>  {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) _then) = _$UserModelCopyWithImpl;
 @useResult
 $Res call({
- int? id, int? dbid, String? name, String? cpf, String? email, String? phone, int? roleId, RoleModel? role
+ String? id, int? dbId, PersonName? name, Cpf? cpf, Email? email, Phone? phone, int? roleId, RoleModel? role
 });
 
 
-$RoleModelCopyWith<$Res>? get role;
+$PersonNameCopyWith<$Res>? get name;$CpfCopyWith<$Res>? get cpf;$EmailCopyWith<$Res>? get email;$PhoneCopyWith<$Res>? get phone;$RoleModelCopyWith<$Res>? get role;
 
 }
 /// @nodoc
@@ -62,20 +62,68 @@ class _$UserModelCopyWithImpl<$Res>
 
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? dbid = freezed,Object? name = freezed,Object? cpf = freezed,Object? email = freezed,Object? phone = freezed,Object? roleId = freezed,Object? role = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? dbId = freezed,Object? name = freezed,Object? cpf = freezed,Object? email = freezed,Object? phone = freezed,Object? roleId = freezed,Object? role = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
+as String?,dbId: freezed == dbId ? _self.dbId : dbId // ignore: cast_nullable_to_non_nullable
 as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String?,cpf: freezed == cpf ? _self.cpf : cpf // ignore: cast_nullable_to_non_nullable
-as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
-as String?,roleId: freezed == roleId ? _self.roleId : roleId // ignore: cast_nullable_to_non_nullable
+as PersonName?,cpf: freezed == cpf ? _self.cpf : cpf // ignore: cast_nullable_to_non_nullable
+as Cpf?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as Email?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as Phone?,roleId: freezed == roleId ? _self.roleId : roleId // ignore: cast_nullable_to_non_nullable
 as int?,role: freezed == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
 as RoleModel?,
   ));
 }
 /// Create a copy of UserModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PersonNameCopyWith<$Res>? get name {
+    if (_self.name == null) {
+    return null;
+  }
+
+  return $PersonNameCopyWith<$Res>(_self.name!, (value) {
+    return _then(_self.copyWith(name: value));
+  });
+}/// Create a copy of UserModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CpfCopyWith<$Res>? get cpf {
+    if (_self.cpf == null) {
+    return null;
+  }
+
+  return $CpfCopyWith<$Res>(_self.cpf!, (value) {
+    return _then(_self.copyWith(cpf: value));
+  });
+}/// Create a copy of UserModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$EmailCopyWith<$Res>? get email {
+    if (_self.email == null) {
+    return null;
+  }
+
+  return $EmailCopyWith<$Res>(_self.email!, (value) {
+    return _then(_self.copyWith(email: value));
+  });
+}/// Create a copy of UserModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PhoneCopyWith<$Res>? get phone {
+    if (_self.phone == null) {
+    return null;
+  }
+
+  return $PhoneCopyWith<$Res>(_self.phone!, (value) {
+    return _then(_self.copyWith(phone: value));
+  });
+}/// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -169,10 +217,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  int? dbid,  String? name,  String? cpf,  String? email,  String? phone,  int? roleId,  RoleModel? role)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  int? dbId,  PersonName? name,  Cpf? cpf,  Email? email,  Phone? phone,  int? roleId,  RoleModel? role)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UserModel() when $default != null:
-return $default(_that.id,_that.dbid,_that.name,_that.cpf,_that.email,_that.phone,_that.roleId,_that.role);case _:
+return $default(_that.id,_that.dbId,_that.name,_that.cpf,_that.email,_that.phone,_that.roleId,_that.role);case _:
   return orElse();
 
 }
@@ -190,10 +238,10 @@ return $default(_that.id,_that.dbid,_that.name,_that.cpf,_that.email,_that.phone
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  int? dbid,  String? name,  String? cpf,  String? email,  String? phone,  int? roleId,  RoleModel? role)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  int? dbId,  PersonName? name,  Cpf? cpf,  Email? email,  Phone? phone,  int? roleId,  RoleModel? role)  $default,) {final _that = this;
 switch (_that) {
 case _UserModel():
-return $default(_that.id,_that.dbid,_that.name,_that.cpf,_that.email,_that.phone,_that.roleId,_that.role);case _:
+return $default(_that.id,_that.dbId,_that.name,_that.cpf,_that.email,_that.phone,_that.roleId,_that.role);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -210,10 +258,10 @@ return $default(_that.id,_that.dbid,_that.name,_that.cpf,_that.email,_that.phone
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  int? dbid,  String? name,  String? cpf,  String? email,  String? phone,  int? roleId,  RoleModel? role)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  int? dbId,  PersonName? name,  Cpf? cpf,  Email? email,  Phone? phone,  int? roleId,  RoleModel? role)?  $default,) {final _that = this;
 switch (_that) {
 case _UserModel() when $default != null:
-return $default(_that.id,_that.dbid,_that.name,_that.cpf,_that.email,_that.phone,_that.roleId,_that.role);case _:
+return $default(_that.id,_that.dbId,_that.name,_that.cpf,_that.email,_that.phone,_that.roleId,_that.role);case _:
   return null;
 
 }
@@ -225,15 +273,15 @@ return $default(_that.id,_that.dbid,_that.name,_that.cpf,_that.email,_that.phone
 
 
 class _UserModel implements UserModel {
-   _UserModel({this.id, this.dbid, this.name, this.cpf, this.email, this.phone, this.roleId, this.role});
+   _UserModel({this.id, this.dbId, this.name, this.cpf, this.email, this.phone, this.roleId, this.role});
   
 
-@override final  int? id;
-@override final  int? dbid;
-@override final  String? name;
-@override final  String? cpf;
-@override final  String? email;
-@override final  String? phone;
+@override final  String? id;
+@override final  int? dbId;
+@override final  PersonName? name;
+@override final  Cpf? cpf;
+@override final  Email? email;
+@override final  Phone? phone;
 @override final  int? roleId;
 @override final  RoleModel? role;
 
@@ -247,16 +295,16 @@ _$UserModelCopyWith<_UserModel> get copyWith => __$UserModelCopyWithImpl<_UserMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbid, dbid) || other.dbid == dbid)&&(identical(other.name, name) || other.name == name)&&(identical(other.cpf, cpf) || other.cpf == cpf)&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.roleId, roleId) || other.roleId == roleId)&&(identical(other.role, role) || other.role == role));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbId, dbId) || other.dbId == dbId)&&(identical(other.name, name) || other.name == name)&&(identical(other.cpf, cpf) || other.cpf == cpf)&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.roleId, roleId) || other.roleId == roleId)&&(identical(other.role, role) || other.role == role));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,dbid,name,cpf,email,phone,roleId,role);
+int get hashCode => Object.hash(runtimeType,id,dbId,name,cpf,email,phone,roleId,role);
 
 @override
 String toString() {
-  return 'UserModel(id: $id, dbid: $dbid, name: $name, cpf: $cpf, email: $email, phone: $phone, roleId: $roleId, role: $role)';
+  return 'UserModel(id: $id, dbId: $dbId, name: $name, cpf: $cpf, email: $email, phone: $phone, roleId: $roleId, role: $role)';
 }
 
 
@@ -267,11 +315,11 @@ abstract mixin class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Re
   factory _$UserModelCopyWith(_UserModel value, $Res Function(_UserModel) _then) = __$UserModelCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, int? dbid, String? name, String? cpf, String? email, String? phone, int? roleId, RoleModel? role
+ String? id, int? dbId, PersonName? name, Cpf? cpf, Email? email, Phone? phone, int? roleId, RoleModel? role
 });
 
 
-@override $RoleModelCopyWith<$Res>? get role;
+@override $PersonNameCopyWith<$Res>? get name;@override $CpfCopyWith<$Res>? get cpf;@override $EmailCopyWith<$Res>? get email;@override $PhoneCopyWith<$Res>? get phone;@override $RoleModelCopyWith<$Res>? get role;
 
 }
 /// @nodoc
@@ -284,21 +332,69 @@ class __$UserModelCopyWithImpl<$Res>
 
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? dbid = freezed,Object? name = freezed,Object? cpf = freezed,Object? email = freezed,Object? phone = freezed,Object? roleId = freezed,Object? role = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? dbId = freezed,Object? name = freezed,Object? cpf = freezed,Object? email = freezed,Object? phone = freezed,Object? roleId = freezed,Object? role = freezed,}) {
   return _then(_UserModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
+as String?,dbId: freezed == dbId ? _self.dbId : dbId // ignore: cast_nullable_to_non_nullable
 as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String?,cpf: freezed == cpf ? _self.cpf : cpf // ignore: cast_nullable_to_non_nullable
-as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
-as String?,roleId: freezed == roleId ? _self.roleId : roleId // ignore: cast_nullable_to_non_nullable
+as PersonName?,cpf: freezed == cpf ? _self.cpf : cpf // ignore: cast_nullable_to_non_nullable
+as Cpf?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as Email?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as Phone?,roleId: freezed == roleId ? _self.roleId : roleId // ignore: cast_nullable_to_non_nullable
 as int?,role: freezed == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
 as RoleModel?,
   ));
 }
 
 /// Create a copy of UserModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PersonNameCopyWith<$Res>? get name {
+    if (_self.name == null) {
+    return null;
+  }
+
+  return $PersonNameCopyWith<$Res>(_self.name!, (value) {
+    return _then(_self.copyWith(name: value));
+  });
+}/// Create a copy of UserModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CpfCopyWith<$Res>? get cpf {
+    if (_self.cpf == null) {
+    return null;
+  }
+
+  return $CpfCopyWith<$Res>(_self.cpf!, (value) {
+    return _then(_self.copyWith(cpf: value));
+  });
+}/// Create a copy of UserModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$EmailCopyWith<$Res>? get email {
+    if (_self.email == null) {
+    return null;
+  }
+
+  return $EmailCopyWith<$Res>(_self.email!, (value) {
+    return _then(_self.copyWith(email: value));
+  });
+}/// Create a copy of UserModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PhoneCopyWith<$Res>? get phone {
+    if (_self.phone == null) {
+    return null;
+  }
+
+  return $PhoneCopyWith<$Res>(_self.phone!, (value) {
+    return _then(_self.copyWith(phone: value));
+  });
+}/// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')

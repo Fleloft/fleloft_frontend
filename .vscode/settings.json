@@ -11,12 +11,19 @@
     "statusBar.background": "#6c757d",
     "statusBar.foreground": "#e7e7e7",
     "statusBarItem.hoverBackground": "#868e96",
-    "statusBarItem.remoteBackground": "#6c757d",
+    "statusBarItem.remoteBackground": "#782852",
     "statusBarItem.remoteForeground": "#e7e7e7",
     "titleBar.activeBackground": "#6c757d",
     "titleBar.activeForeground": "#e7e7e7",
     "titleBar.inactiveBackground": "#6c757d99",
-    "titleBar.inactiveForeground": "#e7e7e799"
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "activityBarTop.activeBackground": "#868e96",
+    "activityBarTop.background": "#868e96",
+    "activityBarTop.foreground": "#15202b",
+    "activityBarTop.inactiveForeground": "#15202b99",
+    "commandCenter.foreground": "#e7e7e7",
+    "statusBar.debuggingBackground": "#6c757d",
+    "statusBar.debuggingForeground": "#e7e7e7"
   },
   "peacock.color": "#6c757d",
     "files.exclude": {
@@ -25,4 +32,20 @@
         "**/*.gql.dart": true,
         "**/*.gql.g.dart": true
     },
+    "sqltools.connections": [
+      {
+        "mysqlOptions": {
+          "authProtocol": "default",
+          "enableSsl": "Disabled"
+        },
+        "ssh": "Disabled",
+        "previewLimit": 50,
+        "server": "localhost",
+        "port": 3306,
+        "driver": "MySQL",
+        "name": "localhost",
+        "database": "fleloft",
+        "username": "root"
+      }
+    ],
 }

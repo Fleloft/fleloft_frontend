@@ -1,5 +1,5 @@
 import 'package:fleloft_frontend/core/helpers/exception_helper.dart';
-import 'package:fleloft_frontend/ui/snackBar/exception_snack_bar.dart';
+import 'package:fleloft_frontend/ui/widgets/snackBar/exception_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 

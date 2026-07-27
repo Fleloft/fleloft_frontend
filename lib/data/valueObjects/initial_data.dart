@@ -1,4 +1,4 @@
-import 'package:fleloft_frontend/data/entities/role/role.dart';
+import 'package:fleloft_frontend/data/entities/role/model/role.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'initial_data.freezed.dart';

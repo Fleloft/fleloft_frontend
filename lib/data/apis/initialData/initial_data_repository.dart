@@ -1,6 +1,9 @@
+import 'package:ferry/ferry.dart';
 import 'package:fleloft_frontend/core/bases/base_repository.dart';
 import 'package:fleloft_frontend/core/helpers/result_class.dart';
+import 'package:fleloft_frontend/data/entities/role/extension/role_extension.dart';
 import 'package:fleloft_frontend/data/valueObjects/initial_data.dart';
+import 'package:fleloft_frontend/graphql/initialData/__generated__/query_initial_data.req.gql.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'initial_data_repository.g.dart';
@@ -16,23 +19,21 @@ class InitialDataRepository extends BaseRepository {
 
   Future<Result<InitialData?>> getInitialData() async {
     return handleResult(() async {
-      // final request = GInitialAppDataReq(
-      //   (b) => b..fetchPolicy = FetchPolicy.CacheAndNetwork,
-      // );
+      final request = GInitialDataReq(
+        (b) => b..fetchPolicy = FetchPolicy.CacheAndNetwork,
+      );
 
-      // final response = await executeOperation(request).first;
+      final response = await executeOperation(request).first;
 
-      // if (response.data?.roles?.nodes == null) return null;
+      if (response.data?.roles?.nodes == null) return null;
 
-      // final roles = response.data!.roles!.nodes!
-      //     .map((g) => g.toRole()) //
-      //     .toList();
+      final roles = response.data!.roles!.nodes!
+          .map((g) => g.toRole()) //
+          .toList();
 
-      // final initialData = InitialData(roles: roles);
+      final initialData = InitialData(roles: roles);
 
-      // return initialData;
-
-      return InitialData(roles: []);
+      return initialData;
     });
   }
 }

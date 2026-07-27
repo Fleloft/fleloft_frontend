@@ -48,7 +48,12 @@ final ThemeData lightTheme = ThemeData(
   //ElevatedButton
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: ThemeColors.grey700,
+      textStyle: GoogleFonts.lato(
+        color: Colors.white,
+        fontSize: 18,
+        // fontWeight: FontWeight.bold,
+      ),
+      backgroundColor: ThemeColors.grey500,
       foregroundColor: Colors.white,
       minimumSize: const Size(double.infinity, 50),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),

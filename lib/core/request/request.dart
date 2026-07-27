@@ -13,7 +13,7 @@ class Request extends _$Request {
   static String get fullApiUrl => _baseUrl;
 
   @override
-  RequestState build() => RequestState(url: _baseUrl);
+  RequestState build() => RequestState(url: fullApiUrl);
 
   Future<Map<String, String>> getAuthHeaders({
     Map<String, String>? headers,

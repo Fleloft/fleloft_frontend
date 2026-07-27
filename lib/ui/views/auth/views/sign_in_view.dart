@@ -3,6 +3,7 @@ import 'package:fleloft_frontend/core/helpers/error_helper.dart';
 import 'package:fleloft_frontend/data/valueObjects/email.dart';
 import 'package:fleloft_frontend/data/valueObjects/password.dart';
 import 'package:fleloft_frontend/provider/ui_factory_provider.dart';
+import 'package:fleloft_frontend/routing/auth/auth_routes.dart';
 import 'package:fleloft_frontend/routing/shellBranchRoutes/shell_branch_routes.dart';
 import 'package:fleloft_frontend/ui/themes/light_theme.dart';
 import 'package:fleloft_frontend/ui/views/auth/viewModels/sign_in_view_model.dart';
@@ -89,7 +90,7 @@ class SignInView extends HookConsumerWidget {
                             width: maxWidth,
                             color: ThemeColors.grey700,
                             onPressed: () {
-                              context.push('/chooseUserTypeView');
+                              context.push(AuthRoutes.createAccount);
                             },
                             child: Text(
                               ' Cadastre-se',
@@ -117,7 +118,7 @@ class SignInView extends HookConsumerWidget {
                         validator: (value) => Email.validate(value),
                       ),
                     ),
-                          
+
                     MenuTileWidget(
                       isLast: true,
                       child: textForm.render(
@@ -135,7 +136,7 @@ class SignInView extends HookConsumerWidget {
                             isVisible.value = !isVisible.value;
                           },
                         ),
-                          
+
                         validator: (value) => Password.validate(value),
                       ),
                     ),
@@ -158,10 +159,11 @@ class SignInView extends HookConsumerWidget {
                     ),
                   ),
                 ),
-                          
+
                 button.button.render(
                   width: maxWidth,
                   isLoading: isLoading,
+                  color: ThemeColors.grey500,
                   child: Text(
                     'Entrar',
                     style: textStyle(
@@ -171,24 +173,23 @@ class SignInView extends HookConsumerWidget {
                   ),
                   onPressed: () async {
                     if (!formKey.currentState!.validate()) return;
-                          
                     final response = await not.signInWithPassword(
                       email: emailController.text,
                       password: passwordController.text,
                     );
-                          
+
                     if (!context.mounted) return;
-                          
+
                     ErrorHelper.informAndReturn(
                       message: response ?? 'Login realizado com sucesso!',
                       context: context,
                     );
-                          
+
                     if (response == null) context.go(ShellBranchRoutes.home);
                   },
                 ),
                 SizedBox(height: 16),
-                          
+
                 button.button.render(
                   width: maxWidth,
                   onPressed: () {
@@ -197,53 +198,25 @@ class SignInView extends HookConsumerWidget {
                   },
                   child: Text('mock Erick person'),
                 ),
-                SizedBox(height: 16),
-                          
-                button.button.render(
-                  width: maxWidth,
-                  onPressed: () {
-                    emailController.text = 'erickao@gmail.com';
-                    passwordController.text = '@Falierick1';
-                  },
-                  child: Text('mock Sr. Saúde clinic'),
-                ),
-                SizedBox(height: 16),
-                button.button.render(
-                  width: maxWidth,
-                  onPressed: () {
-                    emailController.text = 'erickao3@hotmail.com';
-                    passwordController.text = '@Falierick1';
-                  },
-                  child: Text('mock user not created'),
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: maxWidth),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    spacing: 8,
-                    children: <Widget>[
-                      Expanded(
-                        child: Divider(
-                          endIndent: 16,
-                          indent: 16,
-                          color: ThemeColors.grey700,
-                        ),
-                      ),
-                      Text(
-                        'ou entre com',
-                        style: TextStyle(color: ThemeColors.grey700),
-                      ),
-                          
-                      Expanded(
-                        child: Divider(
-                          endIndent: 16,
-                          indent: 16,
-                          color: ThemeColors.grey700,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                // SizedBox(height: 16),
+
+                // button.button.render(
+                //   width: maxWidth,
+                //   onPressed: () {
+                //     emailController.text = 'erickao@gmail.com';
+                //     passwordController.text = '@Falierick1';
+                //   },
+                //   child: Text('mock Sr. Saúde clinic'),
+                // ),
+                // SizedBox(height: 16),
+                // button.button.render(
+                //   width: maxWidth,
+                //   onPressed: () {
+                //     emailController.text = 'erickao3@hotmail.com';
+                //     passwordController.text = '@Falierick1';
+                //   },
+                //   child: Text('mock user not created'),
+                // ),
                 SizedBox(height: 18),
               ],
             ),
