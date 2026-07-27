@@ -18,6 +18,34 @@ class BottomNavBarAndroid implements IBottomNavBar {
 
     bool isAuthenticated = auth.isAuthenticated;
 
+    final items = [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Início'),
+        BottomNavigationBarItem(
+          backgroundColor: ThemeColors.grey700,
+          icon: homeVM.buildAnimatedIcon(Icons.search, 0, currentIndex),
+          label: 'Cotações',
+        ),
+        BottomNavigationBarItem(
+          icon: homeVM.buildAnimatedIcon(Icons.calendar_month, 1, currentIndex),
+          label: 'Agenda',
+        ),
+      
+      if (isAuthenticated)
+        BottomNavigationBarItem(
+          icon: homeVM.buildAnimatedIcon(Icons.more_horiz_rounded, 2, currentIndex),
+          label: 'Mais',
+        ),
+      ];
+
+      final safeIndex = currentIndex < items.length ? currentIndex : 0;
+
+      if(safeIndex != currentIndex){
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          navNotifier.safeUpdateIndex(safeIndex);
+          context.go(ShellBranchRoutes.home);
+        });
+      }
+
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: (index) {
@@ -36,29 +64,11 @@ class BottomNavBarAndroid implements IBottomNavBar {
             context.go(ShellBranchRoutes.mock2);
             break;
           case 3:
-            context.go(ShellBranchRoutes.moreMenuView);
+            isAuthenticated ? context.go(ShellBranchRoutes.moreMenuView) : null;
             break;
         }
       },
-      items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Início'),
-        BottomNavigationBarItem(
-          backgroundColor: ThemeColors.grey700,
-          icon: homeVM.buildAnimatedIcon(Icons.search, 0, currentIndex),
-          label: 'Cotações',
-        ),
-        // if (isAuthenticated) ...[
-        BottomNavigationBarItem(
-          icon: homeVM.buildAnimatedIcon(Icons.calendar_month, 1, currentIndex),
-          label: 'Agenda',
-        ),
-      
-      if (isAuthenticated)
-        BottomNavigationBarItem(
-          icon: homeVM.buildAnimatedIcon(Icons.more_horiz_rounded, 2, currentIndex),
-          label: 'Mais',
-        ),
-      ],
+      items: items,
     );
   }
 }

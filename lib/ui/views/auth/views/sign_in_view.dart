@@ -173,7 +173,6 @@ class SignInView extends HookConsumerWidget {
                   ),
                   onPressed: () async {
                     if (!formKey.currentState!.validate()) return;
-
                     final response = await not.signInWithPassword(
                       email: emailController.text,
                       password: passwordController.text,
@@ -191,14 +190,14 @@ class SignInView extends HookConsumerWidget {
                 ),
                 SizedBox(height: 16),
 
-                // button.button.render(
-                //   width: maxWidth,
-                //   onPressed: () {
-                //     emailController.text = 'erick.de.faria@hotmail.com';
-                //     passwordController.text = '@Falierick1';
-                //   },
-                //   child: Text('mock Erick person'),
-                // ),
+                button.button.render(
+                  width: maxWidth,
+                  onPressed: () {
+                    emailController.text = 'erick.de.faria@hotmail.com';
+                    passwordController.text = '@Falierick1';
+                  },
+                  child: Text('mock Erick person'),
+                ),
                 // SizedBox(height: 16),
 
                 // button.button.render(
