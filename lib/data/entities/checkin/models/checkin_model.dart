@@ -9,7 +9,7 @@ part 'checkin_model.freezed.dart';
 @freezed
 abstract class CheckinModel with _$CheckinModel {
   factory CheckinModel({
-    int? id,
+    String? id,
     int? dbid,
     Date? dataEntrada,
     Date? dataSaida,

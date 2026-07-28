@@ -9,7 +9,6 @@ import 'package:fleloft_frontend/graphql/__generated__/schema.schema.gql.dart'
     show
         GApplyPolicy,
         GBooleanOperationFilterInput,
-        GByte,
         GByteOperationFilterInput,
         GCheckinModelFilterInput,
         GCheckinModelSortInput,
@@ -37,6 +36,8 @@ import 'package:fleloft_frontend/graphql/__generated__/schema.schema.gql.dart'
         GLocalDateOperationFilterInput,
         GLongOperationFilterInput,
         GNullableOfFileTypeEnumOperationFilterInput,
+        GNullableOfOccupancyStatusEnumOperationFilterInput,
+        GOccupancyStatusEnum,
         GPlaceModelFilterInput,
         GPlaceModelSortInput,
         GRoleModelFilterInput,
@@ -58,6 +59,21 @@ import 'package:fleloft_frontend/graphql/initialData/__generated__/query_initial
     show GInitialDataReq;
 import 'package:fleloft_frontend/graphql/initialData/__generated__/query_initial_data.var.gql.dart'
     show GInitialDataVars;
+import 'package:fleloft_frontend/graphql/local/__generated__/get_place_by_id.data.gql.dart'
+    show
+        GGetPlaceByIdData,
+        GGetPlaceByIdData_placeById,
+        GGetPlaceByIdData_placeById_rooms;
+import 'package:fleloft_frontend/graphql/local/__generated__/get_place_by_id.req.gql.dart'
+    show GGetPlaceByIdReq;
+import 'package:fleloft_frontend/graphql/local/__generated__/get_place_by_id.var.gql.dart'
+    show GGetPlaceByIdVars;
+import 'package:fleloft_frontend/graphql/local/__generated__/get_places.data.gql.dart'
+    show GGetPlacesData, GGetPlacesData_places, GGetPlacesData_places_nodes;
+import 'package:fleloft_frontend/graphql/local/__generated__/get_places.req.gql.dart'
+    show GGetPlacesReq;
+import 'package:fleloft_frontend/graphql/local/__generated__/get_places.var.gql.dart'
+    show GGetPlacesVars;
 import 'package:fleloft_frontend/graphql/user/__generated__/create_user.data.gql.dart'
     show
         GCreateUserData,
@@ -85,7 +101,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
 @SerializersFor([
   GApplyPolicy,
   GBooleanOperationFilterInput,
-  GByte,
   GByteOperationFilterInput,
   GCheckinModelFilterInput,
   GCheckinModelSortInput,
@@ -110,6 +125,16 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GFileModelFilterInput,
   GFileModelSortInput,
   GFileTypeEnum,
+  GGetPlaceByIdData,
+  GGetPlaceByIdData_placeById,
+  GGetPlaceByIdData_placeById_rooms,
+  GGetPlaceByIdReq,
+  GGetPlaceByIdVars,
+  GGetPlacesData,
+  GGetPlacesData_places,
+  GGetPlacesData_places_nodes,
+  GGetPlacesReq,
+  GGetPlacesVars,
   GGetUserData,
   GGetUserData_userById,
   GGetUserReq,
@@ -128,6 +153,8 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GLocalDateOperationFilterInput,
   GLongOperationFilterInput,
   GNullableOfFileTypeEnumOperationFilterInput,
+  GNullableOfOccupancyStatusEnumOperationFilterInput,
+  GOccupancyStatusEnum,
   GPlaceModelFilterInput,
   GPlaceModelSortInput,
   GRoleModelFilterInput,

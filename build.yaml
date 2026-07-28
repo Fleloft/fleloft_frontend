@@ -10,6 +10,8 @@ targets:
           type_overrides:
             Long: # <--- Mapeamento do escalar Long para int
               name: int
+            Byte:
+              name: int
 
       # Configuração para o builder que gera os serializadores
       ferry_generator|serializer_builder:
@@ -20,6 +22,8 @@ targets:
           # mas geralmente o graphql_builder é o que mais precisa.
           type_overrides:
             Long:
+              name: int
+            Byte:
               name: int
 
       # Outros builders que você já tem (freezed, riverpod_generator, json_serializable)

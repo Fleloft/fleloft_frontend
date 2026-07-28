@@ -48,19 +48,19 @@ abstract class GByteOperationFilterInput
           [void Function(GByteOperationFilterInputBuilder b) updates]) =
       _$GByteOperationFilterInput;
 
-  GByte? get eq;
-  GByte? get neq;
+  int? get eq;
+  int? get neq;
   @BuiltValueField(wireName: 'in')
-  BuiltList<GByte?>? get Gin;
-  BuiltList<GByte?>? get nin;
-  GByte? get gt;
-  GByte? get ngt;
-  GByte? get gte;
-  GByte? get ngte;
-  GByte? get lt;
-  GByte? get nlt;
-  GByte? get lte;
-  GByte? get nlte;
+  BuiltList<int?>? get Gin;
+  BuiltList<int?>? get nin;
+  int? get gt;
+  int? get ngt;
+  int? get gte;
+  int? get ngte;
+  int? get lt;
+  int? get nlt;
+  int? get lte;
+  int? get nlte;
   static Serializer<GByteOperationFilterInput> get serializer =>
       _$gByteOperationFilterInputSerializer;
 
@@ -245,9 +245,9 @@ abstract class GCreateRoomInput
       _$GCreateRoomInput;
 
   String get placeId;
-  GByte get numero;
-  String get descricao;
-  GByte get capacity;
+  int get number;
+  String get description;
+  int get capacity;
   bool get active;
   static Serializer<GCreateRoomInput> get serializer =>
       _$gCreateRoomInputSerializer;
@@ -750,6 +750,39 @@ abstract class GNullableOfFileTypeEnumOperationFilterInput
       );
 }
 
+abstract class GNullableOfOccupancyStatusEnumOperationFilterInput
+    implements
+        Built<GNullableOfOccupancyStatusEnumOperationFilterInput,
+            GNullableOfOccupancyStatusEnumOperationFilterInputBuilder> {
+  GNullableOfOccupancyStatusEnumOperationFilterInput._();
+
+  factory GNullableOfOccupancyStatusEnumOperationFilterInput(
+      [void Function(
+              GNullableOfOccupancyStatusEnumOperationFilterInputBuilder b)
+          updates]) = _$GNullableOfOccupancyStatusEnumOperationFilterInput;
+
+  GOccupancyStatusEnum? get eq;
+  GOccupancyStatusEnum? get neq;
+  @BuiltValueField(wireName: 'in')
+  BuiltList<GOccupancyStatusEnum?>? get Gin;
+  BuiltList<GOccupancyStatusEnum?>? get nin;
+  static Serializer<GNullableOfOccupancyStatusEnumOperationFilterInput>
+      get serializer =>
+          _$gNullableOfOccupancyStatusEnumOperationFilterInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GNullableOfOccupancyStatusEnumOperationFilterInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GNullableOfOccupancyStatusEnumOperationFilterInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GNullableOfOccupancyStatusEnumOperationFilterInput.serializer,
+        json,
+      );
+}
+
 abstract class GPlaceModelFilterInput
     implements Built<GPlaceModelFilterInput, GPlaceModelFilterInputBuilder> {
   GPlaceModelFilterInput._();
@@ -885,10 +918,10 @@ abstract class GRoomModelFilterInput
 
   BuiltList<GRoomModelFilterInput>? get and;
   BuiltList<GRoomModelFilterInput>? get or;
-  GByteOperationFilterInput? get numero;
-  GStringOperationFilterInput? get descricao;
+  GByteOperationFilterInput? get number;
+  GStringOperationFilterInput? get description;
   GByteOperationFilterInput? get capacity;
-  GBooleanOperationFilterInput? get active;
+  GNullableOfOccupancyStatusEnumOperationFilterInput? get status;
   GLongOperationFilterInput? get placeId;
   GPlaceModelFilterInput? get place;
   GListFilterInputTypeOfCheckinModelFilterInput? get checkins;
@@ -918,10 +951,10 @@ abstract class GRoomModelSortInput
           [void Function(GRoomModelSortInputBuilder b) updates]) =
       _$GRoomModelSortInput;
 
-  GSortEnumType? get numero;
-  GSortEnumType? get descricao;
+  GSortEnumType? get number;
+  GSortEnumType? get description;
   GSortEnumType? get capacity;
-  GSortEnumType? get active;
+  GSortEnumType? get status;
   GSortEnumType? get placeId;
   GPlaceModelSortInput? get place;
   GSortEnumType? get id;
@@ -1067,8 +1100,8 @@ abstract class GUpdateRoomInput
       _$GUpdateRoomInput;
 
   String get id;
-  String? get descricao;
-  GByte? get capacity;
+  String? get description;
+  int? get capacity;
   bool? get active;
   static Serializer<GUpdateRoomInput> get serializer =>
       _$gUpdateRoomInputSerializer;
@@ -1230,6 +1263,31 @@ class GFileTypeEnum extends EnumClass {
   static GFileTypeEnum valueOf(String name) => _$gFileTypeEnumValueOf(name);
 }
 
+class GOccupancyStatusEnum extends EnumClass {
+  const GOccupancyStatusEnum._(String name) : super(name);
+
+  static const GOccupancyStatusEnum AVAILABLE = _$gOccupancyStatusEnumAVAILABLE;
+
+  static const GOccupancyStatusEnum OCCUPIED = _$gOccupancyStatusEnumOCCUPIED;
+
+  static const GOccupancyStatusEnum MAINTENANCE =
+      _$gOccupancyStatusEnumMAINTENANCE;
+
+  static const GOccupancyStatusEnum UNAVAILABLE =
+      _$gOccupancyStatusEnumUNAVAILABLE;
+
+  static const GOccupancyStatusEnum RENTED = _$gOccupancyStatusEnumRENTED;
+
+  static Serializer<GOccupancyStatusEnum> get serializer =>
+      _$gOccupancyStatusEnumSerializer;
+
+  static BuiltSet<GOccupancyStatusEnum> get values =>
+      _$gOccupancyStatusEnumValues;
+
+  static GOccupancyStatusEnum valueOf(String name) =>
+      _$gOccupancyStatusEnumValueOf(name);
+}
+
 class GSortEnumType extends EnumClass {
   const GSortEnumType._(String name) : super(name);
 
@@ -1242,18 +1300,6 @@ class GSortEnumType extends EnumClass {
   static BuiltSet<GSortEnumType> get values => _$gSortEnumTypeValues;
 
   static GSortEnumType valueOf(String name) => _$gSortEnumTypeValueOf(name);
-}
-
-abstract class GByte implements Built<GByte, GByteBuilder> {
-  GByte._();
-
-  factory GByte([String? value]) =>
-      _$GByte((b) => value != null ? (b..value = value) : b);
-
-  String get value;
-  @BuiltValueSerializer(custom: true)
-  static Serializer<GByte> get serializer => _i2.DefaultScalarSerializer<GByte>(
-      (Object serialized) => GByte((serialized as String?)));
 }
 
 abstract class GDateTime implements Built<GDateTime, GDateTimeBuilder> {

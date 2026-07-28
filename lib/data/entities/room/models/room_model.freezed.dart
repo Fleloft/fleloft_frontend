@@ -12,9 +12,9 @@ part of 'room_model.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$RoomModel {
+mixin _$RoomModel implements DiagnosticableTreeMixin {
 
- int? get id; int? get dbid; int? get numero; String? get descricao; int? get capacidade; bool? get ativo; int? get placeId;
+ String? get id; int? get dbid; int? get number; String? get description; int? get capacity; OccupancyStatusEnum? get status; int? get placeId;
 /// Create a copy of RoomModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -22,19 +22,25 @@ mixin _$RoomModel {
 $RoomModelCopyWith<RoomModel> get copyWith => _$RoomModelCopyWithImpl<RoomModel>(this as RoomModel, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RoomModel'))
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('dbid', dbid))..add(DiagnosticsProperty('number', number))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('capacity', capacity))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('placeId', placeId));
+}
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RoomModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbid, dbid) || other.dbid == dbid)&&(identical(other.numero, numero) || other.numero == numero)&&(identical(other.descricao, descricao) || other.descricao == descricao)&&(identical(other.capacidade, capacidade) || other.capacidade == capacidade)&&(identical(other.ativo, ativo) || other.ativo == ativo)&&(identical(other.placeId, placeId) || other.placeId == placeId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RoomModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbid, dbid) || other.dbid == dbid)&&(identical(other.number, number) || other.number == number)&&(identical(other.description, description) || other.description == description)&&(identical(other.capacity, capacity) || other.capacity == capacity)&&(identical(other.status, status) || other.status == status)&&(identical(other.placeId, placeId) || other.placeId == placeId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,dbid,numero,descricao,capacidade,ativo,placeId);
+int get hashCode => Object.hash(runtimeType,id,dbid,number,description,capacity,status,placeId);
 
 @override
-String toString() {
-  return 'RoomModel(id: $id, dbid: $dbid, numero: $numero, descricao: $descricao, capacidade: $capacidade, ativo: $ativo, placeId: $placeId)';
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RoomModel(id: $id, dbid: $dbid, number: $number, description: $description, capacity: $capacity, status: $status, placeId: $placeId)';
 }
 
 
@@ -45,7 +51,7 @@ abstract mixin class $RoomModelCopyWith<$Res>  {
   factory $RoomModelCopyWith(RoomModel value, $Res Function(RoomModel) _then) = _$RoomModelCopyWithImpl;
 @useResult
 $Res call({
- int? id, int? dbid, int? numero, String? descricao, int? capacidade, bool? ativo, int? placeId
+ String? id, int? dbid, int? number, String? description, int? capacity, OccupancyStatusEnum? status, int? placeId
 });
 
 
@@ -62,15 +68,15 @@ class _$RoomModelCopyWithImpl<$Res>
 
 /// Create a copy of RoomModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? dbid = freezed,Object? numero = freezed,Object? descricao = freezed,Object? capacidade = freezed,Object? ativo = freezed,Object? placeId = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? dbid = freezed,Object? number = freezed,Object? description = freezed,Object? capacity = freezed,Object? status = freezed,Object? placeId = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
-as int?,numero: freezed == numero ? _self.numero : numero // ignore: cast_nullable_to_non_nullable
-as int?,descricao: freezed == descricao ? _self.descricao : descricao // ignore: cast_nullable_to_non_nullable
-as String?,capacidade: freezed == capacidade ? _self.capacidade : capacidade // ignore: cast_nullable_to_non_nullable
-as int?,ativo: freezed == ativo ? _self.ativo : ativo // ignore: cast_nullable_to_non_nullable
-as bool?,placeId: freezed == placeId ? _self.placeId : placeId // ignore: cast_nullable_to_non_nullable
+as String?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
+as int?,number: freezed == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
+as int?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,capacity: freezed == capacity ? _self.capacity : capacity // ignore: cast_nullable_to_non_nullable
+as int?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as OccupancyStatusEnum?,placeId: freezed == placeId ? _self.placeId : placeId // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
 }
@@ -156,10 +162,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  int? dbid,  int? numero,  String? descricao,  int? capacidade,  bool? ativo,  int? placeId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  int? dbid,  int? number,  String? description,  int? capacity,  OccupancyStatusEnum? status,  int? placeId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RoomModel() when $default != null:
-return $default(_that.id,_that.dbid,_that.numero,_that.descricao,_that.capacidade,_that.ativo,_that.placeId);case _:
+return $default(_that.id,_that.dbid,_that.number,_that.description,_that.capacity,_that.status,_that.placeId);case _:
   return orElse();
 
 }
@@ -177,10 +183,10 @@ return $default(_that.id,_that.dbid,_that.numero,_that.descricao,_that.capacidad
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  int? dbid,  int? numero,  String? descricao,  int? capacidade,  bool? ativo,  int? placeId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  int? dbid,  int? number,  String? description,  int? capacity,  OccupancyStatusEnum? status,  int? placeId)  $default,) {final _that = this;
 switch (_that) {
 case _RoomModel():
-return $default(_that.id,_that.dbid,_that.numero,_that.descricao,_that.capacidade,_that.ativo,_that.placeId);case _:
+return $default(_that.id,_that.dbid,_that.number,_that.description,_that.capacity,_that.status,_that.placeId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +203,10 @@ return $default(_that.id,_that.dbid,_that.numero,_that.descricao,_that.capacidad
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  int? dbid,  int? numero,  String? descricao,  int? capacidade,  bool? ativo,  int? placeId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  int? dbid,  int? number,  String? description,  int? capacity,  OccupancyStatusEnum? status,  int? placeId)?  $default,) {final _that = this;
 switch (_that) {
 case _RoomModel() when $default != null:
-return $default(_that.id,_that.dbid,_that.numero,_that.descricao,_that.capacidade,_that.ativo,_that.placeId);case _:
+return $default(_that.id,_that.dbid,_that.number,_that.description,_that.capacity,_that.status,_that.placeId);case _:
   return null;
 
 }
@@ -211,16 +217,16 @@ return $default(_that.id,_that.dbid,_that.numero,_that.descricao,_that.capacidad
 /// @nodoc
 
 
-class _RoomModel implements RoomModel {
-   _RoomModel({this.id, this.dbid, this.numero, this.descricao, this.capacidade, this.ativo, this.placeId});
+class _RoomModel with DiagnosticableTreeMixin implements RoomModel {
+   _RoomModel({this.id, this.dbid, this.number, this.description, this.capacity, this.status, this.placeId});
   
 
-@override final  int? id;
+@override final  String? id;
 @override final  int? dbid;
-@override final  int? numero;
-@override final  String? descricao;
-@override final  int? capacidade;
-@override final  bool? ativo;
+@override final  int? number;
+@override final  String? description;
+@override final  int? capacity;
+@override final  OccupancyStatusEnum? status;
 @override final  int? placeId;
 
 /// Create a copy of RoomModel
@@ -230,19 +236,25 @@ class _RoomModel implements RoomModel {
 _$RoomModelCopyWith<_RoomModel> get copyWith => __$RoomModelCopyWithImpl<_RoomModel>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RoomModel'))
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('dbid', dbid))..add(DiagnosticsProperty('number', number))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('capacity', capacity))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('placeId', placeId));
+}
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RoomModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbid, dbid) || other.dbid == dbid)&&(identical(other.numero, numero) || other.numero == numero)&&(identical(other.descricao, descricao) || other.descricao == descricao)&&(identical(other.capacidade, capacidade) || other.capacidade == capacidade)&&(identical(other.ativo, ativo) || other.ativo == ativo)&&(identical(other.placeId, placeId) || other.placeId == placeId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RoomModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbid, dbid) || other.dbid == dbid)&&(identical(other.number, number) || other.number == number)&&(identical(other.description, description) || other.description == description)&&(identical(other.capacity, capacity) || other.capacity == capacity)&&(identical(other.status, status) || other.status == status)&&(identical(other.placeId, placeId) || other.placeId == placeId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,dbid,numero,descricao,capacidade,ativo,placeId);
+int get hashCode => Object.hash(runtimeType,id,dbid,number,description,capacity,status,placeId);
 
 @override
-String toString() {
-  return 'RoomModel(id: $id, dbid: $dbid, numero: $numero, descricao: $descricao, capacidade: $capacidade, ativo: $ativo, placeId: $placeId)';
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RoomModel(id: $id, dbid: $dbid, number: $number, description: $description, capacity: $capacity, status: $status, placeId: $placeId)';
 }
 
 
@@ -253,7 +265,7 @@ abstract mixin class _$RoomModelCopyWith<$Res> implements $RoomModelCopyWith<$Re
   factory _$RoomModelCopyWith(_RoomModel value, $Res Function(_RoomModel) _then) = __$RoomModelCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, int? dbid, int? numero, String? descricao, int? capacidade, bool? ativo, int? placeId
+ String? id, int? dbid, int? number, String? description, int? capacity, OccupancyStatusEnum? status, int? placeId
 });
 
 
@@ -270,15 +282,15 @@ class __$RoomModelCopyWithImpl<$Res>
 
 /// Create a copy of RoomModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? dbid = freezed,Object? numero = freezed,Object? descricao = freezed,Object? capacidade = freezed,Object? ativo = freezed,Object? placeId = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? dbid = freezed,Object? number = freezed,Object? description = freezed,Object? capacity = freezed,Object? status = freezed,Object? placeId = freezed,}) {
   return _then(_RoomModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
-as int?,numero: freezed == numero ? _self.numero : numero // ignore: cast_nullable_to_non_nullable
-as int?,descricao: freezed == descricao ? _self.descricao : descricao // ignore: cast_nullable_to_non_nullable
-as String?,capacidade: freezed == capacidade ? _self.capacidade : capacidade // ignore: cast_nullable_to_non_nullable
-as int?,ativo: freezed == ativo ? _self.ativo : ativo // ignore: cast_nullable_to_non_nullable
-as bool?,placeId: freezed == placeId ? _self.placeId : placeId // ignore: cast_nullable_to_non_nullable
+as String?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
+as int?,number: freezed == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
+as int?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,capacity: freezed == capacity ? _self.capacity : capacity // ignore: cast_nullable_to_non_nullable
+as int?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as OccupancyStatusEnum?,placeId: freezed == placeId ? _self.placeId : placeId // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
 }

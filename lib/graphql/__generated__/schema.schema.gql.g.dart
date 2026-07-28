@@ -96,6 +96,43 @@ final BuiltSet<GFileTypeEnum> _$gFileTypeEnumValues =
       _$gFileTypeEnumOTHER,
     ]);
 
+const GOccupancyStatusEnum _$gOccupancyStatusEnumAVAILABLE =
+    const GOccupancyStatusEnum._('AVAILABLE');
+const GOccupancyStatusEnum _$gOccupancyStatusEnumOCCUPIED =
+    const GOccupancyStatusEnum._('OCCUPIED');
+const GOccupancyStatusEnum _$gOccupancyStatusEnumMAINTENANCE =
+    const GOccupancyStatusEnum._('MAINTENANCE');
+const GOccupancyStatusEnum _$gOccupancyStatusEnumUNAVAILABLE =
+    const GOccupancyStatusEnum._('UNAVAILABLE');
+const GOccupancyStatusEnum _$gOccupancyStatusEnumRENTED =
+    const GOccupancyStatusEnum._('RENTED');
+
+GOccupancyStatusEnum _$gOccupancyStatusEnumValueOf(String name) {
+  switch (name) {
+    case 'AVAILABLE':
+      return _$gOccupancyStatusEnumAVAILABLE;
+    case 'OCCUPIED':
+      return _$gOccupancyStatusEnumOCCUPIED;
+    case 'MAINTENANCE':
+      return _$gOccupancyStatusEnumMAINTENANCE;
+    case 'UNAVAILABLE':
+      return _$gOccupancyStatusEnumUNAVAILABLE;
+    case 'RENTED':
+      return _$gOccupancyStatusEnumRENTED;
+    default:
+      throw ArgumentError(name);
+  }
+}
+
+final BuiltSet<GOccupancyStatusEnum> _$gOccupancyStatusEnumValues =
+    BuiltSet<GOccupancyStatusEnum>(const <GOccupancyStatusEnum>[
+      _$gOccupancyStatusEnumAVAILABLE,
+      _$gOccupancyStatusEnumOCCUPIED,
+      _$gOccupancyStatusEnumMAINTENANCE,
+      _$gOccupancyStatusEnumUNAVAILABLE,
+      _$gOccupancyStatusEnumRENTED,
+    ]);
+
 const GSortEnumType _$gSortEnumTypeASC = const GSortEnumType._('ASC');
 const GSortEnumType _$gSortEnumTypeDESC = const GSortEnumType._('DESC');
 
@@ -171,6 +208,9 @@ Serializer<GLongOperationFilterInput> _$gLongOperationFilterInputSerializer =
 Serializer<GNullableOfFileTypeEnumOperationFilterInput>
 _$gNullableOfFileTypeEnumOperationFilterInputSerializer =
     _$GNullableOfFileTypeEnumOperationFilterInputSerializer();
+Serializer<GNullableOfOccupancyStatusEnumOperationFilterInput>
+_$gNullableOfOccupancyStatusEnumOperationFilterInputSerializer =
+    _$GNullableOfOccupancyStatusEnumOperationFilterInputSerializer();
 Serializer<GPlaceModelFilterInput> _$gPlaceModelFilterInputSerializer =
     _$GPlaceModelFilterInputSerializer();
 Serializer<GPlaceModelSortInput> _$gPlaceModelSortInputSerializer =
@@ -205,6 +245,8 @@ Serializer<GCheckinStatusEnum> _$gCheckinStatusEnumSerializer =
     _$GCheckinStatusEnumSerializer();
 Serializer<GFileTypeEnum> _$gFileTypeEnumSerializer =
     _$GFileTypeEnumSerializer();
+Serializer<GOccupancyStatusEnum> _$gOccupancyStatusEnumSerializer =
+    _$GOccupancyStatusEnumSerializer();
 Serializer<GSortEnumType> _$gSortEnumTypeSerializer =
     _$GSortEnumTypeSerializer();
 
@@ -304,17 +346,13 @@ class _$GByteOperationFilterInputSerializer
     if (value != null) {
       result
         ..add('eq')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(GByte)),
-        );
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.neq;
     if (value != null) {
       result
         ..add('neq')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(GByte)),
-        );
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.Gin;
     if (value != null) {
@@ -324,7 +362,7 @@ class _$GByteOperationFilterInputSerializer
           serializers.serialize(
             value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType.nullable(GByte),
+              const FullType.nullable(int),
             ]),
           ),
         );
@@ -337,7 +375,7 @@ class _$GByteOperationFilterInputSerializer
           serializers.serialize(
             value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType.nullable(GByte),
+              const FullType.nullable(int),
             ]),
           ),
         );
@@ -346,65 +384,49 @@ class _$GByteOperationFilterInputSerializer
     if (value != null) {
       result
         ..add('gt')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(GByte)),
-        );
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.ngt;
     if (value != null) {
       result
         ..add('ngt')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(GByte)),
-        );
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.gte;
     if (value != null) {
       result
         ..add('gte')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(GByte)),
-        );
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.ngte;
     if (value != null) {
       result
         ..add('ngte')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(GByte)),
-        );
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.lt;
     if (value != null) {
       result
         ..add('lt')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(GByte)),
-        );
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.nlt;
     if (value != null) {
       result
         ..add('nlt')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(GByte)),
-        );
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.lte;
     if (value != null) {
       result
         ..add('lte')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(GByte)),
-        );
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.nlte;
     if (value != null) {
       result
         ..add('nlte')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(GByte)),
-        );
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
@@ -424,29 +446,21 @@ class _$GByteOperationFilterInputSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'eq':
-          result.eq.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.eq =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
           break;
         case 'neq':
-          result.neq.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.neq =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
           break;
         case 'in':
           result.Gin.replace(
             serializers.deserialize(
                   value,
                   specifiedType: const FullType(BuiltList, const [
-                    const FullType.nullable(GByte),
+                    const FullType.nullable(int),
                   ]),
                 )!
                 as BuiltList<Object?>,
@@ -457,83 +471,51 @@ class _$GByteOperationFilterInputSerializer
             serializers.deserialize(
                   value,
                   specifiedType: const FullType(BuiltList, const [
-                    const FullType.nullable(GByte),
+                    const FullType.nullable(int),
                   ]),
                 )!
                 as BuiltList<Object?>,
           );
           break;
         case 'gt':
-          result.gt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.gt =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
           break;
         case 'ngt':
-          result.ngt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.ngt =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
           break;
         case 'gte':
-          result.gte.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.gte =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
           break;
         case 'ngte':
-          result.ngte.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.ngte =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
           break;
         case 'lt':
-          result.lt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.lt =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
           break;
         case 'nlt':
-          result.nlt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.nlt =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
           break;
         case 'lte':
-          result.lte.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.lte =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
           break;
         case 'nlte':
-          result.nlte.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.nlte =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
           break;
       }
     }
@@ -1559,20 +1541,17 @@ class _$GCreateRoomInputSerializer
         object.placeId,
         specifiedType: const FullType(String),
       ),
-      'numero',
+      'number',
+      serializers.serialize(object.number, specifiedType: const FullType(int)),
+      'description',
       serializers.serialize(
-        object.numero,
-        specifiedType: const FullType(GByte),
-      ),
-      'descricao',
-      serializers.serialize(
-        object.descricao,
+        object.description,
         specifiedType: const FullType(String),
       ),
       'capacity',
       serializers.serialize(
         object.capacity,
-        specifiedType: const FullType(GByte),
+        specifiedType: const FullType(int),
       ),
       'active',
       serializers.serialize(object.active, specifiedType: const FullType(bool)),
@@ -1603,17 +1582,16 @@ class _$GCreateRoomInputSerializer
                   )!
                   as String;
           break;
-        case 'numero':
-          result.numero.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+        case 'number':
+          result.number =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(int),
+                  )!
+                  as int;
           break;
-        case 'descricao':
-          result.descricao =
+        case 'description':
+          result.description =
               serializers.deserialize(
                     value,
                     specifiedType: const FullType(String),
@@ -1621,13 +1599,12 @@ class _$GCreateRoomInputSerializer
                   as String;
           break;
         case 'capacity':
-          result.capacity.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.capacity =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(int),
+                  )!
+                  as int;
           break;
         case 'active':
           result.active =
@@ -4083,6 +4060,137 @@ class _$GNullableOfFileTypeEnumOperationFilterInputSerializer
   }
 }
 
+class _$GNullableOfOccupancyStatusEnumOperationFilterInputSerializer
+    implements
+        StructuredSerializer<
+          GNullableOfOccupancyStatusEnumOperationFilterInput
+        > {
+  @override
+  final Iterable<Type> types = const [
+    GNullableOfOccupancyStatusEnumOperationFilterInput,
+    _$GNullableOfOccupancyStatusEnumOperationFilterInput,
+  ];
+  @override
+  final String wireName = 'GNullableOfOccupancyStatusEnumOperationFilterInput';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GNullableOfOccupancyStatusEnumOperationFilterInput object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.eq;
+    if (value != null) {
+      result
+        ..add('eq')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(GOccupancyStatusEnum),
+          ),
+        );
+    }
+    value = object.neq;
+    if (value != null) {
+      result
+        ..add('neq')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(GOccupancyStatusEnum),
+          ),
+        );
+    }
+    value = object.Gin;
+    if (value != null) {
+      result
+        ..add('in')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(BuiltList, const [
+              const FullType.nullable(GOccupancyStatusEnum),
+            ]),
+          ),
+        );
+    }
+    value = object.nin;
+    if (value != null) {
+      result
+        ..add('nin')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(BuiltList, const [
+              const FullType.nullable(GOccupancyStatusEnum),
+            ]),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GNullableOfOccupancyStatusEnumOperationFilterInput deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = GNullableOfOccupancyStatusEnumOperationFilterInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'eq':
+          result.eq =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(GOccupancyStatusEnum),
+                  )
+                  as GOccupancyStatusEnum?;
+          break;
+        case 'neq':
+          result.neq =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(GOccupancyStatusEnum),
+                  )
+                  as GOccupancyStatusEnum?;
+          break;
+        case 'in':
+          result.Gin.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(BuiltList, const [
+                    const FullType.nullable(GOccupancyStatusEnum),
+                  ]),
+                )!
+                as BuiltList<Object?>,
+          );
+          break;
+        case 'nin':
+          result.nin.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(BuiltList, const [
+                    const FullType.nullable(GOccupancyStatusEnum),
+                  ]),
+                )!
+                as BuiltList<Object?>,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GPlaceModelFilterInputSerializer
     implements StructuredSerializer<GPlaceModelFilterInput> {
   @override
@@ -4970,10 +5078,10 @@ class _$GRoomModelFilterInputSerializer
           ),
         );
     }
-    value = object.numero;
+    value = object.number;
     if (value != null) {
       result
-        ..add('numero')
+        ..add('number')
         ..add(
           serializers.serialize(
             value,
@@ -4981,10 +5089,10 @@ class _$GRoomModelFilterInputSerializer
           ),
         );
     }
-    value = object.descricao;
+    value = object.description;
     if (value != null) {
       result
-        ..add('descricao')
+        ..add('description')
         ..add(
           serializers.serialize(
             value,
@@ -5003,14 +5111,16 @@ class _$GRoomModelFilterInputSerializer
           ),
         );
     }
-    value = object.active;
+    value = object.status;
     if (value != null) {
       result
-        ..add('active')
+        ..add('status')
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(GBooleanOperationFilterInput),
+            specifiedType: const FullType(
+              GNullableOfOccupancyStatusEnumOperationFilterInput,
+            ),
           ),
         );
     }
@@ -5123,8 +5233,8 @@ class _$GRoomModelFilterInputSerializer
                 as BuiltList<Object?>,
           );
           break;
-        case 'numero':
-          result.numero.replace(
+        case 'number':
+          result.number.replace(
             serializers.deserialize(
                   value,
                   specifiedType: const FullType(GByteOperationFilterInput),
@@ -5132,8 +5242,8 @@ class _$GRoomModelFilterInputSerializer
                 as GByteOperationFilterInput,
           );
           break;
-        case 'descricao':
-          result.descricao.replace(
+        case 'description':
+          result.description.replace(
             serializers.deserialize(
                   value,
                   specifiedType: const FullType(GStringOperationFilterInput),
@@ -5150,13 +5260,15 @@ class _$GRoomModelFilterInputSerializer
                 as GByteOperationFilterInput,
           );
           break;
-        case 'active':
-          result.active.replace(
+        case 'status':
+          result.status.replace(
             serializers.deserialize(
                   value,
-                  specifiedType: const FullType(GBooleanOperationFilterInput),
+                  specifiedType: const FullType(
+                    GNullableOfOccupancyStatusEnumOperationFilterInput,
+                  ),
                 )!
-                as GBooleanOperationFilterInput,
+                as GNullableOfOccupancyStatusEnumOperationFilterInput,
           );
           break;
         case 'placeId':
@@ -5242,10 +5354,10 @@ class _$GRoomModelSortInputSerializer
   }) {
     final result = <Object?>[];
     Object? value;
-    value = object.numero;
+    value = object.number;
     if (value != null) {
       result
-        ..add('numero')
+        ..add('number')
         ..add(
           serializers.serialize(
             value,
@@ -5253,10 +5365,10 @@ class _$GRoomModelSortInputSerializer
           ),
         );
     }
-    value = object.descricao;
+    value = object.description;
     if (value != null) {
       result
-        ..add('descricao')
+        ..add('description')
         ..add(
           serializers.serialize(
             value,
@@ -5275,10 +5387,10 @@ class _$GRoomModelSortInputSerializer
           ),
         );
     }
-    value = object.active;
+    value = object.status;
     if (value != null) {
       result
-        ..add('active')
+        ..add('status')
         ..add(
           serializers.serialize(
             value,
@@ -5347,16 +5459,16 @@ class _$GRoomModelSortInputSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'numero':
-          result.numero =
+        case 'number':
+          result.number =
               serializers.deserialize(
                     value,
                     specifiedType: const FullType(GSortEnumType),
                   )
                   as GSortEnumType?;
           break;
-        case 'descricao':
-          result.descricao =
+        case 'description':
+          result.description =
               serializers.deserialize(
                     value,
                     specifiedType: const FullType(GSortEnumType),
@@ -5371,8 +5483,8 @@ class _$GRoomModelSortInputSerializer
                   )
                   as GSortEnumType?;
           break;
-        case 'active':
-          result.active =
+        case 'status':
+          result.status =
               serializers.deserialize(
                     value,
                     specifiedType: const FullType(GSortEnumType),
@@ -6023,10 +6135,10 @@ class _$GUpdateRoomInputSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
     Object? value;
-    value = object.descricao;
+    value = object.description;
     if (value != null) {
       result
-        ..add('descricao')
+        ..add('description')
         ..add(
           serializers.serialize(value, specifiedType: const FullType(String)),
         );
@@ -6035,9 +6147,7 @@ class _$GUpdateRoomInputSerializer
     if (value != null) {
       result
         ..add('capacity')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(GByte)),
-        );
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.active;
     if (value != null) {
@@ -6072,8 +6182,8 @@ class _$GUpdateRoomInputSerializer
                   )!
                   as String;
           break;
-        case 'descricao':
-          result.descricao =
+        case 'description':
+          result.description =
               serializers.deserialize(
                     value,
                     specifiedType: const FullType(String),
@@ -6081,13 +6191,9 @@ class _$GUpdateRoomInputSerializer
                   as String?;
           break;
         case 'capacity':
-          result.capacity.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GByte),
-                )!
-                as GByte,
-          );
+          result.capacity =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
           break;
         case 'active':
           result.active =
@@ -6737,6 +6843,28 @@ class _$GFileTypeEnumSerializer implements PrimitiveSerializer<GFileTypeEnum> {
   }) => GFileTypeEnum.valueOf(serialized as String);
 }
 
+class _$GOccupancyStatusEnumSerializer
+    implements PrimitiveSerializer<GOccupancyStatusEnum> {
+  @override
+  final Iterable<Type> types = const <Type>[GOccupancyStatusEnum];
+  @override
+  final String wireName = 'GOccupancyStatusEnum';
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    GOccupancyStatusEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => object.name;
+
+  @override
+  GOccupancyStatusEnum deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => GOccupancyStatusEnum.valueOf(serialized as String);
+}
+
 class _$GSortEnumTypeSerializer implements PrimitiveSerializer<GSortEnumType> {
   @override
   final Iterable<Type> types = const <Type>[GSortEnumType];
@@ -6854,29 +6982,29 @@ class GBooleanOperationFilterInputBuilder
 
 class _$GByteOperationFilterInput extends GByteOperationFilterInput {
   @override
-  final GByte? eq;
+  final int? eq;
   @override
-  final GByte? neq;
+  final int? neq;
   @override
-  final BuiltList<GByte?>? Gin;
+  final BuiltList<int?>? Gin;
   @override
-  final BuiltList<GByte?>? nin;
+  final BuiltList<int?>? nin;
   @override
-  final GByte? gt;
+  final int? gt;
   @override
-  final GByte? ngt;
+  final int? ngt;
   @override
-  final GByte? gte;
+  final int? gte;
   @override
-  final GByte? ngte;
+  final int? ngte;
   @override
-  final GByte? lt;
+  final int? lt;
   @override
-  final GByte? nlt;
+  final int? nlt;
   @override
-  final GByte? lte;
+  final int? lte;
   @override
-  final GByte? nlte;
+  final int? nlte;
 
   factory _$GByteOperationFilterInput([
     void Function(GByteOperationFilterInputBuilder)? updates,
@@ -6966,71 +7094,71 @@ class GByteOperationFilterInputBuilder
         Builder<GByteOperationFilterInput, GByteOperationFilterInputBuilder> {
   _$GByteOperationFilterInput? _$v;
 
-  GByteBuilder? _eq;
-  GByteBuilder get eq => _$this._eq ??= GByteBuilder();
-  set eq(GByteBuilder? eq) => _$this._eq = eq;
+  int? _eq;
+  int? get eq => _$this._eq;
+  set eq(int? eq) => _$this._eq = eq;
 
-  GByteBuilder? _neq;
-  GByteBuilder get neq => _$this._neq ??= GByteBuilder();
-  set neq(GByteBuilder? neq) => _$this._neq = neq;
+  int? _neq;
+  int? get neq => _$this._neq;
+  set neq(int? neq) => _$this._neq = neq;
 
-  ListBuilder<GByte?>? _Gin;
-  ListBuilder<GByte?> get Gin => _$this._Gin ??= ListBuilder<GByte?>();
-  set Gin(ListBuilder<GByte?>? Gin) => _$this._Gin = Gin;
+  ListBuilder<int?>? _Gin;
+  ListBuilder<int?> get Gin => _$this._Gin ??= ListBuilder<int?>();
+  set Gin(ListBuilder<int?>? Gin) => _$this._Gin = Gin;
 
-  ListBuilder<GByte?>? _nin;
-  ListBuilder<GByte?> get nin => _$this._nin ??= ListBuilder<GByte?>();
-  set nin(ListBuilder<GByte?>? nin) => _$this._nin = nin;
+  ListBuilder<int?>? _nin;
+  ListBuilder<int?> get nin => _$this._nin ??= ListBuilder<int?>();
+  set nin(ListBuilder<int?>? nin) => _$this._nin = nin;
 
-  GByteBuilder? _gt;
-  GByteBuilder get gt => _$this._gt ??= GByteBuilder();
-  set gt(GByteBuilder? gt) => _$this._gt = gt;
+  int? _gt;
+  int? get gt => _$this._gt;
+  set gt(int? gt) => _$this._gt = gt;
 
-  GByteBuilder? _ngt;
-  GByteBuilder get ngt => _$this._ngt ??= GByteBuilder();
-  set ngt(GByteBuilder? ngt) => _$this._ngt = ngt;
+  int? _ngt;
+  int? get ngt => _$this._ngt;
+  set ngt(int? ngt) => _$this._ngt = ngt;
 
-  GByteBuilder? _gte;
-  GByteBuilder get gte => _$this._gte ??= GByteBuilder();
-  set gte(GByteBuilder? gte) => _$this._gte = gte;
+  int? _gte;
+  int? get gte => _$this._gte;
+  set gte(int? gte) => _$this._gte = gte;
 
-  GByteBuilder? _ngte;
-  GByteBuilder get ngte => _$this._ngte ??= GByteBuilder();
-  set ngte(GByteBuilder? ngte) => _$this._ngte = ngte;
+  int? _ngte;
+  int? get ngte => _$this._ngte;
+  set ngte(int? ngte) => _$this._ngte = ngte;
 
-  GByteBuilder? _lt;
-  GByteBuilder get lt => _$this._lt ??= GByteBuilder();
-  set lt(GByteBuilder? lt) => _$this._lt = lt;
+  int? _lt;
+  int? get lt => _$this._lt;
+  set lt(int? lt) => _$this._lt = lt;
 
-  GByteBuilder? _nlt;
-  GByteBuilder get nlt => _$this._nlt ??= GByteBuilder();
-  set nlt(GByteBuilder? nlt) => _$this._nlt = nlt;
+  int? _nlt;
+  int? get nlt => _$this._nlt;
+  set nlt(int? nlt) => _$this._nlt = nlt;
 
-  GByteBuilder? _lte;
-  GByteBuilder get lte => _$this._lte ??= GByteBuilder();
-  set lte(GByteBuilder? lte) => _$this._lte = lte;
+  int? _lte;
+  int? get lte => _$this._lte;
+  set lte(int? lte) => _$this._lte = lte;
 
-  GByteBuilder? _nlte;
-  GByteBuilder get nlte => _$this._nlte ??= GByteBuilder();
-  set nlte(GByteBuilder? nlte) => _$this._nlte = nlte;
+  int? _nlte;
+  int? get nlte => _$this._nlte;
+  set nlte(int? nlte) => _$this._nlte = nlte;
 
   GByteOperationFilterInputBuilder();
 
   GByteOperationFilterInputBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _eq = $v.eq?.toBuilder();
-      _neq = $v.neq?.toBuilder();
+      _eq = $v.eq;
+      _neq = $v.neq;
       _Gin = $v.Gin?.toBuilder();
       _nin = $v.nin?.toBuilder();
-      _gt = $v.gt?.toBuilder();
-      _ngt = $v.ngt?.toBuilder();
-      _gte = $v.gte?.toBuilder();
-      _ngte = $v.ngte?.toBuilder();
-      _lt = $v.lt?.toBuilder();
-      _nlt = $v.nlt?.toBuilder();
-      _lte = $v.lte?.toBuilder();
-      _nlte = $v.nlte?.toBuilder();
+      _gt = $v.gt;
+      _ngt = $v.ngt;
+      _gte = $v.gte;
+      _ngte = $v.ngte;
+      _lt = $v.lt;
+      _nlt = $v.nlt;
+      _lte = $v.lte;
+      _nlte = $v.nlte;
       _$v = null;
     }
     return this;
@@ -7055,46 +7183,26 @@ class GByteOperationFilterInputBuilder
       _$result =
           _$v ??
           _$GByteOperationFilterInput._(
-            eq: _eq?.build(),
-            neq: _neq?.build(),
+            eq: eq,
+            neq: neq,
             Gin: _Gin?.build(),
             nin: _nin?.build(),
-            gt: _gt?.build(),
-            ngt: _ngt?.build(),
-            gte: _gte?.build(),
-            ngte: _ngte?.build(),
-            lt: _lt?.build(),
-            nlt: _nlt?.build(),
-            lte: _lte?.build(),
-            nlte: _nlte?.build(),
+            gt: gt,
+            ngt: ngt,
+            gte: gte,
+            ngte: ngte,
+            lt: lt,
+            nlt: nlt,
+            lte: lte,
+            nlte: nlte,
           );
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'eq';
-        _eq?.build();
-        _$failedField = 'neq';
-        _neq?.build();
         _$failedField = 'Gin';
         _Gin?.build();
         _$failedField = 'nin';
         _nin?.build();
-        _$failedField = 'gt';
-        _gt?.build();
-        _$failedField = 'ngt';
-        _ngt?.build();
-        _$failedField = 'gte';
-        _gte?.build();
-        _$failedField = 'ngte';
-        _ngte?.build();
-        _$failedField = 'lt';
-        _lt?.build();
-        _$failedField = 'nlt';
-        _nlt?.build();
-        _$failedField = 'lte';
-        _lte?.build();
-        _$failedField = 'nlte';
-        _nlte?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
           r'GByteOperationFilterInput',
@@ -8144,11 +8252,11 @@ class _$GCreateRoomInput extends GCreateRoomInput {
   @override
   final String placeId;
   @override
-  final GByte numero;
+  final int number;
   @override
-  final String descricao;
+  final String description;
   @override
-  final GByte capacity;
+  final int capacity;
   @override
   final bool active;
 
@@ -8158,8 +8266,8 @@ class _$GCreateRoomInput extends GCreateRoomInput {
 
   _$GCreateRoomInput._({
     required this.placeId,
-    required this.numero,
-    required this.descricao,
+    required this.number,
+    required this.description,
     required this.capacity,
     required this.active,
   }) : super._();
@@ -8176,8 +8284,8 @@ class _$GCreateRoomInput extends GCreateRoomInput {
     if (identical(other, this)) return true;
     return other is GCreateRoomInput &&
         placeId == other.placeId &&
-        numero == other.numero &&
-        descricao == other.descricao &&
+        number == other.number &&
+        description == other.description &&
         capacity == other.capacity &&
         active == other.active;
   }
@@ -8186,8 +8294,8 @@ class _$GCreateRoomInput extends GCreateRoomInput {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, placeId.hashCode);
-    _$hash = $jc(_$hash, numero.hashCode);
-    _$hash = $jc(_$hash, descricao.hashCode);
+    _$hash = $jc(_$hash, number.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, capacity.hashCode);
     _$hash = $jc(_$hash, active.hashCode);
     _$hash = $jf(_$hash);
@@ -8198,8 +8306,8 @@ class _$GCreateRoomInput extends GCreateRoomInput {
   String toString() {
     return (newBuiltValueToStringHelper(r'GCreateRoomInput')
           ..add('placeId', placeId)
-          ..add('numero', numero)
-          ..add('descricao', descricao)
+          ..add('number', number)
+          ..add('description', description)
           ..add('capacity', capacity)
           ..add('active', active))
         .toString();
@@ -8214,17 +8322,17 @@ class GCreateRoomInputBuilder
   String? get placeId => _$this._placeId;
   set placeId(String? placeId) => _$this._placeId = placeId;
 
-  GByteBuilder? _numero;
-  GByteBuilder get numero => _$this._numero ??= GByteBuilder();
-  set numero(GByteBuilder? numero) => _$this._numero = numero;
+  int? _number;
+  int? get number => _$this._number;
+  set number(int? number) => _$this._number = number;
 
-  String? _descricao;
-  String? get descricao => _$this._descricao;
-  set descricao(String? descricao) => _$this._descricao = descricao;
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
 
-  GByteBuilder? _capacity;
-  GByteBuilder get capacity => _$this._capacity ??= GByteBuilder();
-  set capacity(GByteBuilder? capacity) => _$this._capacity = capacity;
+  int? _capacity;
+  int? get capacity => _$this._capacity;
+  set capacity(int? capacity) => _$this._capacity = capacity;
 
   bool? _active;
   bool? get active => _$this._active;
@@ -8236,9 +8344,9 @@ class GCreateRoomInputBuilder
     final $v = _$v;
     if ($v != null) {
       _placeId = $v.placeId;
-      _numero = $v.numero.toBuilder();
-      _descricao = $v.descricao;
-      _capacity = $v.capacity.toBuilder();
+      _number = $v.number;
+      _description = $v.description;
+      _capacity = $v.capacity;
       _active = $v.active;
       _$v = null;
     }
@@ -8259,46 +8367,35 @@ class GCreateRoomInputBuilder
   GCreateRoomInput build() => _build();
 
   _$GCreateRoomInput _build() {
-    _$GCreateRoomInput _$result;
-    try {
-      _$result =
-          _$v ??
-          _$GCreateRoomInput._(
-            placeId: BuiltValueNullFieldError.checkNotNull(
-              placeId,
-              r'GCreateRoomInput',
-              'placeId',
-            ),
-            numero: numero.build(),
-            descricao: BuiltValueNullFieldError.checkNotNull(
-              descricao,
-              r'GCreateRoomInput',
-              'descricao',
-            ),
-            capacity: capacity.build(),
-            active: BuiltValueNullFieldError.checkNotNull(
-              active,
-              r'GCreateRoomInput',
-              'active',
-            ),
-          );
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'numero';
-        numero.build();
-
-        _$failedField = 'capacity';
-        capacity.build();
-      } catch (e) {
-        throw BuiltValueNestedFieldError(
-          r'GCreateRoomInput',
-          _$failedField,
-          e.toString(),
+    final _$result =
+        _$v ??
+        _$GCreateRoomInput._(
+          placeId: BuiltValueNullFieldError.checkNotNull(
+            placeId,
+            r'GCreateRoomInput',
+            'placeId',
+          ),
+          number: BuiltValueNullFieldError.checkNotNull(
+            number,
+            r'GCreateRoomInput',
+            'number',
+          ),
+          description: BuiltValueNullFieldError.checkNotNull(
+            description,
+            r'GCreateRoomInput',
+            'description',
+          ),
+          capacity: BuiltValueNullFieldError.checkNotNull(
+            capacity,
+            r'GCreateRoomInput',
+            'capacity',
+          ),
+          active: BuiltValueNullFieldError.checkNotNull(
+            active,
+            r'GCreateRoomInput',
+            'active',
+          ),
         );
-      }
-      rethrow;
-    }
     replace(_$result);
     return _$result;
   }
@@ -11041,6 +11138,164 @@ class GNullableOfFileTypeEnumOperationFilterInputBuilder
   }
 }
 
+class _$GNullableOfOccupancyStatusEnumOperationFilterInput
+    extends GNullableOfOccupancyStatusEnumOperationFilterInput {
+  @override
+  final GOccupancyStatusEnum? eq;
+  @override
+  final GOccupancyStatusEnum? neq;
+  @override
+  final BuiltList<GOccupancyStatusEnum?>? Gin;
+  @override
+  final BuiltList<GOccupancyStatusEnum?>? nin;
+
+  factory _$GNullableOfOccupancyStatusEnumOperationFilterInput([
+    void Function(GNullableOfOccupancyStatusEnumOperationFilterInputBuilder)?
+    updates,
+  ]) =>
+      (GNullableOfOccupancyStatusEnumOperationFilterInputBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GNullableOfOccupancyStatusEnumOperationFilterInput._({
+    this.eq,
+    this.neq,
+    this.Gin,
+    this.nin,
+  }) : super._();
+  @override
+  GNullableOfOccupancyStatusEnumOperationFilterInput rebuild(
+    void Function(GNullableOfOccupancyStatusEnumOperationFilterInputBuilder)
+    updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GNullableOfOccupancyStatusEnumOperationFilterInputBuilder toBuilder() =>
+      GNullableOfOccupancyStatusEnumOperationFilterInputBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GNullableOfOccupancyStatusEnumOperationFilterInput &&
+        eq == other.eq &&
+        neq == other.neq &&
+        Gin == other.Gin &&
+        nin == other.nin;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, eq.hashCode);
+    _$hash = $jc(_$hash, neq.hashCode);
+    _$hash = $jc(_$hash, Gin.hashCode);
+    _$hash = $jc(_$hash, nin.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GNullableOfOccupancyStatusEnumOperationFilterInput',
+          )
+          ..add('eq', eq)
+          ..add('neq', neq)
+          ..add('Gin', Gin)
+          ..add('nin', nin))
+        .toString();
+  }
+}
+
+class GNullableOfOccupancyStatusEnumOperationFilterInputBuilder
+    implements
+        Builder<
+          GNullableOfOccupancyStatusEnumOperationFilterInput,
+          GNullableOfOccupancyStatusEnumOperationFilterInputBuilder
+        > {
+  _$GNullableOfOccupancyStatusEnumOperationFilterInput? _$v;
+
+  GOccupancyStatusEnum? _eq;
+  GOccupancyStatusEnum? get eq => _$this._eq;
+  set eq(GOccupancyStatusEnum? eq) => _$this._eq = eq;
+
+  GOccupancyStatusEnum? _neq;
+  GOccupancyStatusEnum? get neq => _$this._neq;
+  set neq(GOccupancyStatusEnum? neq) => _$this._neq = neq;
+
+  ListBuilder<GOccupancyStatusEnum?>? _Gin;
+  ListBuilder<GOccupancyStatusEnum?> get Gin =>
+      _$this._Gin ??= ListBuilder<GOccupancyStatusEnum?>();
+  set Gin(ListBuilder<GOccupancyStatusEnum?>? Gin) => _$this._Gin = Gin;
+
+  ListBuilder<GOccupancyStatusEnum?>? _nin;
+  ListBuilder<GOccupancyStatusEnum?> get nin =>
+      _$this._nin ??= ListBuilder<GOccupancyStatusEnum?>();
+  set nin(ListBuilder<GOccupancyStatusEnum?>? nin) => _$this._nin = nin;
+
+  GNullableOfOccupancyStatusEnumOperationFilterInputBuilder();
+
+  GNullableOfOccupancyStatusEnumOperationFilterInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _eq = $v.eq;
+      _neq = $v.neq;
+      _Gin = $v.Gin?.toBuilder();
+      _nin = $v.nin?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GNullableOfOccupancyStatusEnumOperationFilterInput other) {
+    _$v = other as _$GNullableOfOccupancyStatusEnumOperationFilterInput;
+  }
+
+  @override
+  void update(
+    void Function(GNullableOfOccupancyStatusEnumOperationFilterInputBuilder)?
+    updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GNullableOfOccupancyStatusEnumOperationFilterInput build() => _build();
+
+  _$GNullableOfOccupancyStatusEnumOperationFilterInput _build() {
+    _$GNullableOfOccupancyStatusEnumOperationFilterInput _$result;
+    try {
+      _$result =
+          _$v ??
+          _$GNullableOfOccupancyStatusEnumOperationFilterInput._(
+            eq: eq,
+            neq: neq,
+            Gin: _Gin?.build(),
+            nin: _nin?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'Gin';
+        _Gin?.build();
+        _$failedField = 'nin';
+        _nin?.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+          r'GNullableOfOccupancyStatusEnumOperationFilterInput',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GPlaceModelFilterInput extends GPlaceModelFilterInput {
   @override
   final BuiltList<GPlaceModelFilterInput>? and;
@@ -11828,13 +12083,13 @@ class _$GRoomModelFilterInput extends GRoomModelFilterInput {
   @override
   final BuiltList<GRoomModelFilterInput>? or;
   @override
-  final GByteOperationFilterInput? numero;
+  final GByteOperationFilterInput? number;
   @override
-  final GStringOperationFilterInput? descricao;
+  final GStringOperationFilterInput? description;
   @override
   final GByteOperationFilterInput? capacity;
   @override
-  final GBooleanOperationFilterInput? active;
+  final GNullableOfOccupancyStatusEnumOperationFilterInput? status;
   @override
   final GLongOperationFilterInput? placeId;
   @override
@@ -11855,10 +12110,10 @@ class _$GRoomModelFilterInput extends GRoomModelFilterInput {
   _$GRoomModelFilterInput._({
     this.and,
     this.or,
-    this.numero,
-    this.descricao,
+    this.number,
+    this.description,
     this.capacity,
-    this.active,
+    this.status,
     this.placeId,
     this.place,
     this.checkins,
@@ -11881,10 +12136,10 @@ class _$GRoomModelFilterInput extends GRoomModelFilterInput {
     return other is GRoomModelFilterInput &&
         and == other.and &&
         or == other.or &&
-        numero == other.numero &&
-        descricao == other.descricao &&
+        number == other.number &&
+        description == other.description &&
         capacity == other.capacity &&
-        active == other.active &&
+        status == other.status &&
         placeId == other.placeId &&
         place == other.place &&
         checkins == other.checkins &&
@@ -11898,10 +12153,10 @@ class _$GRoomModelFilterInput extends GRoomModelFilterInput {
     var _$hash = 0;
     _$hash = $jc(_$hash, and.hashCode);
     _$hash = $jc(_$hash, or.hashCode);
-    _$hash = $jc(_$hash, numero.hashCode);
-    _$hash = $jc(_$hash, descricao.hashCode);
+    _$hash = $jc(_$hash, number.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, capacity.hashCode);
-    _$hash = $jc(_$hash, active.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jc(_$hash, placeId.hashCode);
     _$hash = $jc(_$hash, place.hashCode);
     _$hash = $jc(_$hash, checkins.hashCode);
@@ -11917,10 +12172,10 @@ class _$GRoomModelFilterInput extends GRoomModelFilterInput {
     return (newBuiltValueToStringHelper(r'GRoomModelFilterInput')
           ..add('and', and)
           ..add('or', or)
-          ..add('numero', numero)
-          ..add('descricao', descricao)
+          ..add('number', number)
+          ..add('description', description)
           ..add('capacity', capacity)
-          ..add('active', active)
+          ..add('status', status)
           ..add('placeId', placeId)
           ..add('place', place)
           ..add('checkins', checkins)
@@ -11945,17 +12200,17 @@ class GRoomModelFilterInputBuilder
       _$this._or ??= ListBuilder<GRoomModelFilterInput>();
   set or(ListBuilder<GRoomModelFilterInput>? or) => _$this._or = or;
 
-  GByteOperationFilterInputBuilder? _numero;
-  GByteOperationFilterInputBuilder get numero =>
-      _$this._numero ??= GByteOperationFilterInputBuilder();
-  set numero(GByteOperationFilterInputBuilder? numero) =>
-      _$this._numero = numero;
+  GByteOperationFilterInputBuilder? _number;
+  GByteOperationFilterInputBuilder get number =>
+      _$this._number ??= GByteOperationFilterInputBuilder();
+  set number(GByteOperationFilterInputBuilder? number) =>
+      _$this._number = number;
 
-  GStringOperationFilterInputBuilder? _descricao;
-  GStringOperationFilterInputBuilder get descricao =>
-      _$this._descricao ??= GStringOperationFilterInputBuilder();
-  set descricao(GStringOperationFilterInputBuilder? descricao) =>
-      _$this._descricao = descricao;
+  GStringOperationFilterInputBuilder? _description;
+  GStringOperationFilterInputBuilder get description =>
+      _$this._description ??= GStringOperationFilterInputBuilder();
+  set description(GStringOperationFilterInputBuilder? description) =>
+      _$this._description = description;
 
   GByteOperationFilterInputBuilder? _capacity;
   GByteOperationFilterInputBuilder get capacity =>
@@ -11963,11 +12218,13 @@ class GRoomModelFilterInputBuilder
   set capacity(GByteOperationFilterInputBuilder? capacity) =>
       _$this._capacity = capacity;
 
-  GBooleanOperationFilterInputBuilder? _active;
-  GBooleanOperationFilterInputBuilder get active =>
-      _$this._active ??= GBooleanOperationFilterInputBuilder();
-  set active(GBooleanOperationFilterInputBuilder? active) =>
-      _$this._active = active;
+  GNullableOfOccupancyStatusEnumOperationFilterInputBuilder? _status;
+  GNullableOfOccupancyStatusEnumOperationFilterInputBuilder get status =>
+      _$this._status ??=
+          GNullableOfOccupancyStatusEnumOperationFilterInputBuilder();
+  set status(
+    GNullableOfOccupancyStatusEnumOperationFilterInputBuilder? status,
+  ) => _$this._status = status;
 
   GLongOperationFilterInputBuilder? _placeId;
   GLongOperationFilterInputBuilder get placeId =>
@@ -12011,10 +12268,10 @@ class GRoomModelFilterInputBuilder
     if ($v != null) {
       _and = $v.and?.toBuilder();
       _or = $v.or?.toBuilder();
-      _numero = $v.numero?.toBuilder();
-      _descricao = $v.descricao?.toBuilder();
+      _number = $v.number?.toBuilder();
+      _description = $v.description?.toBuilder();
       _capacity = $v.capacity?.toBuilder();
-      _active = $v.active?.toBuilder();
+      _status = $v.status?.toBuilder();
       _placeId = $v.placeId?.toBuilder();
       _place = $v.place?.toBuilder();
       _checkins = $v.checkins?.toBuilder();
@@ -12047,10 +12304,10 @@ class GRoomModelFilterInputBuilder
           _$GRoomModelFilterInput._(
             and: _and?.build(),
             or: _or?.build(),
-            numero: _numero?.build(),
-            descricao: _descricao?.build(),
+            number: _number?.build(),
+            description: _description?.build(),
             capacity: _capacity?.build(),
-            active: _active?.build(),
+            status: _status?.build(),
             placeId: _placeId?.build(),
             place: _place?.build(),
             checkins: _checkins?.build(),
@@ -12065,14 +12322,14 @@ class GRoomModelFilterInputBuilder
         _and?.build();
         _$failedField = 'or';
         _or?.build();
-        _$failedField = 'numero';
-        _numero?.build();
-        _$failedField = 'descricao';
-        _descricao?.build();
+        _$failedField = 'number';
+        _number?.build();
+        _$failedField = 'description';
+        _description?.build();
         _$failedField = 'capacity';
         _capacity?.build();
-        _$failedField = 'active';
-        _active?.build();
+        _$failedField = 'status';
+        _status?.build();
         _$failedField = 'placeId';
         _placeId?.build();
         _$failedField = 'place';
@@ -12101,13 +12358,13 @@ class GRoomModelFilterInputBuilder
 
 class _$GRoomModelSortInput extends GRoomModelSortInput {
   @override
-  final GSortEnumType? numero;
+  final GSortEnumType? number;
   @override
-  final GSortEnumType? descricao;
+  final GSortEnumType? description;
   @override
   final GSortEnumType? capacity;
   @override
-  final GSortEnumType? active;
+  final GSortEnumType? status;
   @override
   final GSortEnumType? placeId;
   @override
@@ -12122,10 +12379,10 @@ class _$GRoomModelSortInput extends GRoomModelSortInput {
   ]) => (GRoomModelSortInputBuilder()..update(updates))._build();
 
   _$GRoomModelSortInput._({
-    this.numero,
-    this.descricao,
+    this.number,
+    this.description,
     this.capacity,
-    this.active,
+    this.status,
     this.placeId,
     this.place,
     this.id,
@@ -12144,10 +12401,10 @@ class _$GRoomModelSortInput extends GRoomModelSortInput {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GRoomModelSortInput &&
-        numero == other.numero &&
-        descricao == other.descricao &&
+        number == other.number &&
+        description == other.description &&
         capacity == other.capacity &&
-        active == other.active &&
+        status == other.status &&
         placeId == other.placeId &&
         place == other.place &&
         id == other.id &&
@@ -12157,10 +12414,10 @@ class _$GRoomModelSortInput extends GRoomModelSortInput {
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, numero.hashCode);
-    _$hash = $jc(_$hash, descricao.hashCode);
+    _$hash = $jc(_$hash, number.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, capacity.hashCode);
-    _$hash = $jc(_$hash, active.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jc(_$hash, placeId.hashCode);
     _$hash = $jc(_$hash, place.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
@@ -12172,10 +12429,10 @@ class _$GRoomModelSortInput extends GRoomModelSortInput {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GRoomModelSortInput')
-          ..add('numero', numero)
-          ..add('descricao', descricao)
+          ..add('number', number)
+          ..add('description', description)
           ..add('capacity', capacity)
-          ..add('active', active)
+          ..add('status', status)
           ..add('placeId', placeId)
           ..add('place', place)
           ..add('id', id)
@@ -12188,21 +12445,22 @@ class GRoomModelSortInputBuilder
     implements Builder<GRoomModelSortInput, GRoomModelSortInputBuilder> {
   _$GRoomModelSortInput? _$v;
 
-  GSortEnumType? _numero;
-  GSortEnumType? get numero => _$this._numero;
-  set numero(GSortEnumType? numero) => _$this._numero = numero;
+  GSortEnumType? _number;
+  GSortEnumType? get number => _$this._number;
+  set number(GSortEnumType? number) => _$this._number = number;
 
-  GSortEnumType? _descricao;
-  GSortEnumType? get descricao => _$this._descricao;
-  set descricao(GSortEnumType? descricao) => _$this._descricao = descricao;
+  GSortEnumType? _description;
+  GSortEnumType? get description => _$this._description;
+  set description(GSortEnumType? description) =>
+      _$this._description = description;
 
   GSortEnumType? _capacity;
   GSortEnumType? get capacity => _$this._capacity;
   set capacity(GSortEnumType? capacity) => _$this._capacity = capacity;
 
-  GSortEnumType? _active;
-  GSortEnumType? get active => _$this._active;
-  set active(GSortEnumType? active) => _$this._active = active;
+  GSortEnumType? _status;
+  GSortEnumType? get status => _$this._status;
+  set status(GSortEnumType? status) => _$this._status = status;
 
   GSortEnumType? _placeId;
   GSortEnumType? get placeId => _$this._placeId;
@@ -12226,10 +12484,10 @@ class GRoomModelSortInputBuilder
   GRoomModelSortInputBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _numero = $v.numero;
-      _descricao = $v.descricao;
+      _number = $v.number;
+      _description = $v.description;
       _capacity = $v.capacity;
-      _active = $v.active;
+      _status = $v.status;
       _placeId = $v.placeId;
       _place = $v.place?.toBuilder();
       _id = $v.id;
@@ -12258,10 +12516,10 @@ class GRoomModelSortInputBuilder
       _$result =
           _$v ??
           _$GRoomModelSortInput._(
-            numero: numero,
-            descricao: descricao,
+            number: number,
+            description: description,
             capacity: capacity,
-            active: active,
+            status: status,
             placeId: placeId,
             place: _place?.build(),
             id: id,
@@ -12952,9 +13210,9 @@ class _$GUpdateRoomInput extends GUpdateRoomInput {
   @override
   final String id;
   @override
-  final String? descricao;
+  final String? description;
   @override
-  final GByte? capacity;
+  final int? capacity;
   @override
   final bool? active;
 
@@ -12964,7 +13222,7 @@ class _$GUpdateRoomInput extends GUpdateRoomInput {
 
   _$GUpdateRoomInput._({
     required this.id,
-    this.descricao,
+    this.description,
     this.capacity,
     this.active,
   }) : super._();
@@ -12981,7 +13239,7 @@ class _$GUpdateRoomInput extends GUpdateRoomInput {
     if (identical(other, this)) return true;
     return other is GUpdateRoomInput &&
         id == other.id &&
-        descricao == other.descricao &&
+        description == other.description &&
         capacity == other.capacity &&
         active == other.active;
   }
@@ -12990,7 +13248,7 @@ class _$GUpdateRoomInput extends GUpdateRoomInput {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, descricao.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, capacity.hashCode);
     _$hash = $jc(_$hash, active.hashCode);
     _$hash = $jf(_$hash);
@@ -13001,7 +13259,7 @@ class _$GUpdateRoomInput extends GUpdateRoomInput {
   String toString() {
     return (newBuiltValueToStringHelper(r'GUpdateRoomInput')
           ..add('id', id)
-          ..add('descricao', descricao)
+          ..add('description', description)
           ..add('capacity', capacity)
           ..add('active', active))
         .toString();
@@ -13016,13 +13274,13 @@ class GUpdateRoomInputBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  String? _descricao;
-  String? get descricao => _$this._descricao;
-  set descricao(String? descricao) => _$this._descricao = descricao;
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
 
-  GByteBuilder? _capacity;
-  GByteBuilder get capacity => _$this._capacity ??= GByteBuilder();
-  set capacity(GByteBuilder? capacity) => _$this._capacity = capacity;
+  int? _capacity;
+  int? get capacity => _$this._capacity;
+  set capacity(int? capacity) => _$this._capacity = capacity;
 
   bool? _active;
   bool? get active => _$this._active;
@@ -13034,8 +13292,8 @@ class GUpdateRoomInputBuilder
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
-      _descricao = $v.descricao;
-      _capacity = $v.capacity?.toBuilder();
+      _description = $v.description;
+      _capacity = $v.capacity;
       _active = $v.active;
       _$v = null;
     }
@@ -13056,34 +13314,18 @@ class GUpdateRoomInputBuilder
   GUpdateRoomInput build() => _build();
 
   _$GUpdateRoomInput _build() {
-    _$GUpdateRoomInput _$result;
-    try {
-      _$result =
-          _$v ??
-          _$GUpdateRoomInput._(
-            id: BuiltValueNullFieldError.checkNotNull(
-              id,
-              r'GUpdateRoomInput',
-              'id',
-            ),
-            descricao: descricao,
-            capacity: _capacity?.build(),
-            active: active,
-          );
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'capacity';
-        _capacity?.build();
-      } catch (e) {
-        throw BuiltValueNestedFieldError(
-          r'GUpdateRoomInput',
-          _$failedField,
-          e.toString(),
+    final _$result =
+        _$v ??
+        _$GUpdateRoomInput._(
+          id: BuiltValueNullFieldError.checkNotNull(
+            id,
+            r'GUpdateRoomInput',
+            'id',
+          ),
+          description: description,
+          capacity: capacity,
+          active: active,
         );
-      }
-      rethrow;
-    }
     replace(_$result);
     return _$result;
   }
@@ -13665,89 +13907,6 @@ class GUserModelSortInputBuilder
       }
       rethrow;
     }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GByte extends GByte {
-  @override
-  final String value;
-
-  factory _$GByte([void Function(GByteBuilder)? updates]) =>
-      (GByteBuilder()..update(updates))._build();
-
-  _$GByte._({required this.value}) : super._();
-  @override
-  GByte rebuild(void Function(GByteBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  GByteBuilder toBuilder() => GByteBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GByte && value == other.value;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, value.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-      r'GByte',
-    )..add('value', value)).toString();
-  }
-}
-
-class GByteBuilder implements Builder<GByte, GByteBuilder> {
-  _$GByte? _$v;
-
-  String? _value;
-  String? get value => _$this._value;
-  set value(String? value) => _$this._value = value;
-
-  GByteBuilder();
-
-  GByteBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _value = $v.value;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GByte other) {
-    _$v = other as _$GByte;
-  }
-
-  @override
-  void update(void Function(GByteBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GByte build() => _build();
-
-  _$GByte _build() {
-    final _$result =
-        _$v ??
-        _$GByte._(
-          value: BuiltValueNullFieldError.checkNotNull(
-            value,
-            r'GByte',
-            'value',
-          ),
-        );
     replace(_$result);
     return _$result;
   }

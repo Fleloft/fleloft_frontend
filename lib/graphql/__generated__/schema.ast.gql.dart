@@ -3050,7 +3050,7 @@ const RoomModel = _i1.ObjectTypeDefinitionNode(
       ),
     ),
     _i1.FieldDefinitionNode(
-      name: _i1.NameNode(value: 'numero'),
+      name: _i1.NameNode(value: 'number'),
       directives: [],
       args: [],
       type: _i1.NamedTypeNode(
@@ -3059,7 +3059,7 @@ const RoomModel = _i1.ObjectTypeDefinitionNode(
       ),
     ),
     _i1.FieldDefinitionNode(
-      name: _i1.NameNode(value: 'descricao'),
+      name: _i1.NameNode(value: 'description'),
       directives: [],
       args: [],
       type: _i1.NamedTypeNode(
@@ -3077,11 +3077,11 @@ const RoomModel = _i1.ObjectTypeDefinitionNode(
       ),
     ),
     _i1.FieldDefinitionNode(
-      name: _i1.NameNode(value: 'active'),
+      name: _i1.NameNode(value: 'status'),
       directives: [],
       args: [],
       type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'Boolean'),
+        name: _i1.NameNode(value: 'OccupancyStatusEnum'),
         isNonNull: false,
       ),
     ),
@@ -4439,7 +4439,7 @@ const CreateRoomInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
-      name: _i1.NameNode(value: 'numero'),
+      name: _i1.NameNode(value: 'number'),
       directives: [],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Byte'),
@@ -4448,7 +4448,7 @@ const CreateRoomInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
-      name: _i1.NameNode(value: 'descricao'),
+      name: _i1.NameNode(value: 'description'),
       directives: [],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'String'),
@@ -6413,6 +6413,108 @@ const NullableOfFileTypeEnumOperationFilterInput =
     ),
   ],
 );
+const NullableOfOccupancyStatusEnumOperationFilterInput =
+    _i1.InputObjectTypeDefinitionNode(
+  name:
+      _i1.NameNode(value: 'NullableOfOccupancyStatusEnumOperationFilterInput'),
+  directives: [],
+  fields: [
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'eq'),
+      directives: [
+        _i1.DirectiveNode(
+          name: _i1.NameNode(value: 'cost'),
+          arguments: [
+            _i1.ArgumentNode(
+              name: _i1.NameNode(value: 'weight'),
+              value: _i1.StringValueNode(
+                value: '10',
+                isBlock: false,
+              ),
+            )
+          ],
+        )
+      ],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'OccupancyStatusEnum'),
+        isNonNull: false,
+      ),
+      defaultValue: null,
+    ),
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'neq'),
+      directives: [
+        _i1.DirectiveNode(
+          name: _i1.NameNode(value: 'cost'),
+          arguments: [
+            _i1.ArgumentNode(
+              name: _i1.NameNode(value: 'weight'),
+              value: _i1.StringValueNode(
+                value: '10',
+                isBlock: false,
+              ),
+            )
+          ],
+        )
+      ],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'OccupancyStatusEnum'),
+        isNonNull: false,
+      ),
+      defaultValue: null,
+    ),
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'in'),
+      directives: [
+        _i1.DirectiveNode(
+          name: _i1.NameNode(value: 'cost'),
+          arguments: [
+            _i1.ArgumentNode(
+              name: _i1.NameNode(value: 'weight'),
+              value: _i1.StringValueNode(
+                value: '10',
+                isBlock: false,
+              ),
+            )
+          ],
+        )
+      ],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'OccupancyStatusEnum'),
+          isNonNull: false,
+        ),
+        isNonNull: false,
+      ),
+      defaultValue: null,
+    ),
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'nin'),
+      directives: [
+        _i1.DirectiveNode(
+          name: _i1.NameNode(value: 'cost'),
+          arguments: [
+            _i1.ArgumentNode(
+              name: _i1.NameNode(value: 'weight'),
+              value: _i1.StringValueNode(
+                value: '10',
+                isBlock: false,
+              ),
+            )
+          ],
+        )
+      ],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'OccupancyStatusEnum'),
+          isNonNull: false,
+        ),
+        isNonNull: false,
+      ),
+      defaultValue: null,
+    ),
+  ],
+);
 const PlaceModelFilterInput = _i1.InputObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'PlaceModelFilterInput'),
   directives: [],
@@ -6944,7 +7046,7 @@ const RoomModelFilterInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
-      name: _i1.NameNode(value: 'numero'),
+      name: _i1.NameNode(value: 'number'),
       directives: [],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'ByteOperationFilterInput'),
@@ -6953,7 +7055,7 @@ const RoomModelFilterInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
-      name: _i1.NameNode(value: 'descricao'),
+      name: _i1.NameNode(value: 'description'),
       directives: [],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'StringOperationFilterInput'),
@@ -6971,10 +7073,11 @@ const RoomModelFilterInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
-      name: _i1.NameNode(value: 'active'),
+      name: _i1.NameNode(value: 'status'),
       directives: [],
       type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'BooleanOperationFilterInput'),
+        name: _i1.NameNode(
+            value: 'NullableOfOccupancyStatusEnumOperationFilterInput'),
         isNonNull: false,
       ),
       defaultValue: null,
@@ -7041,7 +7144,7 @@ const RoomModelSortInput = _i1.InputObjectTypeDefinitionNode(
   directives: [],
   fields: [
     _i1.InputValueDefinitionNode(
-      name: _i1.NameNode(value: 'numero'),
+      name: _i1.NameNode(value: 'number'),
       directives: [
         _i1.DirectiveNode(
           name: _i1.NameNode(value: 'cost'),
@@ -7063,7 +7166,7 @@ const RoomModelSortInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
-      name: _i1.NameNode(value: 'descricao'),
+      name: _i1.NameNode(value: 'description'),
       directives: [
         _i1.DirectiveNode(
           name: _i1.NameNode(value: 'cost'),
@@ -7107,7 +7210,7 @@ const RoomModelSortInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
-      name: _i1.NameNode(value: 'active'),
+      name: _i1.NameNode(value: 'status'),
       directives: [
         _i1.DirectiveNode(
           name: _i1.NameNode(value: 'cost'),
@@ -7623,7 +7726,7 @@ const UpdateRoomInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
-      name: _i1.NameNode(value: 'descricao'),
+      name: _i1.NameNode(value: 'description'),
       directives: [],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'String'),
@@ -8049,6 +8152,32 @@ const FileTypeEnum = _i1.EnumTypeDefinitionNode(
     ),
   ],
 );
+const OccupancyStatusEnum = _i1.EnumTypeDefinitionNode(
+  name: _i1.NameNode(value: 'OccupancyStatusEnum'),
+  directives: [],
+  values: [
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'AVAILABLE'),
+      directives: [],
+    ),
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'OCCUPIED'),
+      directives: [],
+    ),
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'MAINTENANCE'),
+      directives: [],
+    ),
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'UNAVAILABLE'),
+      directives: [],
+    ),
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'RENTED'),
+      directives: [],
+    ),
+  ],
+);
 const SortEnumType = _i1.EnumTypeDefinitionNode(
   name: _i1.NameNode(value: 'SortEnumType'),
   directives: [],
@@ -8291,6 +8420,7 @@ const document = _i1.DocumentNode(definitions: [
   LocalDateOperationFilterInput,
   LongOperationFilterInput,
   NullableOfFileTypeEnumOperationFilterInput,
+  NullableOfOccupancyStatusEnumOperationFilterInput,
   PlaceModelFilterInput,
   PlaceModelSortInput,
   RoleModelFilterInput,
@@ -8308,6 +8438,7 @@ const document = _i1.DocumentNode(definitions: [
   ApplyPolicy,
   CheckinStatusEnum,
   FileTypeEnum,
+  OccupancyStatusEnum,
   SortEnumType,
   authorize,
   cost,

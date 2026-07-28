@@ -11,7 +11,6 @@ Serializers _$serializers =
           ..add(FetchPolicy.serializer)
           ..add(GApplyPolicy.serializer)
           ..add(GBooleanOperationFilterInput.serializer)
-          ..add(GByte.serializer)
           ..add(GByteOperationFilterInput.serializer)
           ..add(GCheckinModelFilterInput.serializer)
           ..add(GCheckinModelSortInput.serializer)
@@ -36,6 +35,16 @@ Serializers _$serializers =
           ..add(GFileModelFilterInput.serializer)
           ..add(GFileModelSortInput.serializer)
           ..add(GFileTypeEnum.serializer)
+          ..add(GGetPlaceByIdData.serializer)
+          ..add(GGetPlaceByIdData_placeById.serializer)
+          ..add(GGetPlaceByIdData_placeById_rooms.serializer)
+          ..add(GGetPlaceByIdReq.serializer)
+          ..add(GGetPlaceByIdVars.serializer)
+          ..add(GGetPlacesData.serializer)
+          ..add(GGetPlacesData_places.serializer)
+          ..add(GGetPlacesData_places_nodes.serializer)
+          ..add(GGetPlacesReq.serializer)
+          ..add(GGetPlacesVars.serializer)
           ..add(GGetUserData.serializer)
           ..add(GGetUserData_userById.serializer)
           ..add(GGetUserReq.serializer)
@@ -54,6 +63,8 @@ Serializers _$serializers =
           ..add(GLocalDateOperationFilterInput.serializer)
           ..add(GLongOperationFilterInput.serializer)
           ..add(GNullableOfFileTypeEnumOperationFilterInput.serializer)
+          ..add(GNullableOfOccupancyStatusEnumOperationFilterInput.serializer)
+          ..add(GOccupancyStatusEnum.serializer)
           ..add(GPlaceModelFilterInput.serializer)
           ..add(GPlaceModelSortInput.serializer)
           ..add(GRoleModelFilterInput.serializer)
@@ -104,6 +115,12 @@ Serializers _$serializers =
               const FullType(GFileModelFilterInput),
             ]),
             () => ListBuilder<GFileModelFilterInput>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType(GGetPlacesData_places_nodes),
+            ]),
+            () => ListBuilder<GGetPlacesData_places_nodes>(),
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [
@@ -180,14 +197,6 @@ Serializers _$serializers =
             () => ListBuilder<GUserModelFilterInput>(),
           )
           ..addBuilderFactory(
-            const FullType(BuiltList, const [const FullType.nullable(GByte)]),
-            () => ListBuilder<GByte?>(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [const FullType.nullable(GByte)]),
-            () => ListBuilder<GByte?>(),
-          )
-          ..addBuilderFactory(
             const FullType(BuiltList, const [
               const FullType.nullable(GDateTime),
             ]),
@@ -213,6 +222,12 @@ Serializers _$serializers =
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [
+              const FullType.nullable(GGetPlaceByIdData_placeById_rooms),
+            ]),
+            () => ListBuilder<GGetPlaceByIdData_placeById_rooms?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
               const FullType.nullable(GLocalDate),
             ]),
             () => ListBuilder<GLocalDate?>(),
@@ -224,12 +239,32 @@ Serializers _$serializers =
             () => ListBuilder<GLocalDate?>(),
           )
           ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GOccupancyStatusEnum),
+            ]),
+            () => ListBuilder<GOccupancyStatusEnum?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GOccupancyStatusEnum),
+            ]),
+            () => ListBuilder<GOccupancyStatusEnum?>(),
+          )
+          ..addBuilderFactory(
             const FullType(BuiltList, const [const FullType.nullable(String)]),
             () => ListBuilder<String?>(),
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [const FullType.nullable(String)]),
             () => ListBuilder<String?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [const FullType.nullable(int)]),
+            () => ListBuilder<int?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [const FullType.nullable(int)]),
+            () => ListBuilder<int?>(),
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [const FullType.nullable(int)]),

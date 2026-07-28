@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$FileModel {
 
- int? get id; int? get dbid; FileTypeEnum? get type; String? get url; int? get roomId; RoomModel? get room; int? get userId; UserModel? get user; int? get checkinId; CheckinModel? get checkin; int? get placeId; PlaceModel? get place;
+ String? get id; int? get dbid; FileTypeEnum? get type; String? get url; int? get roomId; RoomModel? get room; int? get userId; UserModel? get user; int? get checkinId; CheckinModel? get checkin; int? get placeId; PlaceModel? get place;
 /// Create a copy of FileModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $FileModelCopyWith<$Res>  {
   factory $FileModelCopyWith(FileModel value, $Res Function(FileModel) _then) = _$FileModelCopyWithImpl;
 @useResult
 $Res call({
- int? id, int? dbid, FileTypeEnum? type, String? url, int? roomId, RoomModel? room, int? userId, UserModel? user, int? checkinId, CheckinModel? checkin, int? placeId, PlaceModel? place
+ String? id, int? dbid, FileTypeEnum? type, String? url, int? roomId, RoomModel? room, int? userId, UserModel? user, int? checkinId, CheckinModel? checkin, int? placeId, PlaceModel? place
 });
 
 
@@ -65,7 +65,7 @@ class _$FileModelCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? dbid = freezed,Object? type = freezed,Object? url = freezed,Object? roomId = freezed,Object? room = freezed,Object? userId = freezed,Object? user = freezed,Object? checkinId = freezed,Object? checkin = freezed,Object? placeId = freezed,Object? place = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
+as String?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
 as int?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as FileTypeEnum?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String?,roomId: freezed == roomId ? _self.roomId : roomId // ignore: cast_nullable_to_non_nullable
@@ -209,7 +209,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  int? dbid,  FileTypeEnum? type,  String? url,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user,  int? checkinId,  CheckinModel? checkin,  int? placeId,  PlaceModel? place)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  int? dbid,  FileTypeEnum? type,  String? url,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user,  int? checkinId,  CheckinModel? checkin,  int? placeId,  PlaceModel? place)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _FileModel() when $default != null:
 return $default(_that.id,_that.dbid,_that.type,_that.url,_that.roomId,_that.room,_that.userId,_that.user,_that.checkinId,_that.checkin,_that.placeId,_that.place);case _:
@@ -230,7 +230,7 @@ return $default(_that.id,_that.dbid,_that.type,_that.url,_that.roomId,_that.room
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  int? dbid,  FileTypeEnum? type,  String? url,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user,  int? checkinId,  CheckinModel? checkin,  int? placeId,  PlaceModel? place)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  int? dbid,  FileTypeEnum? type,  String? url,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user,  int? checkinId,  CheckinModel? checkin,  int? placeId,  PlaceModel? place)  $default,) {final _that = this;
 switch (_that) {
 case _FileModel():
 return $default(_that.id,_that.dbid,_that.type,_that.url,_that.roomId,_that.room,_that.userId,_that.user,_that.checkinId,_that.checkin,_that.placeId,_that.place);case _:
@@ -250,7 +250,7 @@ return $default(_that.id,_that.dbid,_that.type,_that.url,_that.roomId,_that.room
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  int? dbid,  FileTypeEnum? type,  String? url,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user,  int? checkinId,  CheckinModel? checkin,  int? placeId,  PlaceModel? place)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  int? dbid,  FileTypeEnum? type,  String? url,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user,  int? checkinId,  CheckinModel? checkin,  int? placeId,  PlaceModel? place)?  $default,) {final _that = this;
 switch (_that) {
 case _FileModel() when $default != null:
 return $default(_that.id,_that.dbid,_that.type,_that.url,_that.roomId,_that.room,_that.userId,_that.user,_that.checkinId,_that.checkin,_that.placeId,_that.place);case _:
@@ -268,7 +268,7 @@ class _FileModel implements FileModel {
    _FileModel({this.id, this.dbid, this.type, this.url, this.roomId, this.room, this.userId, this.user, this.checkinId, this.checkin, this.placeId, this.place});
   
 
-@override final  int? id;
+@override final  String? id;
 @override final  int? dbid;
 @override final  FileTypeEnum? type;
 @override final  String? url;
@@ -311,7 +311,7 @@ abstract mixin class _$FileModelCopyWith<$Res> implements $FileModelCopyWith<$Re
   factory _$FileModelCopyWith(_FileModel value, $Res Function(_FileModel) _then) = __$FileModelCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, int? dbid, FileTypeEnum? type, String? url, int? roomId, RoomModel? room, int? userId, UserModel? user, int? checkinId, CheckinModel? checkin, int? placeId, PlaceModel? place
+ String? id, int? dbid, FileTypeEnum? type, String? url, int? roomId, RoomModel? room, int? userId, UserModel? user, int? checkinId, CheckinModel? checkin, int? placeId, PlaceModel? place
 });
 
 
@@ -331,7 +331,7 @@ class __$FileModelCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? dbid = freezed,Object? type = freezed,Object? url = freezed,Object? roomId = freezed,Object? room = freezed,Object? userId = freezed,Object? user = freezed,Object? checkinId = freezed,Object? checkin = freezed,Object? placeId = freezed,Object? place = freezed,}) {
   return _then(_FileModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
+as String?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
 as int?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as FileTypeEnum?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String?,roomId: freezed == roomId ? _self.roomId : roomId // ignore: cast_nullable_to_non_nullable

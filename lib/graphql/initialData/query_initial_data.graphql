@@ -1,6 +1,6 @@
 query InitialData {
-  roles(order: { id: ASC }){
-    nodes{
+  roles(order: { id: ASC }) {
+    nodes {
       dbId
       id
       name
