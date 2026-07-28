@@ -10,7 +10,7 @@ part 'file_model.freezed.dart';
 @freezed
 abstract class FileModel with _$FileModel {
   factory FileModel({
-    int? id,
+    String? id,
     int? dbid,
     FileTypeEnum? type,
     String? url,

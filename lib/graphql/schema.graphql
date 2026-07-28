@@ -222,10 +222,10 @@ type RoomModel implements Node {
   place: PlaceModel @cost(weight: "10")
   checkins: [CheckinModel] @cost(weight: "10")
   files: [FileModel] @cost(weight: "10")
-  numero: Byte
-  descricao: String
+  number: Byte
+  description: String
   capacity: Byte
-  active: Boolean
+  status: OccupancyStatusEnum
   placeId: Long!
   id: ID!
   dbId: String!
@@ -379,8 +379,8 @@ input CreateFileInput {
 
 input CreateRoomInput {
   placeId: ID!
-  numero: Byte!
-  descricao: String!
+  number: Byte!
+  description: String!
   capacity: Byte!
   active: Boolean!
 }
@@ -529,6 +529,13 @@ input NullableOfFileTypeEnumOperationFilterInput {
   nin: [FileTypeEnum] @cost(weight: "10")
 }
 
+input NullableOfOccupancyStatusEnumOperationFilterInput {
+  eq: OccupancyStatusEnum @cost(weight: "10")
+  neq: OccupancyStatusEnum @cost(weight: "10")
+  in: [OccupancyStatusEnum] @cost(weight: "10")
+  nin: [OccupancyStatusEnum] @cost(weight: "10")
+}
+
 input PlaceModelFilterInput {
   and: [PlaceModelFilterInput!]
   or: [PlaceModelFilterInput!]
@@ -577,10 +584,10 @@ input RoleModelSortInput {
 input RoomModelFilterInput {
   and: [RoomModelFilterInput!]
   or: [RoomModelFilterInput!]
-  numero: ByteOperationFilterInput
-  descricao: StringOperationFilterInput
+  number: ByteOperationFilterInput
+  description: StringOperationFilterInput
   capacity: ByteOperationFilterInput
-  active: BooleanOperationFilterInput
+  status: NullableOfOccupancyStatusEnumOperationFilterInput
   placeId: LongOperationFilterInput
   place: PlaceModelFilterInput
   checkins: ListFilterInputTypeOfCheckinModelFilterInput
@@ -590,10 +597,10 @@ input RoomModelFilterInput {
 }
 
 input RoomModelSortInput {
-  numero: SortEnumType @cost(weight: "10")
-  descricao: SortEnumType @cost(weight: "10")
+  number: SortEnumType @cost(weight: "10")
+  description: SortEnumType @cost(weight: "10")
   capacity: SortEnumType @cost(weight: "10")
-  active: SortEnumType @cost(weight: "10")
+  status: SortEnumType @cost(weight: "10")
   placeId: SortEnumType @cost(weight: "10")
   place: PlaceModelSortInput @cost(weight: "10")
   id: SortEnumType @cost(weight: "10")
@@ -639,7 +646,7 @@ input UpdatePlaceInput {
 
 input UpdateRoomInput {
   id: ID!
-  descricao: String
+  description: String
   capacity: Byte
   active: Boolean
 }
@@ -698,6 +705,14 @@ enum FileTypeEnum {
   SELFIE
   PHOTO
   OTHER
+}
+
+enum OccupancyStatusEnum {
+  AVAILABLE
+  OCCUPIED
+  MAINTENANCE
+  UNAVAILABLE
+  RENTED
 }
 
 enum SortEnumType {

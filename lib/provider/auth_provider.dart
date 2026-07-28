@@ -18,6 +18,7 @@ class Auth extends _$Auth {
   @override
   AuthState build() {
     _firebase = ref.watch(firebaseBaseProvider);
+    // signOut();
 
     if (!_initialized) {
       _initialized = true;

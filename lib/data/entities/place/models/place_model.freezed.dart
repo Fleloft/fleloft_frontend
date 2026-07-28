@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PlaceModel {
 
- int? get id; int? get dbid; String? get nome; String? get endereco; String? get bairro; String? get cidade; String? get estado; String? get cep; String? get observacoes; bool get ativo;
+ String? get id; int? get dbId; String? get name; String? get address; String? get neighborhood; String? get city; String? get state; String? get zipCode; String? get observations; List<RoomModel>? get rooms; bool get ativo;
 /// Create a copy of PlaceModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $PlaceModelCopyWith<PlaceModel> get copyWith => _$PlaceModelCopyWithImpl<PlaceMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PlaceModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbid, dbid) || other.dbid == dbid)&&(identical(other.nome, nome) || other.nome == nome)&&(identical(other.endereco, endereco) || other.endereco == endereco)&&(identical(other.bairro, bairro) || other.bairro == bairro)&&(identical(other.cidade, cidade) || other.cidade == cidade)&&(identical(other.estado, estado) || other.estado == estado)&&(identical(other.cep, cep) || other.cep == cep)&&(identical(other.observacoes, observacoes) || other.observacoes == observacoes)&&(identical(other.ativo, ativo) || other.ativo == ativo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PlaceModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbId, dbId) || other.dbId == dbId)&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address)&&(identical(other.neighborhood, neighborhood) || other.neighborhood == neighborhood)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.observations, observations) || other.observations == observations)&&const DeepCollectionEquality().equals(other.rooms, rooms)&&(identical(other.ativo, ativo) || other.ativo == ativo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,dbid,nome,endereco,bairro,cidade,estado,cep,observacoes,ativo);
+int get hashCode => Object.hash(runtimeType,id,dbId,name,address,neighborhood,city,state,zipCode,observations,const DeepCollectionEquality().hash(rooms),ativo);
 
 @override
 String toString() {
-  return 'PlaceModel(id: $id, dbid: $dbid, nome: $nome, endereco: $endereco, bairro: $bairro, cidade: $cidade, estado: $estado, cep: $cep, observacoes: $observacoes, ativo: $ativo)';
+  return 'PlaceModel(id: $id, dbId: $dbId, name: $name, address: $address, neighborhood: $neighborhood, city: $city, state: $state, zipCode: $zipCode, observations: $observations, rooms: $rooms, ativo: $ativo)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $PlaceModelCopyWith<$Res>  {
   factory $PlaceModelCopyWith(PlaceModel value, $Res Function(PlaceModel) _then) = _$PlaceModelCopyWithImpl;
 @useResult
 $Res call({
- int? id, int? dbid, String? nome, String? endereco, String? bairro, String? cidade, String? estado, String? cep, String? observacoes, bool ativo
+ String? id, int? dbId, String? name, String? address, String? neighborhood, String? city, String? state, String? zipCode, String? observations, List<RoomModel>? rooms, bool ativo
 });
 
 
@@ -62,18 +62,19 @@ class _$PlaceModelCopyWithImpl<$Res>
 
 /// Create a copy of PlaceModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? dbid = freezed,Object? nome = freezed,Object? endereco = freezed,Object? bairro = freezed,Object? cidade = freezed,Object? estado = freezed,Object? cep = freezed,Object? observacoes = freezed,Object? ativo = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? dbId = freezed,Object? name = freezed,Object? address = freezed,Object? neighborhood = freezed,Object? city = freezed,Object? state = freezed,Object? zipCode = freezed,Object? observations = freezed,Object? rooms = freezed,Object? ativo = null,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
-as int?,nome: freezed == nome ? _self.nome : nome // ignore: cast_nullable_to_non_nullable
-as String?,endereco: freezed == endereco ? _self.endereco : endereco // ignore: cast_nullable_to_non_nullable
-as String?,bairro: freezed == bairro ? _self.bairro : bairro // ignore: cast_nullable_to_non_nullable
-as String?,cidade: freezed == cidade ? _self.cidade : cidade // ignore: cast_nullable_to_non_nullable
-as String?,estado: freezed == estado ? _self.estado : estado // ignore: cast_nullable_to_non_nullable
-as String?,cep: freezed == cep ? _self.cep : cep // ignore: cast_nullable_to_non_nullable
-as String?,observacoes: freezed == observacoes ? _self.observacoes : observacoes // ignore: cast_nullable_to_non_nullable
-as String?,ativo: null == ativo ? _self.ativo : ativo // ignore: cast_nullable_to_non_nullable
+as String?,dbId: freezed == dbId ? _self.dbId : dbId // ignore: cast_nullable_to_non_nullable
+as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String?,neighborhood: freezed == neighborhood ? _self.neighborhood : neighborhood // ignore: cast_nullable_to_non_nullable
+as String?,city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
+as String?,state: freezed == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
+as String?,zipCode: freezed == zipCode ? _self.zipCode : zipCode // ignore: cast_nullable_to_non_nullable
+as String?,observations: freezed == observations ? _self.observations : observations // ignore: cast_nullable_to_non_nullable
+as String?,rooms: freezed == rooms ? _self.rooms : rooms // ignore: cast_nullable_to_non_nullable
+as List<RoomModel>?,ativo: null == ativo ? _self.ativo : ativo // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -159,10 +160,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  int? dbid,  String? nome,  String? endereco,  String? bairro,  String? cidade,  String? estado,  String? cep,  String? observacoes,  bool ativo)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  int? dbId,  String? name,  String? address,  String? neighborhood,  String? city,  String? state,  String? zipCode,  String? observations,  List<RoomModel>? rooms,  bool ativo)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PlaceModel() when $default != null:
-return $default(_that.id,_that.dbid,_that.nome,_that.endereco,_that.bairro,_that.cidade,_that.estado,_that.cep,_that.observacoes,_that.ativo);case _:
+return $default(_that.id,_that.dbId,_that.name,_that.address,_that.neighborhood,_that.city,_that.state,_that.zipCode,_that.observations,_that.rooms,_that.ativo);case _:
   return orElse();
 
 }
@@ -180,10 +181,10 @@ return $default(_that.id,_that.dbid,_that.nome,_that.endereco,_that.bairro,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  int? dbid,  String? nome,  String? endereco,  String? bairro,  String? cidade,  String? estado,  String? cep,  String? observacoes,  bool ativo)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  int? dbId,  String? name,  String? address,  String? neighborhood,  String? city,  String? state,  String? zipCode,  String? observations,  List<RoomModel>? rooms,  bool ativo)  $default,) {final _that = this;
 switch (_that) {
 case _PlaceModel():
-return $default(_that.id,_that.dbid,_that.nome,_that.endereco,_that.bairro,_that.cidade,_that.estado,_that.cep,_that.observacoes,_that.ativo);case _:
+return $default(_that.id,_that.dbId,_that.name,_that.address,_that.neighborhood,_that.city,_that.state,_that.zipCode,_that.observations,_that.rooms,_that.ativo);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -200,10 +201,10 @@ return $default(_that.id,_that.dbid,_that.nome,_that.endereco,_that.bairro,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  int? dbid,  String? nome,  String? endereco,  String? bairro,  String? cidade,  String? estado,  String? cep,  String? observacoes,  bool ativo)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  int? dbId,  String? name,  String? address,  String? neighborhood,  String? city,  String? state,  String? zipCode,  String? observations,  List<RoomModel>? rooms,  bool ativo)?  $default,) {final _that = this;
 switch (_that) {
 case _PlaceModel() when $default != null:
-return $default(_that.id,_that.dbid,_that.nome,_that.endereco,_that.bairro,_that.cidade,_that.estado,_that.cep,_that.observacoes,_that.ativo);case _:
+return $default(_that.id,_that.dbId,_that.name,_that.address,_that.neighborhood,_that.city,_that.state,_that.zipCode,_that.observations,_that.rooms,_that.ativo);case _:
   return null;
 
 }
@@ -215,18 +216,27 @@ return $default(_that.id,_that.dbid,_that.nome,_that.endereco,_that.bairro,_that
 
 
 class _PlaceModel implements PlaceModel {
-   _PlaceModel({this.id, this.dbid, this.nome, this.endereco, this.bairro, this.cidade, this.estado, this.cep, this.observacoes, this.ativo = true});
+   _PlaceModel({this.id, this.dbId, this.name, this.address, this.neighborhood, this.city, this.state, this.zipCode, this.observations, final  List<RoomModel>? rooms, this.ativo = true}): _rooms = rooms;
   
 
-@override final  int? id;
-@override final  int? dbid;
-@override final  String? nome;
-@override final  String? endereco;
-@override final  String? bairro;
-@override final  String? cidade;
-@override final  String? estado;
-@override final  String? cep;
-@override final  String? observacoes;
+@override final  String? id;
+@override final  int? dbId;
+@override final  String? name;
+@override final  String? address;
+@override final  String? neighborhood;
+@override final  String? city;
+@override final  String? state;
+@override final  String? zipCode;
+@override final  String? observations;
+ final  List<RoomModel>? _rooms;
+@override List<RoomModel>? get rooms {
+  final value = _rooms;
+  if (value == null) return null;
+  if (_rooms is EqualUnmodifiableListView) return _rooms;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
 @override@JsonKey() final  bool ativo;
 
 /// Create a copy of PlaceModel
@@ -239,16 +249,16 @@ _$PlaceModelCopyWith<_PlaceModel> get copyWith => __$PlaceModelCopyWithImpl<_Pla
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PlaceModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbid, dbid) || other.dbid == dbid)&&(identical(other.nome, nome) || other.nome == nome)&&(identical(other.endereco, endereco) || other.endereco == endereco)&&(identical(other.bairro, bairro) || other.bairro == bairro)&&(identical(other.cidade, cidade) || other.cidade == cidade)&&(identical(other.estado, estado) || other.estado == estado)&&(identical(other.cep, cep) || other.cep == cep)&&(identical(other.observacoes, observacoes) || other.observacoes == observacoes)&&(identical(other.ativo, ativo) || other.ativo == ativo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PlaceModel&&(identical(other.id, id) || other.id == id)&&(identical(other.dbId, dbId) || other.dbId == dbId)&&(identical(other.name, name) || other.name == name)&&(identical(other.address, address) || other.address == address)&&(identical(other.neighborhood, neighborhood) || other.neighborhood == neighborhood)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.observations, observations) || other.observations == observations)&&const DeepCollectionEquality().equals(other._rooms, _rooms)&&(identical(other.ativo, ativo) || other.ativo == ativo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,dbid,nome,endereco,bairro,cidade,estado,cep,observacoes,ativo);
+int get hashCode => Object.hash(runtimeType,id,dbId,name,address,neighborhood,city,state,zipCode,observations,const DeepCollectionEquality().hash(_rooms),ativo);
 
 @override
 String toString() {
-  return 'PlaceModel(id: $id, dbid: $dbid, nome: $nome, endereco: $endereco, bairro: $bairro, cidade: $cidade, estado: $estado, cep: $cep, observacoes: $observacoes, ativo: $ativo)';
+  return 'PlaceModel(id: $id, dbId: $dbId, name: $name, address: $address, neighborhood: $neighborhood, city: $city, state: $state, zipCode: $zipCode, observations: $observations, rooms: $rooms, ativo: $ativo)';
 }
 
 
@@ -259,7 +269,7 @@ abstract mixin class _$PlaceModelCopyWith<$Res> implements $PlaceModelCopyWith<$
   factory _$PlaceModelCopyWith(_PlaceModel value, $Res Function(_PlaceModel) _then) = __$PlaceModelCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, int? dbid, String? nome, String? endereco, String? bairro, String? cidade, String? estado, String? cep, String? observacoes, bool ativo
+ String? id, int? dbId, String? name, String? address, String? neighborhood, String? city, String? state, String? zipCode, String? observations, List<RoomModel>? rooms, bool ativo
 });
 
 
@@ -276,18 +286,19 @@ class __$PlaceModelCopyWithImpl<$Res>
 
 /// Create a copy of PlaceModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? dbid = freezed,Object? nome = freezed,Object? endereco = freezed,Object? bairro = freezed,Object? cidade = freezed,Object? estado = freezed,Object? cep = freezed,Object? observacoes = freezed,Object? ativo = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? dbId = freezed,Object? name = freezed,Object? address = freezed,Object? neighborhood = freezed,Object? city = freezed,Object? state = freezed,Object? zipCode = freezed,Object? observations = freezed,Object? rooms = freezed,Object? ativo = null,}) {
   return _then(_PlaceModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
-as int?,nome: freezed == nome ? _self.nome : nome // ignore: cast_nullable_to_non_nullable
-as String?,endereco: freezed == endereco ? _self.endereco : endereco // ignore: cast_nullable_to_non_nullable
-as String?,bairro: freezed == bairro ? _self.bairro : bairro // ignore: cast_nullable_to_non_nullable
-as String?,cidade: freezed == cidade ? _self.cidade : cidade // ignore: cast_nullable_to_non_nullable
-as String?,estado: freezed == estado ? _self.estado : estado // ignore: cast_nullable_to_non_nullable
-as String?,cep: freezed == cep ? _self.cep : cep // ignore: cast_nullable_to_non_nullable
-as String?,observacoes: freezed == observacoes ? _self.observacoes : observacoes // ignore: cast_nullable_to_non_nullable
-as String?,ativo: null == ativo ? _self.ativo : ativo // ignore: cast_nullable_to_non_nullable
+as String?,dbId: freezed == dbId ? _self.dbId : dbId // ignore: cast_nullable_to_non_nullable
+as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String?,neighborhood: freezed == neighborhood ? _self.neighborhood : neighborhood // ignore: cast_nullable_to_non_nullable
+as String?,city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
+as String?,state: freezed == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
+as String?,zipCode: freezed == zipCode ? _self.zipCode : zipCode // ignore: cast_nullable_to_non_nullable
+as String?,observations: freezed == observations ? _self.observations : observations // ignore: cast_nullable_to_non_nullable
+as String?,rooms: freezed == rooms ? _self._rooms : rooms // ignore: cast_nullable_to_non_nullable
+as List<RoomModel>?,ativo: null == ativo ? _self.ativo : ativo // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

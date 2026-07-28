@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ThemeColors {
   static final grey700 = Colors.grey.shade700;
+  static final grey600 = Colors.grey.shade600;
   static final grey500 = Colors.grey.shade500;
   static final grey400 = Colors.grey.shade400;
   static final grey300 = Colors.grey.shade300;
@@ -136,4 +137,6 @@ final ThemeData lightTheme = ThemeData(
       ),
     ),
   ),
+
+  
 );

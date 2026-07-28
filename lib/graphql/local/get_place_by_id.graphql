@@ -1,0 +1,18 @@
+query GetPlaceById($ID: ID!) {
+  placeById(id: $ID) {
+    dbId
+    id
+    name
+    address
+    neighborhood
+    city
+    state
+    zipCode
+    observations
+    rooms{
+      id
+      number
+      status
+    }
+  }
+}

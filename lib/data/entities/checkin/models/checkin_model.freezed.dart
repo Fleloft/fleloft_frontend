@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CheckinModel {
 
- int? get id; int? get dbid; Date? get dataEntrada; Date? get dataSaida; DateTime? get chekin; DateTime? get checkout; String? get observations; CheckinStatusEnum? get status; int? get roomId; RoomModel? get room; int? get userId; UserModel? get user;
+ String? get id; int? get dbid; Date? get dataEntrada; Date? get dataSaida; DateTime? get chekin; DateTime? get checkout; String? get observations; CheckinStatusEnum? get status; int? get roomId; RoomModel? get room; int? get userId; UserModel? get user;
 /// Create a copy of CheckinModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $CheckinModelCopyWith<$Res>  {
   factory $CheckinModelCopyWith(CheckinModel value, $Res Function(CheckinModel) _then) = _$CheckinModelCopyWithImpl;
 @useResult
 $Res call({
- int? id, int? dbid, Date? dataEntrada, Date? dataSaida, DateTime? chekin, DateTime? checkout, String? observations, CheckinStatusEnum? status, int? roomId, RoomModel? room, int? userId, UserModel? user
+ String? id, int? dbid, Date? dataEntrada, Date? dataSaida, DateTime? chekin, DateTime? checkout, String? observations, CheckinStatusEnum? status, int? roomId, RoomModel? room, int? userId, UserModel? user
 });
 
 
@@ -65,7 +65,7 @@ class _$CheckinModelCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? dbid = freezed,Object? dataEntrada = freezed,Object? dataSaida = freezed,Object? chekin = freezed,Object? checkout = freezed,Object? observations = freezed,Object? status = freezed,Object? roomId = freezed,Object? room = freezed,Object? userId = freezed,Object? user = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
+as String?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
 as int?,dataEntrada: freezed == dataEntrada ? _self.dataEntrada : dataEntrada // ignore: cast_nullable_to_non_nullable
 as Date?,dataSaida: freezed == dataSaida ? _self.dataSaida : dataSaida // ignore: cast_nullable_to_non_nullable
 as Date?,chekin: freezed == chekin ? _self.chekin : chekin // ignore: cast_nullable_to_non_nullable
@@ -209,7 +209,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  int? dbid,  Date? dataEntrada,  Date? dataSaida,  DateTime? chekin,  DateTime? checkout,  String? observations,  CheckinStatusEnum? status,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  int? dbid,  Date? dataEntrada,  Date? dataSaida,  DateTime? chekin,  DateTime? checkout,  String? observations,  CheckinStatusEnum? status,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CheckinModel() when $default != null:
 return $default(_that.id,_that.dbid,_that.dataEntrada,_that.dataSaida,_that.chekin,_that.checkout,_that.observations,_that.status,_that.roomId,_that.room,_that.userId,_that.user);case _:
@@ -230,7 +230,7 @@ return $default(_that.id,_that.dbid,_that.dataEntrada,_that.dataSaida,_that.chek
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  int? dbid,  Date? dataEntrada,  Date? dataSaida,  DateTime? chekin,  DateTime? checkout,  String? observations,  CheckinStatusEnum? status,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  int? dbid,  Date? dataEntrada,  Date? dataSaida,  DateTime? chekin,  DateTime? checkout,  String? observations,  CheckinStatusEnum? status,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user)  $default,) {final _that = this;
 switch (_that) {
 case _CheckinModel():
 return $default(_that.id,_that.dbid,_that.dataEntrada,_that.dataSaida,_that.chekin,_that.checkout,_that.observations,_that.status,_that.roomId,_that.room,_that.userId,_that.user);case _:
@@ -250,7 +250,7 @@ return $default(_that.id,_that.dbid,_that.dataEntrada,_that.dataSaida,_that.chek
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  int? dbid,  Date? dataEntrada,  Date? dataSaida,  DateTime? chekin,  DateTime? checkout,  String? observations,  CheckinStatusEnum? status,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  int? dbid,  Date? dataEntrada,  Date? dataSaida,  DateTime? chekin,  DateTime? checkout,  String? observations,  CheckinStatusEnum? status,  int? roomId,  RoomModel? room,  int? userId,  UserModel? user)?  $default,) {final _that = this;
 switch (_that) {
 case _CheckinModel() when $default != null:
 return $default(_that.id,_that.dbid,_that.dataEntrada,_that.dataSaida,_that.chekin,_that.checkout,_that.observations,_that.status,_that.roomId,_that.room,_that.userId,_that.user);case _:
@@ -268,7 +268,7 @@ class _CheckinModel implements CheckinModel {
    _CheckinModel({this.id, this.dbid, this.dataEntrada, this.dataSaida, this.chekin, this.checkout, this.observations, this.status, this.roomId, this.room, this.userId, this.user});
   
 
-@override final  int? id;
+@override final  String? id;
 @override final  int? dbid;
 @override final  Date? dataEntrada;
 @override final  Date? dataSaida;
@@ -311,7 +311,7 @@ abstract mixin class _$CheckinModelCopyWith<$Res> implements $CheckinModelCopyWi
   factory _$CheckinModelCopyWith(_CheckinModel value, $Res Function(_CheckinModel) _then) = __$CheckinModelCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, int? dbid, Date? dataEntrada, Date? dataSaida, DateTime? chekin, DateTime? checkout, String? observations, CheckinStatusEnum? status, int? roomId, RoomModel? room, int? userId, UserModel? user
+ String? id, int? dbid, Date? dataEntrada, Date? dataSaida, DateTime? chekin, DateTime? checkout, String? observations, CheckinStatusEnum? status, int? roomId, RoomModel? room, int? userId, UserModel? user
 });
 
 
@@ -331,7 +331,7 @@ class __$CheckinModelCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? dbid = freezed,Object? dataEntrada = freezed,Object? dataSaida = freezed,Object? chekin = freezed,Object? checkout = freezed,Object? observations = freezed,Object? status = freezed,Object? roomId = freezed,Object? room = freezed,Object? userId = freezed,Object? user = freezed,}) {
   return _then(_CheckinModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
+as String?,dbid: freezed == dbid ? _self.dbid : dbid // ignore: cast_nullable_to_non_nullable
 as int?,dataEntrada: freezed == dataEntrada ? _self.dataEntrada : dataEntrada // ignore: cast_nullable_to_non_nullable
 as Date?,dataSaida: freezed == dataSaida ? _self.dataSaida : dataSaida // ignore: cast_nullable_to_non_nullable
 as Date?,chekin: freezed == chekin ? _self.chekin : chekin // ignore: cast_nullable_to_non_nullable

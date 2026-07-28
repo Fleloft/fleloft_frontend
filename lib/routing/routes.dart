@@ -1,5 +1,6 @@
 import 'package:fleloft_frontend/provider/auth_provider.dart';
 import 'package:fleloft_frontend/routing/auth/auth_routes.dart';
+import 'package:fleloft_frontend/routing/moreMenu/more_menu_routes.dart';
 import 'package:fleloft_frontend/routing/navigator_key.dart';
 import 'package:fleloft_frontend/routing/shellBranchRoutes/shell_branch_routes.dart';
 import 'package:fleloft_frontend/ui/views/home/provider/providers.dart';
@@ -83,6 +84,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       // //*------------------------
       // //* Rotas do menu "Mais"
       // //*------------------------
+      placesRouting(),
+      placeRouting()
     ],
   );
 });

@@ -1,0 +1,8 @@
+query GetPlaces {
+  places(order: { id: ASC }) {
+    nodes {
+      id
+      name
+    }
+  }
+}
