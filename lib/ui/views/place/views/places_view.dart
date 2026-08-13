@@ -1,5 +1,5 @@
 import 'package:fleloft_frontend/provider/ui_factory_provider.dart';
-import 'package:fleloft_frontend/routing/moreMenu/more_menu_routes.dart';
+import 'package:fleloft_frontend/routing/place/more_menu_routes.dart';
 import 'package:fleloft_frontend/ui/themes/light_theme.dart';
 import 'package:fleloft_frontend/ui/views/place/viewModels/places_view_model.dart';
 import 'package:fleloft_frontend/ui/widgets/container/menu_container_widget.dart';
@@ -67,7 +67,7 @@ class PlacesView extends HookConsumerWidget {
                         title: p.name,
                         isLast: p.id == lastId,
                         onTap: () {
-                          context.push(MoreMenuRoutes.place, extra: p.id);
+                          context.push(PlaceRoutes.place, extra: p.id);
                         },
                       );
                     }),

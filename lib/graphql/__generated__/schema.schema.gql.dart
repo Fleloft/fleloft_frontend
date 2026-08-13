@@ -248,7 +248,7 @@ abstract class GCreateRoomInput
   int get number;
   String get description;
   int get capacity;
-  bool get active;
+  GOccupancyStatusEnum get status;
   static Serializer<GCreateRoomInput> get serializer =>
       _$gCreateRoomInputSerializer;
 
@@ -974,6 +974,32 @@ abstract class GRoomModelSortInput
       );
 }
 
+abstract class GSetUserRoleInput
+    implements Built<GSetUserRoleInput, GSetUserRoleInputBuilder> {
+  GSetUserRoleInput._();
+
+  factory GSetUserRoleInput(
+          [void Function(GSetUserRoleInputBuilder b) updates]) =
+      _$GSetUserRoleInput;
+
+  String get userId;
+  String get roleId;
+  String get uid;
+  static Serializer<GSetUserRoleInput> get serializer =>
+      _$gSetUserRoleInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GSetUserRoleInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GSetUserRoleInput? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GSetUserRoleInput.serializer,
+        json,
+      );
+}
+
 abstract class GStringOperationFilterInput
     implements
         Built<GStringOperationFilterInput, GStringOperationFilterInputBuilder> {
@@ -1102,7 +1128,7 @@ abstract class GUpdateRoomInput
   String get id;
   String? get description;
   int? get capacity;
-  bool? get active;
+  GOccupancyStatusEnum? get status;
   static Serializer<GUpdateRoomInput> get serializer =>
       _$gUpdateRoomInputSerializer;
 

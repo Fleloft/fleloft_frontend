@@ -1,0 +1,23 @@
+query GetRoomsByPlaceId($placeId: Long, $first: Int, $after: String) {
+  rooms(
+    order: { id: ASC }
+    where: { placeId: { eq: $placeId } }
+    first: $first
+    after: $after
+  ) {
+    nodes {
+      number
+      description
+      capacity
+      status
+      id
+      dbId
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}

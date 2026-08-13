@@ -1,5 +1,5 @@
 import 'package:fleloft_frontend/provider/ui_factory_provider.dart';
-import 'package:fleloft_frontend/routing/moreMenu/more_menu_routes.dart';
+import 'package:fleloft_frontend/routing/place/more_menu_routes.dart';
 import 'package:fleloft_frontend/ui/views/moreMenu/widgets/sign_out_button_widget.dart';
 import 'package:fleloft_frontend/ui/widgets/container/menu_container_widget.dart';
 import 'package:fleloft_frontend/ui/widgets/tile/menu_tile_widget.dart';
@@ -21,22 +21,29 @@ class MoreMenuView extends HookConsumerWidget {
     //Vars
     final maxWidth = uiNot.getMaxWidth(size);
 
-    return SingleChildScrollView(
+    return Center(
       child: Column(
-        children: <Widget>[
-          MenuContainerWidget(
-            maxWidth: maxWidth,
-            menuItems: <MenuTileWidget>[
-              MenuTileWidget(
-                title: 'Locais',
-                isLast: true,
-                onTap: () {
-                  context.push(MoreMenuRoutes.places);
-                },
+        children: [
+          Expanded(
+            child: Center(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.only(top: 20, bottom: 20),
+                child: MenuContainerWidget(
+                  maxWidth: maxWidth,
+                  menuItems: <MenuTileWidget>[
+                    MenuTileWidget(
+                      title: 'Locais',
+                      isLast: true,
+                      onTap: () {
+                        context.push(PlaceRoutes.places);
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ],
+            ),
           ),
-          SignOutButtonWidget(),
+                  SignOutButtonWidget(),
         ],
       ),
     );

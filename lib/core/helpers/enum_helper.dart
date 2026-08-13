@@ -11,11 +11,7 @@ class EnumHelper {
     final valueFounded = values.firstWhereOrNull(
       (e) =>
           e.name == stringFormatted ||
-          (e is IDisplayName &&
-              (e as IDisplayName) //
-                      .displayName
-                      .toLowerCase() ==
-                  stringFormatted),
+          (e is IDisplayName && (e as IDisplayName).displayName.toLowerCase() == stringFormatted),
     );
 
     return valueFounded;

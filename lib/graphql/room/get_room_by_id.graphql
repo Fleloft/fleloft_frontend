@@ -1,0 +1,10 @@
+query GetRoomById($ID: ID!) {
+  roomById(id: $ID) {
+    dbId
+    id
+    status
+    capacity
+    description
+    number
+  }
+}

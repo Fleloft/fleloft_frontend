@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 
 GoRoute placesRouting() {
   return GoRoute(
-    path: MoreMenuRoutes.places,
+    path: PlaceRoutes.places,
     pageBuilder: (context, state) {
       return fadeTransitionPage(
         key: state.pageKey,
@@ -17,7 +17,7 @@ GoRoute placesRouting() {
 
 GoRoute placeRouting() {
   return GoRoute(
-    path: MoreMenuRoutes.place,
+    path: PlaceRoutes.place,
     pageBuilder: (context, state) {
       final placeId = state.extra as String;
       return fadeTransitionPage(
@@ -30,7 +30,7 @@ GoRoute placeRouting() {
   );
 }
 
-abstract class MoreMenuRoutes {
+abstract class PlaceRoutes {
   static const places = '/placesView';
   static const place = '/placeView';
 }

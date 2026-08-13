@@ -6,6 +6,8 @@ import 'package:fleloft_frontend/core/factory/components/bottomNavigationBar/and
 import 'package:fleloft_frontend/core/factory/components/bottomNavigationBar/i_bottom_nav_bar.dart';
 import 'package:fleloft_frontend/core/factory/components/buttons/android/button_factory_android.dart';
 import 'package:fleloft_frontend/core/factory/components/buttons/i_button_factory.dart';
+import 'package:fleloft_frontend/core/factory/components/dropDownButtom/android/drop_down_button_android.dart';
+import 'package:fleloft_frontend/core/factory/components/dropDownButtom/i_drop_down_button.dart';
 import 'package:fleloft_frontend/core/factory/components/scaffold/android/scaffold_android.dart';
 import 'package:fleloft_frontend/core/factory/components/scaffold/i_scaffold.dart';
 import 'package:fleloft_frontend/core/factory/components/text/android/text_field_android.dart';
@@ -31,6 +33,9 @@ class AndroidUIFactory implements UIFactory {
   @override
   IText get text => TextFieldAndroid();
 
+  @override
+  IDropDownButton<T> dropDownButton<T extends Object>() => DropDownButtonAndroid();
+  
   // @override
   // IProgressIndicator get progressIndicator => CircularProgressIndicatorAndroid();
 
@@ -40,8 +45,6 @@ class AndroidUIFactory implements UIFactory {
   // @override
   // IListTile get listTile => ListTileAndroid();
 
-  // @override
-  // IDropDownButton<T> dropDownButton<T extends Object>() => DropDownButtonAndroid();
 
   // @override
   // IAlert get alert => AndroidAlert();

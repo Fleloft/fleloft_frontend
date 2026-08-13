@@ -44,6 +44,7 @@ import 'package:fleloft_frontend/graphql/__generated__/schema.schema.gql.dart'
         GRoleModelSortInput,
         GRoomModelFilterInput,
         GRoomModelSortInput,
+        GSetUserRoleInput,
         GSortEnumType,
         GStringOperationFilterInput,
         GUpdateCheckinInput,
@@ -60,10 +61,7 @@ import 'package:fleloft_frontend/graphql/initialData/__generated__/query_initial
 import 'package:fleloft_frontend/graphql/initialData/__generated__/query_initial_data.var.gql.dart'
     show GInitialDataVars;
 import 'package:fleloft_frontend/graphql/local/__generated__/get_place_by_id.data.gql.dart'
-    show
-        GGetPlaceByIdData,
-        GGetPlaceByIdData_placeById,
-        GGetPlaceByIdData_placeById_rooms;
+    show GGetPlaceByIdData, GGetPlaceByIdData_placeById;
 import 'package:fleloft_frontend/graphql/local/__generated__/get_place_by_id.req.gql.dart'
     show GGetPlaceByIdReq;
 import 'package:fleloft_frontend/graphql/local/__generated__/get_place_by_id.var.gql.dart'
@@ -74,6 +72,31 @@ import 'package:fleloft_frontend/graphql/local/__generated__/get_places.req.gql.
     show GGetPlacesReq;
 import 'package:fleloft_frontend/graphql/local/__generated__/get_places.var.gql.dart'
     show GGetPlacesVars;
+import 'package:fleloft_frontend/graphql/room/__generated__/create_room.data.gql.dart'
+    show
+        GCreateRoomData,
+        GCreateRoomData_createRoom,
+        GCreateRoomData_createRoom_roomModel;
+import 'package:fleloft_frontend/graphql/room/__generated__/create_room.req.gql.dart'
+    show GCreateRoomReq;
+import 'package:fleloft_frontend/graphql/room/__generated__/create_room.var.gql.dart'
+    show GCreateRoomVars;
+import 'package:fleloft_frontend/graphql/room/__generated__/get_room_by_id.data.gql.dart'
+    show GGetRoomByIdData, GGetRoomByIdData_roomById;
+import 'package:fleloft_frontend/graphql/room/__generated__/get_room_by_id.req.gql.dart'
+    show GGetRoomByIdReq;
+import 'package:fleloft_frontend/graphql/room/__generated__/get_room_by_id.var.gql.dart'
+    show GGetRoomByIdVars;
+import 'package:fleloft_frontend/graphql/room/__generated__/get_room_by_place_id.data.gql.dart'
+    show
+        GGetRoomsByPlaceIdData,
+        GGetRoomsByPlaceIdData_rooms,
+        GGetRoomsByPlaceIdData_rooms_nodes,
+        GGetRoomsByPlaceIdData_rooms_pageInfo;
+import 'package:fleloft_frontend/graphql/room/__generated__/get_room_by_place_id.req.gql.dart'
+    show GGetRoomsByPlaceIdReq;
+import 'package:fleloft_frontend/graphql/room/__generated__/get_room_by_place_id.var.gql.dart'
+    show GGetRoomsByPlaceIdVars;
 import 'package:fleloft_frontend/graphql/user/__generated__/create_user.data.gql.dart'
     show
         GCreateUserData,
@@ -108,7 +131,12 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GCheckinStatusEnumOperationFilterInput,
   GCreateCheckinInput,
   GCreateFileInput,
+  GCreateRoomData,
+  GCreateRoomData_createRoom,
+  GCreateRoomData_createRoom_roomModel,
   GCreateRoomInput,
+  GCreateRoomReq,
+  GCreateRoomVars,
   GCreateUserData,
   GCreateUserData_createUser,
   GCreateUserData_createUser_userModel,
@@ -127,7 +155,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GFileTypeEnum,
   GGetPlaceByIdData,
   GGetPlaceByIdData_placeById,
-  GGetPlaceByIdData_placeById_rooms,
   GGetPlaceByIdReq,
   GGetPlaceByIdVars,
   GGetPlacesData,
@@ -135,6 +162,16 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GGetPlacesData_places_nodes,
   GGetPlacesReq,
   GGetPlacesVars,
+  GGetRoomByIdData,
+  GGetRoomByIdData_roomById,
+  GGetRoomByIdReq,
+  GGetRoomByIdVars,
+  GGetRoomsByPlaceIdData,
+  GGetRoomsByPlaceIdData_rooms,
+  GGetRoomsByPlaceIdData_rooms_nodes,
+  GGetRoomsByPlaceIdData_rooms_pageInfo,
+  GGetRoomsByPlaceIdReq,
+  GGetRoomsByPlaceIdVars,
   GGetUserData,
   GGetUserData_userById,
   GGetUserReq,
@@ -161,6 +198,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GRoleModelSortInput,
   GRoomModelFilterInput,
   GRoomModelSortInput,
+  GSetUserRoleInput,
   GSortEnumType,
   GStringOperationFilterInput,
   GUpdateCheckinInput,

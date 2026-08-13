@@ -18,7 +18,12 @@ Serializers _$serializers =
           ..add(GCheckinStatusEnumOperationFilterInput.serializer)
           ..add(GCreateCheckinInput.serializer)
           ..add(GCreateFileInput.serializer)
+          ..add(GCreateRoomData.serializer)
+          ..add(GCreateRoomData_createRoom.serializer)
+          ..add(GCreateRoomData_createRoom_roomModel.serializer)
           ..add(GCreateRoomInput.serializer)
+          ..add(GCreateRoomReq.serializer)
+          ..add(GCreateRoomVars.serializer)
           ..add(GCreateUserData.serializer)
           ..add(GCreateUserData_createUser.serializer)
           ..add(GCreateUserData_createUser_userModel.serializer)
@@ -37,7 +42,6 @@ Serializers _$serializers =
           ..add(GFileTypeEnum.serializer)
           ..add(GGetPlaceByIdData.serializer)
           ..add(GGetPlaceByIdData_placeById.serializer)
-          ..add(GGetPlaceByIdData_placeById_rooms.serializer)
           ..add(GGetPlaceByIdReq.serializer)
           ..add(GGetPlaceByIdVars.serializer)
           ..add(GGetPlacesData.serializer)
@@ -45,6 +49,16 @@ Serializers _$serializers =
           ..add(GGetPlacesData_places_nodes.serializer)
           ..add(GGetPlacesReq.serializer)
           ..add(GGetPlacesVars.serializer)
+          ..add(GGetRoomByIdData.serializer)
+          ..add(GGetRoomByIdData_roomById.serializer)
+          ..add(GGetRoomByIdReq.serializer)
+          ..add(GGetRoomByIdVars.serializer)
+          ..add(GGetRoomsByPlaceIdData.serializer)
+          ..add(GGetRoomsByPlaceIdData_rooms.serializer)
+          ..add(GGetRoomsByPlaceIdData_rooms_nodes.serializer)
+          ..add(GGetRoomsByPlaceIdData_rooms_pageInfo.serializer)
+          ..add(GGetRoomsByPlaceIdReq.serializer)
+          ..add(GGetRoomsByPlaceIdVars.serializer)
           ..add(GGetUserData.serializer)
           ..add(GGetUserData_userById.serializer)
           ..add(GGetUserReq.serializer)
@@ -71,6 +85,7 @@ Serializers _$serializers =
           ..add(GRoleModelSortInput.serializer)
           ..add(GRoomModelFilterInput.serializer)
           ..add(GRoomModelSortInput.serializer)
+          ..add(GSetUserRoleInput.serializer)
           ..add(GSortEnumType.serializer)
           ..add(GStringOperationFilterInput.serializer)
           ..add(GUpdateCheckinInput.serializer)
@@ -121,6 +136,12 @@ Serializers _$serializers =
               const FullType(GGetPlacesData_places_nodes),
             ]),
             () => ListBuilder<GGetPlacesData_places_nodes>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType(GGetRoomsByPlaceIdData_rooms_nodes),
+            ]),
+            () => ListBuilder<GGetRoomsByPlaceIdData_rooms_nodes>(),
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [
@@ -219,12 +240,6 @@ Serializers _$serializers =
               const FullType.nullable(GFileTypeEnum),
             ]),
             () => ListBuilder<GFileTypeEnum?>(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(GGetPlaceByIdData_placeById_rooms),
-            ]),
-            () => ListBuilder<GGetPlaceByIdData_placeById_rooms?>(),
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [

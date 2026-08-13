@@ -223,6 +223,8 @@ Serializer<GRoomModelFilterInput> _$gRoomModelFilterInputSerializer =
     _$GRoomModelFilterInputSerializer();
 Serializer<GRoomModelSortInput> _$gRoomModelSortInputSerializer =
     _$GRoomModelSortInputSerializer();
+Serializer<GSetUserRoleInput> _$gSetUserRoleInputSerializer =
+    _$GSetUserRoleInputSerializer();
 Serializer<GStringOperationFilterInput>
 _$gStringOperationFilterInputSerializer =
     _$GStringOperationFilterInputSerializer();
@@ -1553,8 +1555,11 @@ class _$GCreateRoomInputSerializer
         object.capacity,
         specifiedType: const FullType(int),
       ),
-      'active',
-      serializers.serialize(object.active, specifiedType: const FullType(bool)),
+      'status',
+      serializers.serialize(
+        object.status,
+        specifiedType: const FullType(GOccupancyStatusEnum),
+      ),
     ];
 
     return result;
@@ -1606,13 +1611,13 @@ class _$GCreateRoomInputSerializer
                   )!
                   as int;
           break;
-        case 'active':
-          result.active =
+        case 'status':
+          result.status =
               serializers.deserialize(
                     value,
-                    specifiedType: const FullType(bool),
+                    specifiedType: const FullType(GOccupancyStatusEnum),
                   )!
-                  as bool;
+                  as GOccupancyStatusEnum;
           break;
       }
     }
@@ -5531,6 +5536,82 @@ class _$GRoomModelSortInputSerializer
   }
 }
 
+class _$GSetUserRoleInputSerializer
+    implements StructuredSerializer<GSetUserRoleInput> {
+  @override
+  final Iterable<Type> types = const [GSetUserRoleInput, _$GSetUserRoleInput];
+  @override
+  final String wireName = 'GSetUserRoleInput';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GSetUserRoleInput object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'userId',
+      serializers.serialize(
+        object.userId,
+        specifiedType: const FullType(String),
+      ),
+      'roleId',
+      serializers.serialize(
+        object.roleId,
+        specifiedType: const FullType(String),
+      ),
+      'uid',
+      serializers.serialize(object.uid, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GSetUserRoleInput deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = GSetUserRoleInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'userId':
+          result.userId =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'roleId':
+          result.roleId =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'uid':
+          result.uid =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GStringOperationFilterInputSerializer
     implements StructuredSerializer<GStringOperationFilterInput> {
   @override
@@ -6149,12 +6230,15 @@ class _$GUpdateRoomInputSerializer
         ..add('capacity')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    value = object.active;
+    value = object.status;
     if (value != null) {
       result
-        ..add('active')
+        ..add('status')
         ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(GOccupancyStatusEnum),
+          ),
         );
     }
     return result;
@@ -6195,13 +6279,13 @@ class _$GUpdateRoomInputSerializer
               serializers.deserialize(value, specifiedType: const FullType(int))
                   as int?;
           break;
-        case 'active':
-          result.active =
+        case 'status':
+          result.status =
               serializers.deserialize(
                     value,
-                    specifiedType: const FullType(bool),
+                    specifiedType: const FullType(GOccupancyStatusEnum),
                   )
-                  as bool?;
+                  as GOccupancyStatusEnum?;
           break;
       }
     }
@@ -8258,7 +8342,7 @@ class _$GCreateRoomInput extends GCreateRoomInput {
   @override
   final int capacity;
   @override
-  final bool active;
+  final GOccupancyStatusEnum status;
 
   factory _$GCreateRoomInput([
     void Function(GCreateRoomInputBuilder)? updates,
@@ -8269,7 +8353,7 @@ class _$GCreateRoomInput extends GCreateRoomInput {
     required this.number,
     required this.description,
     required this.capacity,
-    required this.active,
+    required this.status,
   }) : super._();
   @override
   GCreateRoomInput rebuild(void Function(GCreateRoomInputBuilder) updates) =>
@@ -8287,7 +8371,7 @@ class _$GCreateRoomInput extends GCreateRoomInput {
         number == other.number &&
         description == other.description &&
         capacity == other.capacity &&
-        active == other.active;
+        status == other.status;
   }
 
   @override
@@ -8297,7 +8381,7 @@ class _$GCreateRoomInput extends GCreateRoomInput {
     _$hash = $jc(_$hash, number.hashCode);
     _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, capacity.hashCode);
-    _$hash = $jc(_$hash, active.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -8309,7 +8393,7 @@ class _$GCreateRoomInput extends GCreateRoomInput {
           ..add('number', number)
           ..add('description', description)
           ..add('capacity', capacity)
-          ..add('active', active))
+          ..add('status', status))
         .toString();
   }
 }
@@ -8334,9 +8418,9 @@ class GCreateRoomInputBuilder
   int? get capacity => _$this._capacity;
   set capacity(int? capacity) => _$this._capacity = capacity;
 
-  bool? _active;
-  bool? get active => _$this._active;
-  set active(bool? active) => _$this._active = active;
+  GOccupancyStatusEnum? _status;
+  GOccupancyStatusEnum? get status => _$this._status;
+  set status(GOccupancyStatusEnum? status) => _$this._status = status;
 
   GCreateRoomInputBuilder();
 
@@ -8347,7 +8431,7 @@ class GCreateRoomInputBuilder
       _number = $v.number;
       _description = $v.description;
       _capacity = $v.capacity;
-      _active = $v.active;
+      _status = $v.status;
       _$v = null;
     }
     return this;
@@ -8390,10 +8474,10 @@ class GCreateRoomInputBuilder
             r'GCreateRoomInput',
             'capacity',
           ),
-          active: BuiltValueNullFieldError.checkNotNull(
-            active,
+          status: BuiltValueNullFieldError.checkNotNull(
+            status,
             r'GCreateRoomInput',
-            'active',
+            'status',
           ),
         );
     replace(_$result);
@@ -12544,6 +12628,127 @@ class GRoomModelSortInputBuilder
   }
 }
 
+class _$GSetUserRoleInput extends GSetUserRoleInput {
+  @override
+  final String userId;
+  @override
+  final String roleId;
+  @override
+  final String uid;
+
+  factory _$GSetUserRoleInput([
+    void Function(GSetUserRoleInputBuilder)? updates,
+  ]) => (GSetUserRoleInputBuilder()..update(updates))._build();
+
+  _$GSetUserRoleInput._({
+    required this.userId,
+    required this.roleId,
+    required this.uid,
+  }) : super._();
+  @override
+  GSetUserRoleInput rebuild(void Function(GSetUserRoleInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GSetUserRoleInputBuilder toBuilder() =>
+      GSetUserRoleInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GSetUserRoleInput &&
+        userId == other.userId &&
+        roleId == other.roleId &&
+        uid == other.uid;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jc(_$hash, roleId.hashCode);
+    _$hash = $jc(_$hash, uid.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GSetUserRoleInput')
+          ..add('userId', userId)
+          ..add('roleId', roleId)
+          ..add('uid', uid))
+        .toString();
+  }
+}
+
+class GSetUserRoleInputBuilder
+    implements Builder<GSetUserRoleInput, GSetUserRoleInputBuilder> {
+  _$GSetUserRoleInput? _$v;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  String? _roleId;
+  String? get roleId => _$this._roleId;
+  set roleId(String? roleId) => _$this._roleId = roleId;
+
+  String? _uid;
+  String? get uid => _$this._uid;
+  set uid(String? uid) => _$this._uid = uid;
+
+  GSetUserRoleInputBuilder();
+
+  GSetUserRoleInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _userId = $v.userId;
+      _roleId = $v.roleId;
+      _uid = $v.uid;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GSetUserRoleInput other) {
+    _$v = other as _$GSetUserRoleInput;
+  }
+
+  @override
+  void update(void Function(GSetUserRoleInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GSetUserRoleInput build() => _build();
+
+  _$GSetUserRoleInput _build() {
+    final _$result =
+        _$v ??
+        _$GSetUserRoleInput._(
+          userId: BuiltValueNullFieldError.checkNotNull(
+            userId,
+            r'GSetUserRoleInput',
+            'userId',
+          ),
+          roleId: BuiltValueNullFieldError.checkNotNull(
+            roleId,
+            r'GSetUserRoleInput',
+            'roleId',
+          ),
+          uid: BuiltValueNullFieldError.checkNotNull(
+            uid,
+            r'GSetUserRoleInput',
+            'uid',
+          ),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GStringOperationFilterInput extends GStringOperationFilterInput {
   @override
   final BuiltList<GStringOperationFilterInput>? and;
@@ -13214,7 +13419,7 @@ class _$GUpdateRoomInput extends GUpdateRoomInput {
   @override
   final int? capacity;
   @override
-  final bool? active;
+  final GOccupancyStatusEnum? status;
 
   factory _$GUpdateRoomInput([
     void Function(GUpdateRoomInputBuilder)? updates,
@@ -13224,7 +13429,7 @@ class _$GUpdateRoomInput extends GUpdateRoomInput {
     required this.id,
     this.description,
     this.capacity,
-    this.active,
+    this.status,
   }) : super._();
   @override
   GUpdateRoomInput rebuild(void Function(GUpdateRoomInputBuilder) updates) =>
@@ -13241,7 +13446,7 @@ class _$GUpdateRoomInput extends GUpdateRoomInput {
         id == other.id &&
         description == other.description &&
         capacity == other.capacity &&
-        active == other.active;
+        status == other.status;
   }
 
   @override
@@ -13250,7 +13455,7 @@ class _$GUpdateRoomInput extends GUpdateRoomInput {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, capacity.hashCode);
-    _$hash = $jc(_$hash, active.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -13261,7 +13466,7 @@ class _$GUpdateRoomInput extends GUpdateRoomInput {
           ..add('id', id)
           ..add('description', description)
           ..add('capacity', capacity)
-          ..add('active', active))
+          ..add('status', status))
         .toString();
   }
 }
@@ -13282,9 +13487,9 @@ class GUpdateRoomInputBuilder
   int? get capacity => _$this._capacity;
   set capacity(int? capacity) => _$this._capacity = capacity;
 
-  bool? _active;
-  bool? get active => _$this._active;
-  set active(bool? active) => _$this._active = active;
+  GOccupancyStatusEnum? _status;
+  GOccupancyStatusEnum? get status => _$this._status;
+  set status(GOccupancyStatusEnum? status) => _$this._status = status;
 
   GUpdateRoomInputBuilder();
 
@@ -13294,7 +13499,7 @@ class GUpdateRoomInputBuilder
       _id = $v.id;
       _description = $v.description;
       _capacity = $v.capacity;
-      _active = $v.active;
+      _status = $v.status;
       _$v = null;
     }
     return this;
@@ -13324,7 +13529,7 @@ class GUpdateRoomInputBuilder
           ),
           description: description,
           capacity: capacity,
-          active: active,
+          status: status,
         );
     replace(_$result);
     return _$result;

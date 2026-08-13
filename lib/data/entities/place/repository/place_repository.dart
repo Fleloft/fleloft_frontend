@@ -6,9 +6,11 @@ import 'package:fleloft_frontend/core/helpers/exception_helper.dart';
 import 'package:fleloft_frontend/core/helpers/result_class.dart';
 import 'package:fleloft_frontend/data/entities/place/extension/place_extension.dart';
 import 'package:fleloft_frontend/data/entities/place/models/place_model.dart';
+import 'package:fleloft_frontend/data/entities/room/models/room_model.dart';
 import 'package:fleloft_frontend/graphql/local/__generated__/get_place_by_id.req.gql.dart';
 import 'package:fleloft_frontend/graphql/local/__generated__/get_places.req.gql.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:rxdart/rxdart.dart';
 
 part 'place_repository.g.dart';
 
@@ -20,6 +22,9 @@ Future<RepositoryName> placeRepository(Ref ref) async {
 
 class RepositoryName extends BaseRepository {
   RepositoryName(super.ferryClient);
+
+  final _roomsSubject = BehaviorSubject<List<RoomModel>>.seeded([]);
+  Stream<List<RoomModel>> get rooms => _roomsSubject.stream;
 
   Stream<Result<List<PlaceModel>>> getPlaces() async* {
     final request = GGetPlacesReq(
@@ -56,6 +61,7 @@ class RepositoryName extends BaseRepository {
           final data = response.data;
           final place = data?.placeById;
           final placeModel = place?.toPlace();
+          _roomsSubject.add(placeModel?.rooms ?? []);
           sink.add(Result.ok(placeModel ?? PlaceModel()));
         },
         handleError: (error, stackTrace, sink) {

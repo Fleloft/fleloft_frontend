@@ -121,6 +121,7 @@ type Mutation {
   createUser(input: CreateUserInput!): CreateUserPayload! @authorize @cost(weight: "10")
   updateUser(input: UpdateUserInput!): UpdateUserPayload! @authorize @cost(weight: "10")
   deleteUser(input: DeleteUserInput!): DeleteUserPayload! @authorize @cost(weight: "10")
+  setUserRole(input: SetUserRoleInput!): SetUserRolePayload! @authorize(policy: "admin") @cost(weight: "10")
 }
 
 "Information about pagination in a connection."
@@ -247,6 +248,10 @@ type RoomsEdge {
   cursor: String!
   "The item at the end of the edge."
   node: RoomModel!
+}
+
+type SetUserRolePayload {
+  boolean: Boolean
 }
 
 type UpdateCheckinPayload {
@@ -382,7 +387,7 @@ input CreateRoomInput {
   number: Byte!
   description: String!
   capacity: Byte!
-  active: Boolean!
+  status: OccupancyStatusEnum!
 }
 
 input CreateUserInput {
@@ -607,6 +612,12 @@ input RoomModelSortInput {
   dbId: SortEnumType @cost(weight: "10")
 }
 
+input SetUserRoleInput {
+  userId: ID!
+  roleId: ID!
+  uid: String!
+}
+
 input StringOperationFilterInput {
   and: [StringOperationFilterInput!]
   or: [StringOperationFilterInput!]
@@ -648,7 +659,7 @@ input UpdateRoomInput {
   id: ID!
   description: String
   capacity: Byte
-  active: Boolean
+  status: OccupancyStatusEnum
 }
 
 input UpdateUserInput {

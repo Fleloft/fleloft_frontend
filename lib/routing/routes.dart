@@ -1,7 +1,8 @@
 import 'package:fleloft_frontend/provider/auth_provider.dart';
 import 'package:fleloft_frontend/routing/auth/auth_routes.dart';
-import 'package:fleloft_frontend/routing/moreMenu/more_menu_routes.dart';
+import 'package:fleloft_frontend/routing/place/more_menu_routes.dart';
 import 'package:fleloft_frontend/routing/navigator_key.dart';
+import 'package:fleloft_frontend/routing/room/room_routes.dart';
 import 'package:fleloft_frontend/routing/shellBranchRoutes/shell_branch_routes.dart';
 import 'package:fleloft_frontend/ui/views/home/provider/providers.dart';
 import 'package:fleloft_frontend/ui/views/home/widgets/bottom_navigator_widget.dart';
@@ -82,10 +83,17 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       createAccountRouting(),
 
       // //*------------------------
-      // //* Rotas do menu "Mais"
+      // //* Rotas de Place
       // //*------------------------
       placesRouting(),
-      placeRouting()
+      placeRouting(),
+
+      // //*------------------------
+      // //* Rotas de Room
+      // //*------------------------
+      roomsRouting(),
+      roomRouting(),
+      createRoomRouting(),
     ],
   );
 });

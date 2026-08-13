@@ -36,6 +36,7 @@ dependencies:
   collection: ^1.19.1
   built_collection: ^5.1.1
   built_value: ^8.12.6
+  rxdart: ^0.28.0
 
 dev_dependencies:
   flutter_test:

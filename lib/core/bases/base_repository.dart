@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:ferry/ferry.dart';
+import 'package:fleloft_frontend/core/helpers/exception_helper.dart';
 import 'package:fleloft_frontend/core/helpers/graphql_error_helper.dart';
+import 'package:fleloft_frontend/core/helpers/result_class.dart';
 import 'package:fleloft_frontend/graphql/client.dart';
 import 'package:logger/logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -43,5 +47,29 @@ class BaseRepository {
 
       return response;
     });
+  }
+
+  Stream<Result<T>> mapGqlResponseToResult<TData, TVars, T>(
+    Stream<OperationResponse<TData, TVars>> stream, {
+    required T? Function(TData? data) mapData,
+    required T Function() orElse,
+  }) {
+    return stream.transform(
+      StreamTransformer.fromHandlers(
+        handleData: (response, sink) {
+          if (response.hasErrors) {
+            sink.add(Result.error(Exception(response.linkException!.originalException!)));
+            return;
+          }
+
+          final mapped = mapData(response.data);
+          sink.add(Result.ok(mapped ?? orElse()));
+        },
+        handleError: (error, stackTrace, sink) {
+          final e = error is Exception ? error : ExceptionHelper(error.toString());
+          sink.add(Result.error(e));
+        },
+      ),
+    );
   }
 }

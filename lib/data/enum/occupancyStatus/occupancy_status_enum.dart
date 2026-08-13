@@ -2,9 +2,9 @@ import 'package:fleloft_frontend/core/helpers/enum_helper.dart';
 import 'package:fleloft_frontend/core/interface/i_display_name_enum_interface.dart';
 
 enum OccupancyStatusEnum implements IDisplayName {
-  avaiable('Disponível'),
+  available('Disponível'),
   occupied('Ocupado'),
-  maintenace('Manutenção'),
+  maintenance('Manutenção'),
   unavailable('Indisponível'),
   rented('Alugado');
 
@@ -20,9 +20,11 @@ enum OccupancyStatusEnum implements IDisplayName {
   }
 
   static OccupancyStatusEnum? fromString(String? value) {
-    return EnumHelper.fromString(
+    final valueFounded = EnumHelper.fromString(
       values: OccupancyStatusEnum.values,
       value: value,
     );
+
+    return valueFounded;
   }
 }

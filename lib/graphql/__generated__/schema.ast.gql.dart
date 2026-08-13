@@ -1113,6 +1113,50 @@ const Mutation = _i1.ObjectTypeDefinitionNode(
         isNonNull: true,
       ),
     ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'setUserRole'),
+      directives: [
+        _i1.DirectiveNode(
+          name: _i1.NameNode(value: 'authorize'),
+          arguments: [
+            _i1.ArgumentNode(
+              name: _i1.NameNode(value: 'policy'),
+              value: _i1.StringValueNode(
+                value: 'admin',
+                isBlock: false,
+              ),
+            )
+          ],
+        ),
+        _i1.DirectiveNode(
+          name: _i1.NameNode(value: 'cost'),
+          arguments: [
+            _i1.ArgumentNode(
+              name: _i1.NameNode(value: 'weight'),
+              value: _i1.StringValueNode(
+                value: '10',
+                isBlock: false,
+              ),
+            )
+          ],
+        ),
+      ],
+      args: [
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'input'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'SetUserRoleInput'),
+            isNonNull: true,
+          ),
+          defaultValue: null,
+        )
+      ],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'SetUserRolePayload'),
+        isNonNull: true,
+      ),
+    ),
   ],
 );
 const PageInfo = _i1.ObjectTypeDefinitionNode(
@@ -3179,6 +3223,22 @@ const RoomsEdge = _i1.ObjectTypeDefinitionNode(
     ),
   ],
 );
+const SetUserRolePayload = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'SetUserRolePayload'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'boolean'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Boolean'),
+        isNonNull: false,
+      ),
+    )
+  ],
+);
 const UpdateCheckinPayload = _i1.ObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'UpdateCheckinPayload'),
   directives: [],
@@ -4466,10 +4526,10 @@ const CreateRoomInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
-      name: _i1.NameNode(value: 'active'),
+      name: _i1.NameNode(value: 'status'),
       directives: [],
       type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'Boolean'),
+        name: _i1.NameNode(value: 'OccupancyStatusEnum'),
         isNonNull: true,
       ),
       defaultValue: null,
@@ -7321,6 +7381,39 @@ const RoomModelSortInput = _i1.InputObjectTypeDefinitionNode(
     ),
   ],
 );
+const SetUserRoleInput = _i1.InputObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'SetUserRoleInput'),
+  directives: [],
+  fields: [
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'userId'),
+      directives: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'ID'),
+        isNonNull: true,
+      ),
+      defaultValue: null,
+    ),
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'roleId'),
+      directives: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'ID'),
+        isNonNull: true,
+      ),
+      defaultValue: null,
+    ),
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'uid'),
+      directives: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+      defaultValue: null,
+    ),
+  ],
+);
 const StringOperationFilterInput = _i1.InputObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'StringOperationFilterInput'),
   directives: [],
@@ -7744,10 +7837,10 @@ const UpdateRoomInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
-      name: _i1.NameNode(value: 'active'),
+      name: _i1.NameNode(value: 'status'),
       directives: [],
       type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'Boolean'),
+        name: _i1.NameNode(value: 'OccupancyStatusEnum'),
         isNonNull: false,
       ),
       defaultValue: null,
@@ -8388,6 +8481,7 @@ const document = _i1.DocumentNode(definitions: [
   RoomModel,
   RoomsConnection,
   RoomsEdge,
+  SetUserRolePayload,
   UpdateCheckinPayload,
   UpdateFilePayload,
   UpdatePlacePayload,
@@ -8427,6 +8521,7 @@ const document = _i1.DocumentNode(definitions: [
   RoleModelSortInput,
   RoomModelFilterInput,
   RoomModelSortInput,
+  SetUserRoleInput,
   StringOperationFilterInput,
   UpdateCheckinInput,
   UpdateFileInput,

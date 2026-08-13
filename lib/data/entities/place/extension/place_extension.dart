@@ -1,6 +1,5 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:fleloft_frontend/data/entities/place/models/place_model.dart';
-import 'package:fleloft_frontend/data/entities/room/extension/room_extension.dart';
 import 'package:fleloft_frontend/graphql/local/__generated__/get_place_by_id.data.gql.dart';
 import 'package:fleloft_frontend/graphql/local/__generated__/get_places.data.gql.dart';
 
@@ -26,6 +25,5 @@ extension GGetPlaceByIdDataToPlace on GGetPlaceByIdData_placeById {
     neighborhood: neighborhood,
     zipCode: zipCode,
     observations: observations,
-    rooms: rooms?.toModelList() ?? [],
   );
 }

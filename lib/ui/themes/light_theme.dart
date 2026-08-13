@@ -10,6 +10,11 @@ class ThemeColors {
   static final grey200 = Colors.grey.shade200;
   static final grey100 = Colors.grey.shade100;
 
+  static final red500 = Colors.red.shade500;
+  static final green500 = Colors.green.shade500;
+  static final yellow500 = Colors.yellow.shade700;
+  static final purple500 = Colors.purple.shade500;
+
   static final white = Colors.white;
   static final transparent = Colors.transparent;
 }
@@ -137,6 +142,4 @@ final ThemeData lightTheme = ThemeData(
       ),
     ),
   ),
-
-  
 );

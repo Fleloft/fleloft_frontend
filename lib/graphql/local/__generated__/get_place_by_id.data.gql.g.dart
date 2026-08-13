@@ -10,9 +10,6 @@ Serializer<GGetPlaceByIdData> _$gGetPlaceByIdDataSerializer =
     _$GGetPlaceByIdDataSerializer();
 Serializer<GGetPlaceByIdData_placeById> _$gGetPlaceByIdDataPlaceByIdSerializer =
     _$GGetPlaceByIdData_placeByIdSerializer();
-Serializer<GGetPlaceByIdData_placeById_rooms>
-_$gGetPlaceByIdDataPlaceByIdRoomsSerializer =
-    _$GGetPlaceByIdData_placeById_roomsSerializer();
 
 class _$GGetPlaceByIdDataSerializer
     implements StructuredSerializer<GGetPlaceByIdData> {
@@ -162,19 +159,6 @@ class _$GGetPlaceByIdData_placeByIdSerializer
           serializers.serialize(value, specifiedType: const FullType(String)),
         );
     }
-    value = object.rooms;
-    if (value != null) {
-      result
-        ..add('rooms')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(BuiltList, const [
-              const FullType.nullable(GGetPlaceByIdData_placeById_rooms),
-            ]),
-          ),
-        );
-    }
     return result;
   }
 
@@ -271,113 +255,6 @@ class _$GGetPlaceByIdData_placeByIdSerializer
                     specifiedType: const FullType(String),
                   )
                   as String?;
-          break;
-        case 'rooms':
-          result.rooms.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(BuiltList, const [
-                    const FullType.nullable(GGetPlaceByIdData_placeById_rooms),
-                  ]),
-                )!
-                as BuiltList<Object?>,
-          );
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GGetPlaceByIdData_placeById_roomsSerializer
-    implements StructuredSerializer<GGetPlaceByIdData_placeById_rooms> {
-  @override
-  final Iterable<Type> types = const [
-    GGetPlaceByIdData_placeById_rooms,
-    _$GGetPlaceByIdData_placeById_rooms,
-  ];
-  @override
-  final String wireName = 'GGetPlaceByIdData_placeById_rooms';
-
-  @override
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GGetPlaceByIdData_placeById_rooms object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(
-        object.G__typename,
-        specifiedType: const FullType(String),
-      ),
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
-    ];
-    Object? value;
-    value = object.number;
-    if (value != null) {
-      result
-        ..add('number')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.status;
-    if (value != null) {
-      result
-        ..add('status')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i2.GOccupancyStatusEnum),
-          ),
-        );
-    }
-    return result;
-  }
-
-  @override
-  GGetPlaceByIdData_placeById_rooms deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = GGetPlaceByIdData_placeById_roomsBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )!
-                  as String;
-          break;
-        case 'id':
-          result.id =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )!
-                  as String;
-          break;
-        case 'number':
-          result.number =
-              serializers.deserialize(value, specifiedType: const FullType(int))
-                  as int?;
-          break;
-        case 'status':
-          result.status =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i2.GOccupancyStatusEnum),
-                  )
-                  as _i2.GOccupancyStatusEnum?;
           break;
       }
     }
@@ -526,8 +403,6 @@ class _$GGetPlaceByIdData_placeById extends GGetPlaceByIdData_placeById {
   final String? zipCode;
   @override
   final String? observations;
-  @override
-  final BuiltList<GGetPlaceByIdData_placeById_rooms?>? rooms;
 
   factory _$GGetPlaceByIdData_placeById([
     void Function(GGetPlaceByIdData_placeByIdBuilder)? updates,
@@ -544,7 +419,6 @@ class _$GGetPlaceByIdData_placeById extends GGetPlaceByIdData_placeById {
     this.state,
     this.zipCode,
     this.observations,
-    this.rooms,
   }) : super._();
   @override
   GGetPlaceByIdData_placeById rebuild(
@@ -568,8 +442,7 @@ class _$GGetPlaceByIdData_placeById extends GGetPlaceByIdData_placeById {
         city == other.city &&
         state == other.state &&
         zipCode == other.zipCode &&
-        observations == other.observations &&
-        rooms == other.rooms;
+        observations == other.observations;
   }
 
   @override
@@ -585,7 +458,6 @@ class _$GGetPlaceByIdData_placeById extends GGetPlaceByIdData_placeById {
     _$hash = $jc(_$hash, state.hashCode);
     _$hash = $jc(_$hash, zipCode.hashCode);
     _$hash = $jc(_$hash, observations.hashCode);
-    _$hash = $jc(_$hash, rooms.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -602,8 +474,7 @@ class _$GGetPlaceByIdData_placeById extends GGetPlaceByIdData_placeById {
           ..add('city', city)
           ..add('state', state)
           ..add('zipCode', zipCode)
-          ..add('observations', observations)
-          ..add('rooms', rooms))
+          ..add('observations', observations))
         .toString();
   }
 }
@@ -656,12 +527,6 @@ class GGetPlaceByIdData_placeByIdBuilder
   String? get observations => _$this._observations;
   set observations(String? observations) => _$this._observations = observations;
 
-  ListBuilder<GGetPlaceByIdData_placeById_rooms?>? _rooms;
-  ListBuilder<GGetPlaceByIdData_placeById_rooms?> get rooms =>
-      _$this._rooms ??= ListBuilder<GGetPlaceByIdData_placeById_rooms?>();
-  set rooms(ListBuilder<GGetPlaceByIdData_placeById_rooms?>? rooms) =>
-      _$this._rooms = rooms;
-
   GGetPlaceByIdData_placeByIdBuilder() {
     GGetPlaceByIdData_placeById._initializeBuilder(this);
   }
@@ -679,7 +544,6 @@ class GGetPlaceByIdData_placeByIdBuilder
       _state = $v.state;
       _zipCode = $v.zipCode;
       _observations = $v.observations;
-      _rooms = $v.rooms?.toBuilder();
       _$v = null;
     }
     return this;
@@ -699,195 +563,39 @@ class GGetPlaceByIdData_placeByIdBuilder
   GGetPlaceByIdData_placeById build() => _build();
 
   _$GGetPlaceByIdData_placeById _build() {
-    _$GGetPlaceByIdData_placeById _$result;
-    try {
-      _$result =
-          _$v ??
-          _$GGetPlaceByIdData_placeById._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-              G__typename,
-              r'GGetPlaceByIdData_placeById',
-              'G__typename',
-            ),
-            dbId: BuiltValueNullFieldError.checkNotNull(
-              dbId,
-              r'GGetPlaceByIdData_placeById',
-              'dbId',
-            ),
-            id: BuiltValueNullFieldError.checkNotNull(
-              id,
-              r'GGetPlaceByIdData_placeById',
-              'id',
-            ),
-            name: BuiltValueNullFieldError.checkNotNull(
-              name,
-              r'GGetPlaceByIdData_placeById',
-              'name',
-            ),
-            address: BuiltValueNullFieldError.checkNotNull(
-              address,
-              r'GGetPlaceByIdData_placeById',
-              'address',
-            ),
-            neighborhood: neighborhood,
-            city: city,
-            state: state,
-            zipCode: zipCode,
-            observations: observations,
-            rooms: _rooms?.build(),
-          );
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'rooms';
-        _rooms?.build();
-      } catch (e) {
-        throw BuiltValueNestedFieldError(
-          r'GGetPlaceByIdData_placeById',
-          _$failedField,
-          e.toString(),
-        );
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GGetPlaceByIdData_placeById_rooms
-    extends GGetPlaceByIdData_placeById_rooms {
-  @override
-  final String G__typename;
-  @override
-  final String id;
-  @override
-  final int? number;
-  @override
-  final _i2.GOccupancyStatusEnum? status;
-
-  factory _$GGetPlaceByIdData_placeById_rooms([
-    void Function(GGetPlaceByIdData_placeById_roomsBuilder)? updates,
-  ]) => (GGetPlaceByIdData_placeById_roomsBuilder()..update(updates))._build();
-
-  _$GGetPlaceByIdData_placeById_rooms._({
-    required this.G__typename,
-    required this.id,
-    this.number,
-    this.status,
-  }) : super._();
-  @override
-  GGetPlaceByIdData_placeById_rooms rebuild(
-    void Function(GGetPlaceByIdData_placeById_roomsBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
-
-  @override
-  GGetPlaceByIdData_placeById_roomsBuilder toBuilder() =>
-      GGetPlaceByIdData_placeById_roomsBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GGetPlaceByIdData_placeById_rooms &&
-        G__typename == other.G__typename &&
-        id == other.id &&
-        number == other.number &&
-        status == other.status;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, number.hashCode);
-    _$hash = $jc(_$hash, status.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(r'GGetPlaceByIdData_placeById_rooms')
-          ..add('G__typename', G__typename)
-          ..add('id', id)
-          ..add('number', number)
-          ..add('status', status))
-        .toString();
-  }
-}
-
-class GGetPlaceByIdData_placeById_roomsBuilder
-    implements
-        Builder<
-          GGetPlaceByIdData_placeById_rooms,
-          GGetPlaceByIdData_placeById_roomsBuilder
-        > {
-  _$GGetPlaceByIdData_placeById_rooms? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
-
-  int? _number;
-  int? get number => _$this._number;
-  set number(int? number) => _$this._number = number;
-
-  _i2.GOccupancyStatusEnum? _status;
-  _i2.GOccupancyStatusEnum? get status => _$this._status;
-  set status(_i2.GOccupancyStatusEnum? status) => _$this._status = status;
-
-  GGetPlaceByIdData_placeById_roomsBuilder() {
-    GGetPlaceByIdData_placeById_rooms._initializeBuilder(this);
-  }
-
-  GGetPlaceByIdData_placeById_roomsBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _id = $v.id;
-      _number = $v.number;
-      _status = $v.status;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GGetPlaceByIdData_placeById_rooms other) {
-    _$v = other as _$GGetPlaceByIdData_placeById_rooms;
-  }
-
-  @override
-  void update(
-    void Function(GGetPlaceByIdData_placeById_roomsBuilder)? updates,
-  ) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GGetPlaceByIdData_placeById_rooms build() => _build();
-
-  _$GGetPlaceByIdData_placeById_rooms _build() {
     final _$result =
         _$v ??
-        _$GGetPlaceByIdData_placeById_rooms._(
+        _$GGetPlaceByIdData_placeById._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
             G__typename,
-            r'GGetPlaceByIdData_placeById_rooms',
+            r'GGetPlaceByIdData_placeById',
             'G__typename',
+          ),
+          dbId: BuiltValueNullFieldError.checkNotNull(
+            dbId,
+            r'GGetPlaceByIdData_placeById',
+            'dbId',
           ),
           id: BuiltValueNullFieldError.checkNotNull(
             id,
-            r'GGetPlaceByIdData_placeById_rooms',
+            r'GGetPlaceByIdData_placeById',
             'id',
           ),
-          number: number,
-          status: status,
+          name: BuiltValueNullFieldError.checkNotNull(
+            name,
+            r'GGetPlaceByIdData_placeById',
+            'name',
+          ),
+          address: BuiltValueNullFieldError.checkNotNull(
+            address,
+            r'GGetPlaceByIdData_placeById',
+            'address',
+          ),
+          neighborhood: neighborhood,
+          city: city,
+          state: state,
+          zipCode: zipCode,
+          observations: observations,
         );
     replace(_$result);
     return _$result;

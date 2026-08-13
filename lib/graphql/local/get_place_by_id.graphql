@@ -9,10 +9,5 @@ query GetPlaceById($ID: ID!) {
     state
     zipCode
     observations
-    rooms{
-      id
-      number
-      status
-    }
   }
 }

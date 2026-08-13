@@ -1,4 +1,4 @@
-import 'package:fleloft_frontend/data/enum/occupancy_status_enum.dart';
+import 'package:fleloft_frontend/data/enum/occupancyStatus/occupancy_status_enum.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
